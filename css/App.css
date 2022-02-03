@@ -348,6 +348,18 @@ header nav .burgerButtonLi {
 	display: none;
 }
 
+.dropShadowWhite {
+	/* filter: drop-shadow(5px 5px 12px rgba(150, 170, 180, 0.5)); */
+	filter: drop-shadow(3px 3px 5px #9e9e9e) drop-shadow(-3px -3px 5px #bdbdbd);
+	margin: 1rem;
+	/* drop-shadow(-5px -5px 12px #e0e0e0); */
+}
+.dropShadowBlue {
+	filter: drop-shadow(3px 3px 5px #757575) drop-shadow(-3px -3px 5px #9e9e9e);
+	margin: 1rem;
+	/* filter: drop-shadow(5px 5px 15px #9e9e9e) drop-shadow(-5px -5px 15px #bdbdbd); */
+}
+
 .hero {
 	color: #fff;
 	background: #008eeb;

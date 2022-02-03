@@ -15,6 +15,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
 import { EaselPlugin } from "gsap/dist/EaselPlugin";
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
+
 // import M from "materialize-css/dist/js/materialize.min.js";
 
 function MyApp({ Component, pageProps }) {
