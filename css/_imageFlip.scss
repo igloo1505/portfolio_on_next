@@ -1,0 +1,83 @@
+.componentGallery {
+    overflow: hidden;
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+.panoramicImageSection {
+    // height: calc(100vh - 111px);
+    margin: 0;
+    padding: 50px 50px 0 50px;
+    background-color: #fff;
+    z-index: -5;
+    // display: none;
+}
+
+.panoramicImageSection * {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.hiddenDiv {
+    visibility: hidden;
+}
+
+.horizontalCardStack {
+    display: flex;
+    flex-direction: row;
+}
+.cardImage{
+    width: 100%;
+    min-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+
+.horizontalStackedCardPhaseTwo {
+    display: none;
+}
+.horizontalStackedCardPhaseThree {
+    display: none;
+}
+.horizontalStackedCardPhaseFour {
+    display: none;
+}
+
+
+.horizontalStackedCard, .horizontalStackedCardA {
+    background: transparent;
+    perspective: 1000px;
+    height: fit-content;
+    width: 12.5vw;
+    .innerCardDiv, .innerCardDivA {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.8s;
+        width: 100%;
+        height: fit-content;
+        text-align: center;
+    .cardFront, .cardBack, .cardBackPhaseTwo, .cardFrontLastPhase, .cardBackPhaseFour {
+        position: absolute;
+        -webkit-backface-visibility: hidden; 
+        backface-visibility: hidden;
+        width: 100%;
+    }
+    .cardBackLastPhase {
+        position: absolute;
+        -webkit-backface-visibility: hidden; 
+        backface-visibility: hidden;
+        width: 100%;
+        transform: rotateY(180deg);
+    }
+    .cardBack {
+        transform: rotateY(180deg);
+    }
+
+}
+}
+
+
+
+
