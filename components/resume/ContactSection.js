@@ -1,10 +1,10 @@
 import React from "react";
 
-const ContactSection = () => {
+const ContactSection = ({ styles }) => {
 	return (
-		<div className="basicDetailsSection">
-			<div className="name">Andrew Mueller</div>
-			<div className="contactDetails">
+		<div className={styles.basicDetailsSection}>
+			<div className={styles.name}>Andrew Mueller</div>
+			<div className={styles.contactDetails}>
 				<ul>
 					<li>
 						<a href="tel:414-530-3108">(414) 530-3108</a>

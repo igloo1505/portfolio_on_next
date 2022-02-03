@@ -85,6 +85,7 @@ const Drawer = ({
 			outerContainerId={"drawer-outer-container-id"}
 			pageWrapId={"drawer-page-wrapper"}
 			onStateChange={isMenuOpen}
+			customBurgerIcon={false}
 		>
 			<MobileNavSection />
 		</Menu>

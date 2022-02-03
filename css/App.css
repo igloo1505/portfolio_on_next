@@ -446,6 +446,16 @@ section {
 	height: 100%;
 }
 
+.resume-icon {
+	width: auto;
+	height: 32px;
+	margin-top: 3px;
+	display: block;
+}
+.resume-icon:hover {
+	cursor: pointer;
+}
+
 .skills-container ul li .icon-container {
 	height: 100px;
 	display: grid;

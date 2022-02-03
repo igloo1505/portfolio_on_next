@@ -1,20 +1,20 @@
 import React from "react";
-import "../../css/Resume.css";
 import ContactSection from "./ContactSection";
+import styles from "../../css/Resume.module.css";
 import AboutMeSection from "./AboutMeSection";
 import ProjectsSection from "./ProjectsSection";
 import SkillsSection from "./SkillsSection";
 
 const ResumeComponent = () => {
-  return (
-    <div className="resumeOuterWrapper">
-      <div className="titleText">Resume</div>
-      <ContactSection />
-      <AboutMeSection />
-      <ProjectsSection />
-      <SkillsSection />
-    </div>
-  );
+	return (
+		<div className={styles.resumeOuterWrapper}>
+			<div className={styles.titleText}>Resume</div>
+			<ContactSection styles={styles} />
+			<AboutMeSection styles={styles} />
+			<ProjectsSection styles={styles} />
+			<SkillsSection styles={styles} />
+		</div>
+	);
 };
 
 export default ResumeComponent;

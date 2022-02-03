@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/globals.css";
 import "../css/App.css";
-import ContactModal from "../components/NewContactModal";
+// import ContactModal from "../components/NewContactModal";
+import ContactModal from "../components/ContactModal";
 import Navbar from "../components/Navbar";
 import Drawer from "../components/Drawer";
 import { Provider } from "react-redux";

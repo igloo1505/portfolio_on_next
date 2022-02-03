@@ -4,6 +4,7 @@ import { socialLinks } from "../util/UniversalData";
 import { gitHubSvg, linkedInSvg, mediumSvg } from "./svg";
 import { GrNotes } from "react-icons/gr";
 import Link from "next/link";
+import Router from "next/router";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import * as Types from "../state/Types";
@@ -83,7 +84,12 @@ const NavbarNavigationSection = ({
 							</a>
 						</li>
 						<li style={{ display: socialLinks.linkedIn.display }}>
-							<Link rel="noreferrer" href="/resume" style={{ height: "100%" }}>
+							<Link
+								rel="noreferrer"
+								href="/resume"
+								style={{ height: "100%" }}
+								passHref
+							>
 								<PassRefComponent />
 							</Link>
 						</li>
@@ -149,7 +155,12 @@ const NavbarNavigationSection = ({
 							</a>
 						</li>
 						<li style={{ display: socialLinks.linkedIn.display }}>
-							<Link rel="noreferrer" to="/resume" style={{ height: "100%" }}>
+							<Link
+								rel="noreferrer"
+								href="/resume"
+								style={{ height: "100%" }}
+								passHref
+							>
 								<PassRefComponent />
 							</Link>
 						</li>
@@ -169,6 +180,9 @@ export default connect(mapStateToProps)(NavbarNavigationSection);
 
 // eslint-disable-next-line react/display-name
 const PassRefComponent = forwardRef(() => {
+	const handleResumeClick = () => {
+		Router.push("/resume");
+	};
 	return (
 		<GrNotes
 			style={{
@@ -177,6 +191,8 @@ const PassRefComponent = forwardRef(() => {
 				marginTop: "3px",
 				display: "block",
 			}}
+			className="resume-icon"
+			onClick={handleResumeClick}
 		/>
 	);
 });
