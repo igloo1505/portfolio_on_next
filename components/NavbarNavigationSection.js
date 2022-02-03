@@ -7,6 +7,7 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import * as Types from "../state/Types";
+import { isMobile } from "react-device-detect";
 
 const NavbarNavigationSection = ({
 	props: { currentPath, handleWorkClick, handleSkillsClick, handleBurgerClick },
@@ -46,15 +47,17 @@ const NavbarNavigationSection = ({
 										Contact Me
 									</a>
 								</li>
-								<li className="burgerButtonLi">
-									<Burger
-										className={
-											("burgerButton", burgerIsOpen && "burgerButtonOpen")
-										}
-										isOpen={burgerIsOpen}
-										onClick={handleBurgerClick}
-									/>
-								</li>
+								{isMobile && (
+									<li className="burgerButtonLi">
+										<Burger
+											className={
+												("burgerButton", burgerIsOpen && "burgerButtonOpen")
+											}
+											isOpen={burgerIsOpen}
+											onClick={handleBurgerClick}
+										/>
+									</li>
+								)}
 							</ul>
 						</nav>
 					</div>
@@ -110,15 +113,17 @@ const NavbarNavigationSection = ({
 										Contact Me
 									</a>
 								</li>
-								<li className="burgerButtonLi">
-									<Burger
-										className={
-											("burgerButton", burgerIsOpen && "burgerButtonOpen")
-										}
-										isOpen={burgerIsOpen}
-										onClick={handleBurgerClick}
-									/>
-								</li>
+								{isMobile && (
+									<li className="burgerButtonLi">
+										<Burger
+											className={
+												("burgerButton", burgerIsOpen && "burgerButtonOpen")
+											}
+											isOpen={burgerIsOpen}
+											onClick={handleBurgerClick}
+										/>
+									</li>
+								)}
 							</ul>
 						</nav>
 					</div>

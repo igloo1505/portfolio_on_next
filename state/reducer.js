@@ -44,6 +44,9 @@ const onlyReducer = createReducer(initialState, (builder) => {
 	builder.addCase(Types.SET_CONTACT_MODAL_OPEN, (state, action) => {
 		return {
 			...state,
+			drawer: {
+				isOpen: false,
+			},
 			contactModal: {
 				...state.contactModal,
 				isOpen: true,

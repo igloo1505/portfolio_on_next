@@ -44,7 +44,7 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 		gsap.to(window, {
 			duration: 2,
 			scrollTo: {
-				y: ".featured",
+				y: "#scroll-to-section-featured",
 				offsetY: 50,
 			},
 		});
