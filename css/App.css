@@ -13,6 +13,10 @@
 	src: url(./AccidentalPresident.ttf);
 }
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	height: 100vh;
 	margin: 0;
@@ -386,6 +390,13 @@ section {
 
 .cardOuter {
 	height: 100%;
+	border-radius: 1rem;
+	/* box-shadow: 12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0; */
+	transition: all 0.3s ease-in-out;
+}
+.cardOuter:hover {
+	box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0;
+	transition: all 0.3 ease-in-out;
 }
 
 .featured {
@@ -440,7 +451,7 @@ section {
 
 .skills-container ul li {
 	background-color: #fff;
-	padding: 2rem 2rem 0rem 2rem;
+	padding: 2rem;
 	border-radius: 1rem;
 	margin-bottom: 1rem;
 	height: 100%;
@@ -560,6 +571,13 @@ section {
 }
 
 @media only screen and (min-width: 800px) {
+	.skills-container ul li {
+		background-color: #fff;
+		padding: 2rem 2rem 0rem 2rem;
+		border-radius: 1rem;
+		margin-bottom: 1rem;
+		height: 100%;
+	}
 	.logoFont {
 		display: block;
 		color: #fff;
