@@ -407,7 +407,7 @@ section {
 	transition: all 0.3s ease-in-out;
 }
 .cardOuter:hover {
-	box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0;
+	/* box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0; */
 	transition: all 0.3 ease-in-out;
 }
 

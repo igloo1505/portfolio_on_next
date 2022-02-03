@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ReactGA from "react-ga";
-// import styles from "../css/MaterializeModal.module.css";
+// import "../css/MaterializeModal.module.css";
+import { connect } from "react-redux";
+import * as Types from "../state/Types";
 
-const ContactModal = (props) => {
-	const { open, setModalIsOpen } = props;
+const ContactModal = ({
+	state: {
+		contactModal: { isOpen },
+	},
+}) => {
 	const [contact, setContact] = useState({});
-
 	const handleInput = (name, data) => {
 		setContact({ ...contact, [name]: data });
 	};
@@ -78,4 +82,9 @@ const ContactModal = (props) => {
 	);
 };
 
-export default ContactModal;
+const mapStateToProps = (state, props) => ({
+	state: state,
+	props: props,
+});
+
+export default connect(mapStateToProps)(ContactModal);

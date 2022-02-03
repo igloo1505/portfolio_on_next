@@ -10,7 +10,6 @@ import {
 	googleAnalyticsSvg,
 } from "./svg";
 
-console.log("googleAnalyticsSvg: ", googleAnalyticsSvg);
 const SkillCard = ({ skill }) => {
 	return (
 		<div className="cardOuter">
