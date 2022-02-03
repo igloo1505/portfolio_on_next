@@ -138,6 +138,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	padding-bottom: 30px;
+	margin-top: 1rem;
 }
 
 .skillWrapper .individualSkill {

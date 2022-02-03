@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ReactGA from "react-ga";
+// import styles from "../css/MaterializeModal.module.css";
 
 const ContactModal = (props) => {
 	const { open, setModalIsOpen } = props;

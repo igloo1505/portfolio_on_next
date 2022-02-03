@@ -4,10 +4,10 @@ const VideoDemo = () => {
 	const [shouldPlay, setShouldPlay] = useState(false);
 	const videoRef = useRef(null);
 	const playVideo = () => {
-		videoRef.current.play();
+		videoRef.current?.play();
 	};
 	const pauseVideo = () => {
-		videoRef.current.pause();
+		videoRef.current?.pause();
 	};
 	useEffect(() => {
 		let offset = 0.3;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/globals.css";
+import "../css/MaterializeModal.css";
 import "../css/App.css";
 // import ContactModal from "../components/NewContactModal";
 import ContactModal from "../components/ContactModal";
@@ -9,9 +9,12 @@ import { Provider } from "react-redux";
 import store from "../state/store";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+// import M from "materialize-css/dist/js/materialize.min.js";
+import dynamic from "next/dynamic";
 
 function MyApp({ Component, pageProps }) {
 	gsap.registerPlugin(ScrollToPlugin);
+
 	return (
 		<>
 			<Provider store={store}>

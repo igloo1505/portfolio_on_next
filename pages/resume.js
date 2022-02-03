@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Resume.module.css";
 import ResumeComponent from "../components/resume/ResumeComponent";
+import { connect } from "react-redux";
 
-const resume = () => {
+const resume = ({
+	state: {
+		navbar: { height: navbarHeight },
+	},
+}) => {
+	const [extraStyles, setExtraStyles] = useState({});
+
+	useEffect(() => {
+		if (navbarHeight) {
+			setExtraStyles({
+				padding: `${navbarHeight}px 0 2rem 0`,
+			});
+		}
+	}, []);
+
 	return (
-		<div>
+		<div style={extraStyles}>
 			<ResumeComponent />
 		</div>
 	);
 };
 
-export default resume;
+const mapStateToProps = (state, props) => ({
+	state: state,
+});
+
+export default connect(mapStateToProps)(resume);

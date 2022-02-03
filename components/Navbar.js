@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import NavbarNavigationSection from "./NavbarNavigationSection";
 import ReactGA from "react-ga";
 import Drawer from "./Drawer";
+import Router from "next/router";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
 
@@ -26,6 +27,7 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 			value: "Skills",
 			label: "Skills",
 		});
+		Router.push("/");
 		gsap.to(window, {
 			duration: 2,
 			scrollTo: {
@@ -41,6 +43,7 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 			value: "Work",
 			label: "Work",
 		});
+		Router.push("/");
 		gsap.to(window, {
 			duration: 2,
 			scrollTo: {
