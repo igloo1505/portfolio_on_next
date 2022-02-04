@@ -23,6 +23,7 @@ const NewContactModal = ({
 		message: "",
 	});
 	const [formStep, setFormStep] = useState(1);
+	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
 
 	useEffect(() => {
@@ -42,7 +43,7 @@ const NewContactModal = ({
 		if (formStep === 1) {
 			setTimeout(() => {
 				setRightButtonText("Next");
-			}, 1000);
+			}, 1800);
 		}
 	}, [formStep]);
 
@@ -88,9 +89,9 @@ const NewContactModal = ({
 			.getBoundingClientRect().height;
 		if (emHeight > containerHeight - 32) {
 			let _newHeight = emHeight + 32;
-			document.getElementById(
-				"contact-outer-input-container"
-			).style.height = `${_newHeight}px`;
+			setStepTwoHeight({
+				height: `${_newHeight}px`,
+			});
 		}
 	};
 
@@ -115,6 +116,7 @@ const NewContactModal = ({
 				<div
 					className={clsx(classes.outerInputContainer)}
 					id="contact-outer-input-container"
+					style={formStep === 2 ? stepTwoHeight : {}}
 				>
 					<div className={classes.formTopRow}>
 						<InputEm
@@ -195,7 +197,9 @@ const NewContactModal = ({
 						id="contact-next-button"
 						onClick={isMobile ? handleNext : handleSend}
 					>
-						<div className={classes.buttonText}>{rightButtonText}</div>
+						<div className={classes.buttonText} id="right-button-text">
+							{rightButtonText}
+						</div>
 					</button>
 				</div>
 			</div>

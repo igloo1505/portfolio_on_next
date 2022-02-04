@@ -11,32 +11,53 @@ const animateNext = () => {
 		ease: "power3.out",
 	});
 	tl.to(
+		"#right-button-text",
+		{
+			opacity: 0,
+			duration: 0.5,
+			ease: "power3.out",
+		},
+		"-=0.3"
+	);
+	tl.to(
 		".nextButton",
 		{
 			x: "0",
 			duration: 0.3,
-			ease: "elastic.out(1, 0.4)",
+			ease: "elastic.out(1, 0.8)",
 		},
 		"-=0.3"
 	);
-	tl.to(".nextButton", {
-		width: "50%",
-		duration: 0.3,
-		ease: "elastic.out(1, 0.4)",
-	});
-	tl.to(".backButton", {
-		visibility: "visible",
-		opacity: 0,
-		immediateRender: true,
-		duration: 0,
-	});
-	tl.to(".backButton", {
-		visibility: "visible",
-		width: "50%",
-		opacity: 1,
-		duration: 0.6,
-		ease: "power3.out",
-	});
+	// tl.to(".backButton", {
+	// 	// visibility: "visible",
+	// 	opacity: 0,
+	// 	immediateRender: true,
+	// 	duration: 0,
+	// });
+	tl.fromTo(
+		".backButton",
+		{
+			scaleX: 0,
+			opacity: 0,
+		},
+		{
+			visibility: "visible",
+			width: "50%",
+			opacity: 1,
+			scaleX: 1,
+			duration: 0.6,
+			ease: "elastic.out(1, 0.4)",
+		}
+	);
+	tl.to(
+		"#right-button-text",
+		{
+			opacity: 1,
+			duration: 0.5,
+			ease: "power3.out",
+		},
+		"-=0.3"
+	);
 	tl.to(".textAreaContainer", {
 		display: "block",
 		scaleY: 1,
@@ -73,6 +94,11 @@ const animateBack = () => {
 			ease: "power3.out",
 		}
 	);
+	tl.to("#right-button-text", {
+		opacity: 0,
+		duration: 0.5,
+		ease: "power3.out",
+	});
 	tl.to(
 		".backButton",
 		{
@@ -94,6 +120,11 @@ const animateBack = () => {
 		},
 		"-=0.2"
 	);
+	tl.to("#right-button-text", {
+		opacity: 1,
+		duration: 1,
+		ease: "power3.out",
+	});
 };
 
 const animateEntrance = (onComplete) => {

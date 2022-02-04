@@ -130,6 +130,7 @@
 }
 .helperText {
 	color: #fff;
+	padding-left: 0.5rem;
 }
 
 .buttonContainer {
@@ -148,7 +149,7 @@
 	border: none;
 	box-shadow: 2px 2px 8px#616161, -2px -2px 8px #757575;
 	border-radius: 10px;
-	transition: all 0.3s ease-in-out;
+	// transition: all 0.3s ease-in-out;
 	// opacity: 0;
 	width: 50%;
 	&:hover {
@@ -165,7 +166,9 @@
 
 .backButton {
 	opacity: 0;
-	visibility: hidden;
+	transform: scaleX(0);
+	transform-origin: 0% 50%;
+	// visibility: hidden;
 	// display: none;
 }
 .nextButton {
@@ -186,6 +189,7 @@
 	display: none;
 	transform: scaleY(0);
 	transform-origin: top;
+	transition: height 0.3s ease-in-out;
 	// border-radius: 20px;
 }
 
