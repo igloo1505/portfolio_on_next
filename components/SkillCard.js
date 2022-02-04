@@ -9,10 +9,36 @@ import {
 	jwtSvg,
 	googleAnalyticsSvg,
 } from "./svg";
+import {
+	hoverAnimationEnter,
+	hoverAnimationExit,
+	hoverAnimationMove,
+} from "../animations/hoverAnimation";
 
 const SkillCard = ({ skill }) => {
+	const handleMouseEnter = (e) => {
+		if (typeof window !== "undefined") {
+			hoverAnimationEnter(e);
+		}
+	};
+	const handleMouseMove = (e) => {
+		if (typeof window !== "undefined") {
+			hoverAnimationMove(e);
+		}
+	};
+	const handleMouseLeave = (e) => {
+		if (typeof window !== "undefined") {
+			hoverAnimationExit(e);
+		}
+	};
 	return (
-		<li key={skill.title} className="transition3">
+		<li
+			key={skill.title}
+			className="transition3"
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+			onMouseMove={handleMouseMove}
+		>
 			<div className={`icon-container ${skill.classIndex}`}>
 				{skill.type === "MobileDevelopment" && swiftSvg()}
 				{skill.type === "FrontendDesign" && <TechIcons />}

@@ -15,6 +15,9 @@ const initialState = {
 		width: 0,
 		height: 0,
 	},
+	toast: {
+		submittedBy: null,
+	},
 };
 
 const onlyReducer = createReducer(initialState, (builder) => {
@@ -70,6 +73,14 @@ const onlyReducer = createReducer(initialState, (builder) => {
 		return {
 			...state,
 			...action.payload,
+		};
+	});
+	builder.addCase(Types.POST_CONTACT_SUCCESS, (state, action) => {
+		return {
+			...state,
+			toast: {
+				submittedBy: action.payload,
+			},
 		};
 	});
 });

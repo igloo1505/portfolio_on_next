@@ -28,6 +28,7 @@ const bShadowBlue = {
 export const hoverAnimationEnter = (e) => {
 	let target = e.target.classList;
 };
+
 export const hoverAnimationExit = (e) => {
 	if (!e.target.id) return;
 	// if (document.getElementById(e.target.id).getBoundingClientRect().width < 100)

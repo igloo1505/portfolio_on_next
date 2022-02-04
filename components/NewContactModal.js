@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import classes from "../css/NewContactModal.module.scss";
 import clsx from "clsx";
 import * as Types from "../state/Types";
 import { formTransitionMobile } from "../animations/formTransitionMobile";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 
 const NewContactModal = ({
 	state: {
@@ -19,12 +20,36 @@ const NewContactModal = ({
 		company: "",
 		message: "",
 	});
+	const [stepTwoFocusRef, setStepTwoFocusRef] = useState(null);
 	const [formStep, setFormStep] = useState(1);
 	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
+	const textAreaRef = useRef(null);
+	const validate = (_data) => {
+		// Handle this in the AM
+		return true;
+	};
 
-	const handleSubmit = () => {
-		console.log("FormData", formData);
+	const handleSubmit = async (e) => {
+		if (validate(formData)) {
+			e.preventDefault();
+			try {
+				let res = await axios.post("/api/contact", formData, {
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				console.log("response: ", res);
+				if (res.status === 200) {
+					dispatch({
+						type: Types.POST_CONTACT_SUCCESS,
+						payload: res.data.name,
+					});
+				}
+			} catch (error) {
+				console.error("error: ", error);
+			}
+		}
 	};
 
 	useEffect(() => {
@@ -77,6 +102,12 @@ const NewContactModal = ({
 		setFormStep(formStep + 1);
 		formTransitionMobile({
 			next: true,
+			onComplete: () => {
+				console.log("stepTwoFocusRef: ", stepTwoFocusRef);
+				if (stepTwoFocusRef) {
+					stepTwoFocusRef.focus();
+				}
+			},
 		});
 	};
 
@@ -167,6 +198,11 @@ const NewContactModal = ({
 								classes.contactFormTextArea,
 								"contactFormTextArea"
 							)}
+							// TODO: make sure this focuses on the textarea automatically on next click
+							ref={(tag) => setStepTwoFocusRef(tag)}
+							name="message"
+							onChange={handleChange}
+							// autoFocus
 						/>
 					</div>
 				</div>
@@ -186,6 +222,7 @@ const NewContactModal = ({
 						)}
 						onClick={handleBack}
 						id="contact-next-button"
+						tabIndex={formStep === 1 ? -1 : 0}
 					>
 						<div className={classes.buttonText}>Back</div>
 					</button>
@@ -198,7 +235,7 @@ const NewContactModal = ({
 							"nextButton"
 						)}
 						id="contact-next-button"
-						onClick={formStep === 1 ? handleNext : handleSend}
+						onClick={formStep === 1 ? handleNext : handleSubmit}
 					>
 						<div className={classes.buttonText} id="right-button-text">
 							{rightButtonText}

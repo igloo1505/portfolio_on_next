@@ -7,6 +7,7 @@ const ContactSchema = mongoose.Schema({
 	},
 	email: {
 		type: String,
+		required: true,
 	},
 	phone: {
 		type: String,
@@ -24,4 +25,5 @@ const ContactSchema = mongoose.Schema({
 	},
 });
 
-module.exports = mongoose.model("Contact", ContactSchema);
+module.exports =
+	mongoose.models?.Contact || mongoose.model("Contact", ContactSchema);

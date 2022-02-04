@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 
-const animateNext = () => {
-	let tl = gsap.timeline();
+const animateNext = ({ onComplete }) => {
+	let tl = gsap.timeline({ onComplete: onComplete });
 	// gsap.to();
 	tl.to(".inputContainer-1", {
 		y: -100,
@@ -167,7 +167,7 @@ export const formTransitionMobile = ({
 		return animateBack();
 	}
 	if (next) {
-		return animateNext();
+		return animateNext(onComplete);
 	}
 	if (close) {
 		return animateClose(onComplete);
