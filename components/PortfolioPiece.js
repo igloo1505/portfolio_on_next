@@ -1,6 +1,5 @@
 import React from "react";
-import portfolioImageOne from "../public/portfolioImageOne.png";
-import { portfolioArray, HeroImagePallet } from "../util/UniversalData";
+import { HeroImagePallet } from "../util/UniversalData";
 import Image from "next/image";
 
 const PortfolioPiece = ({ p }) => {

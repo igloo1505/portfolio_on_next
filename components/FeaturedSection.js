@@ -8,12 +8,19 @@ import { isMobileOnly } from "react-device-detect";
 // const VideoDemo = React.lazy(() => import("./VideoDemo"));
 const VideoDemo = dynamic(() => import("./VideoDemo"), {
 	ssr: false,
+	loading: () => (
+		<Image
+			className="right transition2"
+			src={FeaturedImage}
+			alt="App Screenshot"
+		/>
+	),
 });
 
 const FeaturedSection = () => {
 	const [shouldShowVideo, setShouldShowVideo] = useState(true);
 	useEffect(() => {
-		setShouldShowVideo(!isMobileOnly);
+		// setShouldShowVideo(!isMobileOnly);
 		console.log("isMobileOnly: ", isMobileOnly);
 	}, []);
 

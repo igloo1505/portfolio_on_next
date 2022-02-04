@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../public/white_logo_transparent_background.png";
+import React from "react";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 import { gsap } from "gsap";
 import NavbarNavigationSection from "./NavbarNavigationSection";
 import ReactGA from "react-ga";
-import Drawer from "./Drawer";
 import Router from "next/router";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
-import { isMobile } from "react-device-detect";
 
 //   TODO Change second link to blog link in socialHeader list
 const Navbar = ({ props: { currentPath }, dispatch, state }) => {

@@ -30,9 +30,21 @@ export const hoverAnimationEnter = (e) => {
 };
 export const hoverAnimationExit = (e) => {
 	if (!e.target.id) return;
+	// if (document.getElementById(e.target.id).getBoundingClientRect().width < 100)
+	// return;
+	let _x = window.getComputedStyle(
+		document.getElementById(e.target.id)
+	).transform;
+	let _float = _x.split("(")[1].split(",")[0];
+
+	if (parseFloat(_float) < 0.75) return;
+	console.log("parseFloat(_float): ", parseFloat(_float));
+	let _t = document.getElementById(e.target.id).style.transform;
+	console.log("_t: ", _t);
 	if (e.target.classList.contains("dropShadowBlue")) {
 		gsap.to(`#${e.target.id}`, {
 			filter: `drop-shadow(${bShadowBlue.fx}px ${bShadowBlue.fy}px ${bShadowBlue.fos}px ${grey[600]}) drop-shadow(${bShadowBlue.bx}px ${bShadowBlue.by}px ${bShadowBlue.bos}px ${grey[500]})`,
+			"-webkit-filter": `drop-shadow(${bShadowBlue.fx}px ${bShadowBlue.fy}px ${bShadowBlue.fos}px ${grey[600]}) drop-shadow(${bShadowBlue.bx}px ${bShadowBlue.by}px ${bShadowBlue.bos}px ${grey[500]})`,
 			rotateX: 0,
 			rotateY: 0,
 			duration: 2.5,
@@ -42,6 +54,7 @@ export const hoverAnimationExit = (e) => {
 	if (e.target.classList.contains("dropShadowWhite")) {
 		gsap.to(`#${e.target.id}`, {
 			filter: `drop-shadow(${bShadowWhite.fx}px ${bShadowWhite.fy}px ${bShadowWhite.fos}px ${grey[500]}) drop-shadow(${bShadowWhite.bx}px ${bShadowWhite.by}px ${bShadowWhite.bos}px ${grey[400]})`,
+			"-webkit-filter": `drop-shadow(${bShadowWhite.fx}px ${bShadowWhite.fy}px ${bShadowWhite.fos}px ${grey[500]}) drop-shadow(${bShadowWhite.bx}px ${bShadowWhite.by}px ${bShadowWhite.bos}px ${grey[400]})`,
 			rotateX: 0,
 			rotateY: 0,
 			duration: 2.5,
@@ -51,6 +64,16 @@ export const hoverAnimationExit = (e) => {
 };
 export const hoverAnimationMove = (e) => {
 	if (!e.target.id) return;
+	let _x = window.getComputedStyle(
+		document.getElementById(e.target.id)
+	).transform;
+	let _float = _x.split("(")[1].split(",")[0];
+
+	if (parseFloat(_float) < 0.75) return;
+	console.log("parseFloat(_float): ", parseFloat(_float));
+	let _t = document.getElementById(e.target.id).style.transform;
+	console.log("_t: ", _t);
+
 	let rotateRate = 0.022;
 	let rec = document.getElementById(e.target.id).getBoundingClientRect();
 	let em = {

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { shouldHideBodyOverflow } from "../util/utilityFunctions";
-import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import FeaturedSection from "../components/FeaturedSection";
 import SkillsSection from "../components/SkillsSection";
 import PortfolioSection from "../components/PortfolioSection";
 import { connect, useDispatch } from "react-redux";
 import * as Types from "../state/Types";
-// import ContactModal from "../components/ContactModal";
 
 const LandingPage = ({
 	state: {

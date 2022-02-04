@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import ReactGA from "react-ga";
 import { connect } from "react-redux";
 import classes from "../css/NewContactModal.module.scss";
 import clsx from "clsx";
 import * as Types from "../state/Types";
-import { isMobile } from "react-device-detect";
 import { formTransitionMobile } from "../animations/formTransitionMobile";
 import TextareaAutosize from "react-textarea-autosize";
 
@@ -148,6 +145,7 @@ const NewContactModal = ({
 							helperText={"Phone Number (optional)"}
 							placeHolder="Phone"
 							step={1}
+							inputMode="tel"
 						/>
 					</div>
 					<div
@@ -195,7 +193,7 @@ const NewContactModal = ({
 							"nextButton"
 						)}
 						id="contact-next-button"
-						onClick={isMobile ? handleNext : handleSend}
+						onClick={formStep === 1 ? handleNext : handleSend}
 					>
 						<div className={classes.buttonText} id="right-button-text">
 							{rightButtonText}
@@ -214,7 +212,14 @@ const mapStateToProps = (state, props) => ({
 
 export default connect(mapStateToProps)(NewContactModal);
 
-const InputEm = ({ handleChange, _name, helperText, placeHolder, step }) => {
+const InputEm = ({
+	handleChange,
+	_name,
+	helperText,
+	placeHolder,
+	step,
+	...props
+}) => {
 	return (
 		<div
 			className={clsx(
@@ -230,6 +235,7 @@ const InputEm = ({ handleChange, _name, helperText, placeHolder, step }) => {
 				placeholder={placeHolder}
 				onChange={handleChange}
 				name={_name}
+				{...props}
 			/>
 			<div className={classes.helperText}>{helperText}</div>
 		</div>

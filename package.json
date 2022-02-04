@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"audit": "ANALYZE=true next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -14,6 +15,7 @@
 		"@fortawesome/free-brands-svg-icons": "^5.15.4",
 		"@fortawesome/free-solid-svg-icons": "^5.15.1",
 		"@fortawesome/react-fontawesome": "^0.1.17",
+		"@next/bundle-analyzer": "^12.0.10",
 		"@reduxjs/toolkit": "^1.7.2",
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
@@ -27,6 +29,7 @@
 		"mongodb": "^4.3.1",
 		"mongoose": "^6.2.0",
 		"next": "^12.0.10",
+		"next-pwa": "^5.4.4",
 		"react": "^17.0.2",
 		"react-burger-menu": "^3.0.6",
 		"react-device-detect": "^2.1.2",

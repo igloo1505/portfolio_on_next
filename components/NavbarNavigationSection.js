@@ -1,14 +1,13 @@
 import React, { Fragment, forwardRef } from "react";
 import Burger from "@animated-burgers/burger-squeeze";
 import { socialLinks } from "../util/UniversalData";
-import { gitHubSvg, linkedInSvg, mediumSvg } from "./svg";
+import { gitHubSvg, linkedInSvg } from "./svg";
 import { GrNotes } from "react-icons/gr";
 import Link from "next/link";
 import Router from "next/router";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import * as Types from "../state/Types";
-import { isMobile } from "react-device-detect";
 
 const burgerBreakpoint = 800;
 

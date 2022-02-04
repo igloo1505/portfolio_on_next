@@ -1,16 +1,8 @@
 @font-face {
-	font-family: LogoFont;
-	src: url(./UltraCondensedSansSerif.ttf);
-}
-
-@font-face {
 	font-family: FontRounded;
-	src: url(./OdinRoundedBold.otf);
-}
-
-@font-face {
-	font-family: AccidentalPresident;
-	src: url(./AccidentalPresident.ttf);
+	src: local("Pacifico Regular"), local("Pacifico-Regular"),
+		url(./OdinRoundedBold.otf);
+	font-display: swap;
 }
 
 * {
@@ -45,6 +37,7 @@ button:active {
 
 .logoFont {
 	font-family: FontRounded;
+	/* font-family: "Nanum Gothic Coding", monospace; */
 	color: #fff;
 	font-size: 20px;
 	letter-spacing: 0.3rem;
@@ -842,4 +835,19 @@ section {
 	header nav ul li a {
 		padding: 0 2rem;
 	}
+}
+
+/* Autofill stuff: */
+
+/*  */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+	background-color: #628de9 !important;
+	-webkit-text-fill-color: #628de9 !important;
+	background-clip: content-box;
+	/* -webkit-back */
 }

@@ -13,13 +13,37 @@ import gsap from "gsap";
 
 const TechIcons = () => {
 	const iconArray = [
-		<FontAwesomeIcon className="techIcons htmlIcon" icon={faHtml5} />,
-		<FontAwesomeIcon className="techIcons cssIcon" icon={faCss3Alt} />,
-		<FontAwesomeIcon className="techIcons jsIcon" icon={faJs} />,
-		<FontAwesomeIcon className="techIcons reactIcon" icon={faReact} />,
-		<FontAwesomeIcon className="techIcons nodeIcon" icon={faNodeJs} />,
-		<FontAwesomeIcon className="techIcons npmIcon" icon={faNpm} />,
-		<FontAwesomeIcon className="techIcons gitIcon" icon={faGit} />,
+		<FontAwesomeIcon
+			key="htmlIcon"
+			className="techIcons htmlIcon"
+			icon={faHtml5}
+		/>,
+		<FontAwesomeIcon
+			key="cssIcon"
+			className="techIcons cssIcon"
+			icon={faCss3Alt}
+		/>,
+		<FontAwesomeIcon key="jsIcon" className="techIcons jsIcon" icon={faJs} />,
+		<FontAwesomeIcon
+			key="reactIcon"
+			className="techIcons reactIcon"
+			icon={faReact}
+		/>,
+		<FontAwesomeIcon
+			key="nodeIcon"
+			className="techIcons nodeIcon"
+			icon={faNodeJs}
+		/>,
+		<FontAwesomeIcon
+			key="npmIcon"
+			className="techIcons npmIcon"
+			icon={faNpm}
+		/>,
+		<FontAwesomeIcon
+			key="gitIcon"
+			className="techIcons gitIcon"
+			icon={faGit}
+		/>,
 	];
 
 	const [iconToReturn, setIconToReturn] = useState(iconArray[0]);

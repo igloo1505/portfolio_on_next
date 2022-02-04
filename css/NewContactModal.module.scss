@@ -70,7 +70,6 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-
 	// margin-top: 2rem;
 	margin-top: 1rem;
 	// flex-direction: row;
@@ -127,6 +126,20 @@
 	&::placeholder {
 		color: #e0e0e0;
 	}
+	&:autofill {
+		background-color: #f15ed0 !important;
+	}
+	&::autofill {
+		background-color: #f15ed0 !important;
+	}
+	&:-webkit-autofill {
+		background-color: #f15ed0 !important;
+	}
+	&:-internal-autofill-selected {
+		// background-color: #f15ed0 !important;
+		// appearance: unset;
+		// background-image: linear-gradient(to bottom, #f15ed0, #f15ed0) !important;
+	}
 }
 .helperText {
 	color: #fff;
@@ -168,6 +181,7 @@
 	transform: scaleX(0);
 	transform-origin: left;
 	float: left;
+	// background-color: #0cf7ff;
 	// visibility: hidden;
 	// display: none;
 }
@@ -196,7 +210,7 @@
 .contactFormTextArea {
 	width: 100%;
 	border-radius: 20px;
-	padding: 0.5rem;
+	padding: 0.75rem;
 	background-color: #01a2ff;
 	border: 1px solid #fff;
 	color: #fff;
@@ -210,10 +224,20 @@
 		border: 2px solid #fff;
 		outline: none;
 	}
+	&::selection {
+		color: #fff;
+		background-color: #f15ed0;
+	}
 }
 
 .textAreaLabelText {
 	color: #fff;
 	font-size: 1.2rem;
 	margin: 0.5rem 0;
+}
+
+@media only screen and (min-width: 1050px) {
+	.formTopRow {
+		flex-direction: row;
+	}
 }

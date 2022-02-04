@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "../css/App.css";
-import ContactModal from "../components/NewContactModal";
+import dynamic from "next/dynamic";
 import ReactGA from "react-ga";
 import ttiPolyfill from "tti-polyfill";
 import Navbar from "../components/Navbar";
-import Drawer from "../components/Drawer";
+// import ContactModal from "../components/NewContactModal";
+const ContactModal = dynamic(() => import("../components/NewContactModal"));
+const Drawer = dynamic(() => import("../components/Drawer"));
 import { Provider } from "react-redux";
 import store from "../state/store";
 import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
-import { EaselPlugin } from "gsap/dist/EaselPlugin";
+const ScrollToPlugin = dynamic(() =>
+	import("gsap/dist/ScrollToPlugin").then((mod) => mod.ScrollToPlugin)
+);
+// const ScrollTrigger = dynamic(() =>
+// 	import("gsap/dist/ScrollTrigger").then((mod) => mod.ScrollTrigger)
+// );
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
 
 function MyApp({ Component, pageProps }) {
-	gsap.registerPlugin(
-		EaselPlugin,
-		MotionPathPlugin,
-		ScrollToPlugin,
-		ScrollTrigger
-	);
-
+	gsap.registerPlugin(ScrollToPlugin);
 	function handlePerformance(list) {
 		list.getEntries().forEach((entry) => {
 			ReactGA.timing({
@@ -68,8 +66,15 @@ function MyApp({ Component, pageProps }) {
 		observer.observe({ entryTypes: ["navigation"] });
 	}, []);
 	useEffect(() => {
-		if (typeof window !== "undefined") {
+		if (animateOnScroll) {
 			animateOnScroll();
+			// console.log("animateOnScroll: ", animateOnScroll);
+		}
+	}, [animateOnScroll]);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			// animateOnScroll();
 			ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
 				ReactGA.timing({
 					category: "Load Performance",

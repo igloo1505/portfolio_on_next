@@ -36,10 +36,7 @@ const HeroSideImage = () => {
 				viewBox="0 0 456 434"
 			>
 				<g id="HeroSideImage" transform="translate(-1092 -216)">
-					<Fragment
-					// className="squareFlip"
-					// style={{ width: 114, height: "109" }}
-					>
+					<Fragment>
 						<rect
 							className="square-anim leftSquare leftSquare1 dropShadowBlue hoverListen"
 							id="Rectangle_7"
