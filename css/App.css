@@ -396,18 +396,18 @@ section {
 	z-index: 20;
 }
 
-.cardOuter {
+/* .cardOuter {
 	height: 100%;
 	border-radius: 1rem;
 	/* box-shadow: 12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0; */
-	transition: all 0.3s ease-in-out;
-}
-.cardOuter:hover {
-	/* box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0; */
-	transition: all 0.3 ease-in-out;
-}
+/* transition: all 0.3s ease-in-out; */
+/* } */
+/* .cardOuter:hover { */
+/* box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0; */
+/* transition: all 0.3 ease-in-out; */
+/* } */
 
-.featured {
+*/ .featured {
 	position: relative;
 }
 
@@ -463,6 +463,16 @@ section {
 	border-radius: 1rem;
 	margin-bottom: 1rem;
 	height: 100%;
+	box-shadow: 12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0;
+	transition: box-shadow 0.3s ease-in-out;
+
+	/* .cardOuter:hover { */
+	/* box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0; */
+	/* transition: all 0.3 ease-in-out; */
+	/* } */
+}
+.skills-container ul li:hover {
+	box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0;
 }
 
 .resume-icon {
