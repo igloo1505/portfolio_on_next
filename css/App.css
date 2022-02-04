@@ -342,6 +342,9 @@ header nav .burgerButtonLi {
 	margin-left: auto;
 	z-index: 99;
 }
+header nav .burgerButtonLiOpen {
+	z-index: 9999;
+}
 
 .socialHeader,
 .hero-design {
@@ -590,6 +593,9 @@ section {
 		margin-bottom: 1rem;
 		height: 100%;
 	}
+	.burgerButtonLi {
+		display: none;
+	}
 	.logoFont {
 		display: block;
 		color: #fff;
@@ -686,6 +692,9 @@ section {
 	.hero {
 		height: 90vh;
 	}
+	/* .burgerButtonLi {
+		display: none;
+	} */
 	.hero .heroText h1 {
 		width: 70%;
 		/* line-height: normal; */

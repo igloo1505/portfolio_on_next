@@ -11,6 +11,10 @@ const initialState = {
 	navbar: {
 		height: 100,
 	},
+	viewport: {
+		width: 0,
+		height: 0,
+	},
 };
 
 const withDevtools = () => {

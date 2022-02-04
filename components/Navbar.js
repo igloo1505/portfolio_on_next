@@ -9,9 +9,9 @@ import Drawer from "./Drawer";
 import Router from "next/router";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
+import { isMobile } from "react-device-detect";
 
 //   TODO Change second link to blog link in socialHeader list
-//   TODO Add hamburger menu for mobile
 const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 	const handleBurgerClick = () => {
 		console.log("Handle burger click here");

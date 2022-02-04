@@ -20,7 +20,7 @@ const LandingPage = ({
 	const [extraStyles, setExtraStyles] = useState({});
 
 	const dispatch = useDispatch();
-	const handleNavHeight = () => {
+	const handleDimensions = () => {
 		let _navHeight = document
 			.getElementById("navbar-container-id")
 			?.getBoundingClientRect()?.height;
@@ -30,14 +30,22 @@ const LandingPage = ({
 		});
 		dispatch({
 			type: Types.UPDATE_NAV_HEIGHT,
-			payload: _navHeight,
+			payload: {
+				navbar: {
+					height: _navHeight,
+				},
+				viewport: {
+					width: window.innerWidth,
+					height: window.innerHeight,
+				},
+			},
 		});
 	};
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			handleNavHeight();
+			handleDimensions();
 			window.addEventListener("resize", () => {
-				handleNavHeight();
+				handleDimensions();
 			});
 		}
 	}, []);

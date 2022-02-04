@@ -134,10 +134,8 @@
 }
 
 .buttonContainer {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	margin: 1rem;
 	gap: 0.5rem;
 	width: 100%;
@@ -149,9 +147,10 @@
 	border: none;
 	box-shadow: 2px 2px 8px#616161, -2px -2px 8px #757575;
 	border-radius: 10px;
+	float: left;
 	// transition: all 0.3s ease-in-out;
 	// opacity: 0;
-	width: 50%;
+	width: 100%;
 	&:hover {
 		box-shadow: 1px 1px 5px#616161, -1px -1px 5px #757575;
 	}
@@ -167,7 +166,8 @@
 .backButton {
 	opacity: 0;
 	transform: scaleX(0);
-	transform-origin: 0% 50%;
+	transform-origin: left;
+	float: left;
 	// visibility: hidden;
 	// display: none;
 }

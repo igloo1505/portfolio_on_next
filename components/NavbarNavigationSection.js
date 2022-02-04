@@ -10,10 +10,13 @@ import clsx from "clsx";
 import * as Types from "../state/Types";
 import { isMobile } from "react-device-detect";
 
+const burgerBreakpoint = 800;
+
 const NavbarNavigationSection = ({
 	props: { currentPath, handleWorkClick, handleSkillsClick, handleBurgerClick },
 	state: {
 		drawer: { isOpen: burgerIsOpen },
+		viewport: { width: deviceWidth },
 	},
 	dispatch,
 }) => {
@@ -48,8 +51,13 @@ const NavbarNavigationSection = ({
 										Contact Me
 									</a>
 								</li>
-								{isMobile && (
-									<li className="burgerButtonLi">
+								{deviceWidth <= burgerBreakpoint && (
+									<li
+										className={clsx(
+											"burgerButtonLi",
+											burgerIsOpen && "burgerButtonLiOpen"
+										)}
+									>
 										<Burger
 											className={
 												("burgerButton", burgerIsOpen && "burgerButtonOpen")
@@ -119,8 +127,13 @@ const NavbarNavigationSection = ({
 										Contact Me
 									</a>
 								</li>
-								{isMobile && (
-									<li className="burgerButtonLi">
+								{deviceWidth <= burgerBreakpoint && (
+									<li
+										className={clsx(
+											"burgerButtonLi",
+											burgerIsOpen && "burgerButtonLiOpen"
+										)}
+									>
 										<Burger
 											className={
 												("burgerButton", burgerIsOpen && "burgerButtonOpen")

@@ -11,6 +11,10 @@ const initialState = {
 	navbar: {
 		height: 0,
 	},
+	viewport: {
+		width: 0,
+		height: 0,
+	},
 };
 
 const onlyReducer = createReducer(initialState, (builder) => {
@@ -65,10 +69,7 @@ const onlyReducer = createReducer(initialState, (builder) => {
 	builder.addCase(Types.UPDATE_NAV_HEIGHT, (state, action) => {
 		return {
 			...state,
-			navbar: {
-				...state.navbar,
-				height: action.payload,
-			},
+			...action.payload,
 		};
 	});
 });

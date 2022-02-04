@@ -37,16 +37,19 @@ const animateNext = () => {
 	tl.fromTo(
 		".backButton",
 		{
-			scaleX: 0,
 			opacity: 0,
+			scaleX: 1,
+			visibility: "visible",
+			transformOrigin: "left",
+			float: "left",
 		},
 		{
 			visibility: "visible",
-			width: "50%",
+			width: "100%",
 			opacity: 1,
 			scaleX: 1,
 			duration: 0.6,
-			ease: "elastic.out(1, 0.4)",
+			ease: "power3.out",
 		}
 	);
 	tl.to(
@@ -102,8 +105,7 @@ const animateBack = () => {
 	tl.to(
 		".backButton",
 		{
-			visibility: "visible",
-			opacity: 1,
+			opacity: 0,
 			scaleX: 0,
 			duration: 0.5,
 			ease: "power3.out",
@@ -115,8 +117,8 @@ const animateBack = () => {
 		{
 			// transform: translateX(calc(-50% - 0.5rem));
 			x: `-${em.width / 2 + 8}px`,
-			duration: 0.3,
-			ease: "elastic.out(1, 0.3)",
+			duration: 0.8,
+			ease: "elastic.out(1, 0.6)",
 		},
 		"-=0.2"
 	);
