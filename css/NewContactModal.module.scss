@@ -37,7 +37,8 @@
 	box-shadow: 8px 8px 16px#616161, -8px -8px 16px #757575;
 	visibility: hidden;
 	transform: translate(-50%, -100vh);
-	z-index: 999;
+	z-index: 9999;
+	max-height: 100vh;
 	// transition: all 0.5s cubic-bezier(1, 0, 0, 1);
 }
 
@@ -149,6 +150,7 @@
 	border-radius: 10px;
 	transition: all 0.3s ease-in-out;
 	// opacity: 0;
+	width: 50%;
 	&:hover {
 		box-shadow: 1px 1px 5px#616161, -1px -1px 5px #757575;
 	}
@@ -163,7 +165,6 @@
 
 .backButton {
 	opacity: 0;
-	transform: scaleX(0);
 	visibility: hidden;
 	// display: none;
 }
@@ -183,8 +184,32 @@
 	top: 1rem;
 	left: 1rem;
 	display: none;
+	transform: scaleY(0);
+	transform-origin: top;
+	// border-radius: 20px;
 }
 
 .contactFormTextArea {
 	width: 100%;
+	border-radius: 20px;
+	padding: 0.5rem;
+	background-color: #01a2ff;
+	border: 1px solid #fff;
+	color: #fff;
+	font-size: 1rem;
+	max-height: 60vh;
+	&:focus-visible {
+		outline: none;
+		border: 2px solid #fff;
+	}
+	&:focus {
+		border: 2px solid #fff;
+		outline: none;
+	}
+}
+
+.textAreaLabelText {
+	color: #fff;
+	font-size: 1.2rem;
+	margin: 0.5rem 0;
 }

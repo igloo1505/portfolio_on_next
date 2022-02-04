@@ -323,7 +323,7 @@ header nav #dropDownMenu ul li {
 header nav .burgerButton {
 	float: right;
 	background-color: transparent;
-	z-index: 99999;
+	z-index: 99;
 }
 
 .burgerButtonOpen {
@@ -340,7 +340,7 @@ header nav .burgerButton {
 header nav .burgerButtonLi {
 	margin-right: 5px;
 	margin-left: auto;
-	z-index: 9999;
+	z-index: 99;
 }
 
 .socialHeader,

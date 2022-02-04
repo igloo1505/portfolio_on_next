@@ -78,6 +78,22 @@ const NewContactModal = ({
 		});
 	};
 
+	const observeHeightChange = (data) => {
+		console.log("data: ", data);
+		let emHeight = document
+			.getElementById("textAreaContainer")
+			.getBoundingClientRect().height;
+		let containerHeight = document
+			.getElementById("contact-outer-input-container")
+			.getBoundingClientRect().height;
+		if (emHeight > containerHeight - 32) {
+			let _newHeight = emHeight + 32;
+			document.getElementById(
+				"contact-outer-input-container"
+			).style.height = `${_newHeight}px`;
+		}
+	};
+
 	return (
 		<div
 			className={clsx(
@@ -96,7 +112,10 @@ const NewContactModal = ({
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className={classes.titleText}>Get in Touch</div>
-				<div className={clsx(classes.outerInputContainer)}>
+				<div
+					className={clsx(classes.outerInputContainer)}
+					id="contact-outer-input-container"
+				>
 					<div className={classes.formTopRow}>
 						<InputEm
 							handleChange={handleChange}
@@ -129,9 +148,16 @@ const NewContactModal = ({
 							step={1}
 						/>
 					</div>
-					<div className={clsx(classes.textAreaContainer, "textAreaContainer")}>
+					<div
+						className={clsx(classes.textAreaContainer, "textAreaContainer")}
+						id="textAreaContainer"
+					>
+						<div className={classes.textAreaLabelText}>How Can I Help?</div>
 						<TextareaAutosize
 							minRows={5}
+							// maxRows={20}
+							id="textAreaResize"
+							onHeightChange={observeHeightChange}
 							className={clsx(
 								classes.contactFormTextArea,
 								"contactFormTextArea"
