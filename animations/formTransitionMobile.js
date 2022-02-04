@@ -28,12 +28,6 @@ const animateNext = () => {
 		},
 		"-=0.3"
 	);
-	// tl.to(".backButton", {
-	// 	// visibility: "visible",
-	// 	opacity: 0,
-	// 	immediateRender: true,
-	// 	duration: 0,
-	// });
 	tl.fromTo(
 		".backButton",
 		{
@@ -147,13 +141,17 @@ const animateEntrance = (onComplete) => {
 const animateClose = (onComplete) => {
 	// contact-modal-container
 	// contact-modal-backdrop
+	console.log("Animating close");
 	let tl = gsap.timeline({
 		onComplete: onComplete,
 	});
-	tl.to(".contact-modal-container", {
+
+	tl.to("#contact-modal-container", {
 		y: "-100vh",
-		opacity: 0,
-		duration: 0.3,
+		// x: "-100vw",
+		// scaleX: 0,
+		// opacity: 0,
+		duration: 0.5,
 		ease: "power3.out",
 	});
 };
@@ -166,15 +164,15 @@ export const formTransitionMobile = ({
 	enter,
 }) => {
 	if (back) {
-		animateBack();
+		return animateBack();
 	}
 	if (next) {
-		animateNext();
+		return animateNext();
 	}
 	if (close) {
-		animateClose(onComplete);
+		return animateClose(onComplete);
 	}
 	if (enter) {
-		animateEntrance(onComplete);
+		return animateEntrance(onComplete);
 	}
 };

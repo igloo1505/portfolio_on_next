@@ -24,8 +24,7 @@ const withDevtools = () => {
 
 const store = configureStore({
 	reducer: Reducer,
-	// devTools: () => withDevtools(),
-	devTools: false,
+	devTools: () => withDevtools(),
 	preloadedState: initialState,
 });
 if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {

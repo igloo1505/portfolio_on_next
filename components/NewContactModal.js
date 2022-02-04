@@ -23,6 +23,10 @@ const NewContactModal = ({
 	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
 
+	const handleSubmit = () => {
+		console.log("FormData", formData);
+	};
+
 	useEffect(() => {
 		if (isOpen) {
 			formTransitionMobile({
@@ -108,6 +112,7 @@ const NewContactModal = ({
 					"contact-modal-container"
 				)}
 				onClick={(e) => e.stopPropagation()}
+				id="contact-modal-container"
 			>
 				<div className={classes.titleText}>Get in Touch</div>
 				<div

@@ -19,7 +19,9 @@ const ScrollToPlugin = dynamic(() =>
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
 
 function MyApp({ Component, pageProps }) {
-	gsap.registerPlugin(ScrollToPlugin);
+	useEffect(() => {
+		gsap.registerPlugin(ScrollToPlugin);
+	}, [ScrollToPlugin]);
 	function handlePerformance(list) {
 		list.getEntries().forEach((entry) => {
 			ReactGA.timing({
