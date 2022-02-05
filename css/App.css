@@ -70,14 +70,11 @@ button:active {
 	justify-content: flex-start;
 	align-items: flex-start;
 	border-top: #0080f0;
-	/* gap: 0.5rem; */
 }
 
 .drawer-item {
-	/* background-color: #e0e0e0; */
 	color: #000;
 	font-size: 1.3rem;
-	/* padding: 0.5rem; */
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -159,7 +156,6 @@ img {
 	width: 100vw;
 	position: absolute;
 	top: 0;
-	/* height: 64px; */
 }
 
 .nav-container a {
@@ -167,15 +163,6 @@ img {
 	height: 100%;
 }
 
-/* .slideOutDiv {
-  display: flex;
-  position: absolute;
-  height: 100vh;
-  width: 230px;
-  top: 0;
-  background: white;
-  z-index: 100;
-  margin-left: calc(100vw); } */
 .slideOutDiv {
 	display: flex;
 	position: absolute;
@@ -202,12 +189,6 @@ img {
 	border: 2px solid #f7f7f7;
 }
 
-/* .slideOutDivHidden ul {
-    width: 100%;
-    margin-top: 100px;
-    width: 230px;
-    min-width: 230px;
-  } */
 .slideOutDivHidden {
 	display: flex;
 	position: absolute;
@@ -272,7 +253,6 @@ header {
 	display: flex;
 	justify-content: space-between;
 	padding: 2rem;
-	/* z-index: 50;  */
 }
 
 header .logo {
@@ -289,7 +269,6 @@ header nav {
 
 header nav ul {
 	display: flex;
-	/* height: 100%;  */
 }
 
 header nav ul li {
@@ -344,7 +323,7 @@ header nav .burgerButton {
 
 .burgerButtonOpen .burger-lines {
 	color: #000;
-	/* background-color: #000; */
+
 	z-index: 99999;
 }
 
@@ -363,15 +342,12 @@ header nav .burgerButtonLiOpen {
 }
 
 .dropShadowWhite {
-	/* filter: drop-shadow(5px 5px 12px rgba(150, 170, 180, 0.5)); */
 	filter: drop-shadow(3px 3px 5px #9e9e9e) drop-shadow(-3px -3px 5px #bdbdbd);
 	margin: 1rem;
-	/* drop-shadow(-5px -5px 12px #e0e0e0); */
 }
 .dropShadowBlue {
 	filter: drop-shadow(3px 3px 5px #757575) drop-shadow(-3px -3px 5px #9e9e9e);
 	margin: 1rem;
-	/* filter: drop-shadow(5px 5px 15px #9e9e9e) drop-shadow(-5px -5px 15px #bdbdbd); */
 }
 
 .hero {
@@ -393,8 +369,6 @@ header nav .burgerButtonLiOpen {
 .hero .heroText h1 {
 	width: auto;
 	line-height: normal;
-	/* margin-left: 50%;
-  transform: translateX(-50%);  */
 }
 
 .prompt {
@@ -415,18 +389,7 @@ section {
 	z-index: 20;
 }
 
-/* .cardOuter {
-	height: 100%;
-	border-radius: 1rem;
-	/* box-shadow: 12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0; */
-/* transition: all 0.3s ease-in-out; */
-/* } */
-/* .cardOuter:hover { */
-/* box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0; */
-/* transition: all 0.3 ease-in-out; */
-/* } */
-
-*/ .featured {
+.featured {
 	position: relative;
 }
 

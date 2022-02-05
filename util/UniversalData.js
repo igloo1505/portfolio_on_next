@@ -136,15 +136,15 @@ export const portfolioArray = [
 
 export const socialLinks = {
 	github: {
-		link: "https://www.github.com/igloo1505",
+		link: "https://www.github.com\/igloo1505",
 		display: "list-item",
 	},
 	linkedIn: {
-		link: "https://www.linkedin.com/in/andrew-mueller-689626198/",
+		link: "https:\/\/www.linkedin.com\/in\/andrew-mueller-689626198\/",
 		display: "list-item",
 	},
 	blog: {
-		link: "https://one-hundred-days-blog.herokuapp.com/",
+		link: "https:\/\/one-hundred-days-blog.herokuapp.com\/",
 		display: "none",
 		// display: "list-item"
 	},

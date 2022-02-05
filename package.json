@@ -2,7 +2,7 @@
 	"name": "portfolio_on_next",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --debug",
+		"dev": "next dev",
 		"inspect": "NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
 		"audit": "ANALYZE=true next build",

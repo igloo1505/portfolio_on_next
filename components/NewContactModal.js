@@ -110,10 +110,10 @@ const NewContactModal = ({
 		formTransitionMobile({
 			next: true,
 			onComplete: () => {
-				console.log("stepTwoFocusRef: ", stepTwoFocusRef);
-				if (stepTwoFocusRef) {
-					stepTwoFocusRef.focus();
-				}
+				// console.log("stepTwoFocusRef: ", stepTwoFocusRef);
+				// if (stepTwoFocusRef) {
+				// 	stepTwoFocusRef.focus();
+				// }
 			},
 		});
 	};
@@ -206,7 +206,7 @@ const NewContactModal = ({
 								"contactFormTextArea"
 							)}
 							// TODO: make sure this focuses on the textarea automatically on next click
-							ref={(tag) => setStepTwoFocusRef(tag)}
+							// ref={(tag) => setStepTwoFocusRef(tag)}
 							name="message"
 							onChange={handleChange}
 							// autoFocus
