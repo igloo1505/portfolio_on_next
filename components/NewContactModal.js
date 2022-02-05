@@ -10,6 +10,7 @@ import axios from "axios";
 const NewContactModal = ({
 	state: {
 		contactModal: { isOpen },
+		toast: { submittedBy },
 	},
 	dispatch,
 }) => {
@@ -83,6 +84,13 @@ const NewContactModal = ({
 			},
 		});
 	};
+
+	useEffect(() => {
+		if (submittedBy) {
+			handleBackdropClick();
+		}
+	}, [submittedBy]);
+
 	const handleChange = (e) => {
 		setFormData({
 			...formData,
@@ -90,7 +98,6 @@ const NewContactModal = ({
 		});
 	};
 
-	const handleSend = (e) => {};
 	const handleBack = (e) => {
 		setFormStep(1);
 		formTransitionMobile({

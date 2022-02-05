@@ -1,2 +1,25 @@
 .toastContainer {
+	position: fixed;
+	top: 0.5rem;
+	left: 50%;
+	transform: translate(-50%, -300px);
+	transform-origin: left;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	width: "40vw";
+	background-color: #f15ed0;
+	color: #fff;
+	padding: 1.5rem;
+	border-radius: 20px;
+}
+
+.toastContainerOpen {
+	opacity: 1;
+	transform: translate(-50%, 0) scaleY(1);
+	box-shadow: 3px 3px 5px #757575, -3px -3px 5px #9e9e9e;
 }

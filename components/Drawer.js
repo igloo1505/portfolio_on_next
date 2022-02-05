@@ -20,12 +20,8 @@ const handleWorkClick = () => {
 		value: "Work",
 		label: "Work",
 	});
-	gsap.to(window, {
-		duration: 1.3,
-		scrollTo: {
-			y: "#scroll-to-section-portfolio",
-			offsetY: 50,
-		},
+	document.getElementById("scroll-to-section-portfolio").scrollIntoView({
+		behavior: "smooth",
 	});
 };
 
@@ -39,12 +35,8 @@ const handleSkillsClick = () => {
 		value: "Skills",
 		label: "Skills",
 	});
-	gsap.to(window, {
-		duration: 1,
-		scrollTo: {
-			y: "#skillsSection",
-			offsetY: 50,
-		},
+	document.getElementById("scroll-to-section-skills").scrollIntoView({
+		behavior: "smooth",
 	});
 };
 

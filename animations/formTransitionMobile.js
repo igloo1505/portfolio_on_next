@@ -133,7 +133,7 @@ const animateEntrance = (onComplete) => {
 		y: "-50%",
 		visibility: "visible",
 		opacity: 1,
-		duration: 2,
+		duration: 1,
 		ease: "elastic.out(1, 0.4)",
 	});
 };
@@ -145,12 +145,12 @@ const animateClose = (onComplete) => {
 	let tl = gsap.timeline({
 		onComplete: onComplete,
 	});
-
 	tl.to("#contact-modal-container", {
 		y: "-100vh",
 		// x: "-100vw",
 		// scaleX: 0,
-		// opacity: 0,
+		opacity: 0,
+		visibility: "hidden",
 		duration: 0.5,
 		ease: "power3.out",
 	});

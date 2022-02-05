@@ -6,8 +6,6 @@ const Contact = require("../../models/Contact");
 const handler = nc();
 
 handler.post(async (req, res) => {
-	console.log("sendMessage: ", Object.keys(sendMessage));
-	console.log("backend reached");
 	const { email, name, phone, company, message } = req.body;
 	console.log(`Message: ${message}`);
 	// TODO: MAKE SURE THIS GETS ADDED BACK IN!

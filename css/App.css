@@ -241,6 +241,13 @@ img {
 	transform: translateX(-50%);
 }
 
+.featured-desc-left {
+	margin-right: 1rem;
+}
+.featured-desc-right {
+	margin-left: 1rem;
+}
+
 .featuredDescriptionText {
 	margin: 1rem 0rem;
 }

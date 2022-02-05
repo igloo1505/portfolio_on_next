@@ -78,6 +78,18 @@ const onlyReducer = createReducer(initialState, (builder) => {
 	builder.addCase(Types.POST_CONTACT_SUCCESS, (state, action) => {
 		return {
 			...state,
+			contactModal: {
+				...state.contactModal,
+				isOpen: false,
+			},
+			toast: {
+				submittedBy: action.payload,
+			},
+		};
+	});
+	builder.addCase(Types.SET_TOAST_SUBMITTED_BY, (state, action) => {
+		return {
+			...state,
 			toast: {
 				submittedBy: action.payload,
 			},

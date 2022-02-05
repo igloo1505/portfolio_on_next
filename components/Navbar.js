@@ -16,42 +16,18 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 		});
 	};
 
-	// const handleSkillsClick = () => {
-	// 	ReactGA.event({
-	// 		category: "Skills",
-	// 		action: "SkillsNavbarClick",
-	// 		value: "Skills",
-	// 		label: "Skills",
-	// 	});
-	// 	console.log("Router.asPath: ", Router);
-	// 	if (Router.router.asPath !== "/") {
-	// 		Router.push("/");
-	// 	}
-	// 	gsap.to(window, {
-	// 		duration: 2,
-	// 		scrollTo: {
-	// 			y: "#scroll-to-section-skills",
-	// 			offsetY: 50,
-	// 		},
-	// 	});
-	// };
-
 	const handleSkillsClick = () => {
-		// store.dispatch({
-		// 	type: Types.SET_DRAWER_CLOSED,
-		// });
+		if (Router.router.asPath === "/resume") {
+			Router.push("/");
+		}
 		ReactGA.event({
 			category: "Skills",
 			action: "SkillsNavbarClick",
 			value: "Skills",
 			label: "Skills",
 		});
-		gsap.to(window, {
-			duration: 1,
-			scrollTo: {
-				y: "#skillsSection",
-				offsetY: 50,
-			},
+		document.getElementById("scroll-to-section-skills").scrollIntoView({
+			behavior: "smooth",
 		});
 	};
 
@@ -62,13 +38,11 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 			value: "Work",
 			label: "Work",
 		});
-		// Router.push("/");
-		gsap.to(window, {
-			duration: 2,
-			scrollTo: {
-				y: "#scroll-to-section-featured",
-				offsetY: 50,
-			},
+		if (Router.router.asPath === "/resume") {
+			Router.push("/");
+		}
+		document.getElementById("scroll-to-section-featured").scrollIntoView({
+			behavior: "smooth",
 		});
 	};
 

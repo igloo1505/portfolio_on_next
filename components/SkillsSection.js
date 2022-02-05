@@ -9,7 +9,7 @@ const SkillsSection = () => {
 	// ]
 	return (
 		<section
-			id="skillsSection"
+			id="scroll-to-section-skills"
 			className="skills"
 			style={{ background: AppColors.skillsBodyColor }}
 		>

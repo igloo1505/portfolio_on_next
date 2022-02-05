@@ -15,6 +15,9 @@ const initialState = {
 		width: 0,
 		height: 0,
 	},
+	toast: {
+		submittedBy: null,
+	},
 };
 
 const withDevtools = () => {

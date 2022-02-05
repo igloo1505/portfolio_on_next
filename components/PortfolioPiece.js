@@ -1,6 +1,8 @@
 import React from "react";
 import { HeroImagePallet } from "../util/UniversalData";
+import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
+import clsx from "clsx";
 
 const PortfolioPiece = ({ p }) => {
 	if (p.orientation === "left") {
@@ -17,7 +19,14 @@ const PortfolioPiece = ({ p }) => {
 							{p.appName}
 						</p>
 						<p className="featured-title">{p.subTitle}</p>
-						<p className="featured-desc">{p.description}</p>
+						<p
+							className={clsx(
+								"featured-desc",
+								`featured-desc-${p.orientation}`
+							)}
+						>
+							{p.description}
+						</p>
 						<div className="portfolio-link-container">
 							<p className="repo-link">
 								<a
@@ -45,11 +54,14 @@ const PortfolioPiece = ({ p }) => {
 					</div>
 				</div>
 				<a href={p.url}>
-					<Image
-						src={p.Image}
-						className={`portfolio-right transitionRight${p.transitionIndex}`}
-						alt="Portfolio"
-					/>
+					{p.mediaType === "image" && (
+						<Image
+							src={p.Image}
+							className={`portfolio-right transitionRight${p.transitionIndex}`}
+							alt="Portfolio"
+						/>
+					)}
+					{p.mediaType === "video" && <PortfolioVideo piece={p} />}
 				</a>
 			</div>
 		);
@@ -79,7 +91,14 @@ const PortfolioPiece = ({ p }) => {
 							{p.appName}
 						</p>
 						<p className="featured-title">{p.subTitle}</p>
-						<p className="featured-desc">{p.description}</p>
+						<p
+							className={clsx(
+								"featured-desc",
+								`featured-desc-${p.orientation}`
+							)}
+						>
+							{p.description}
+						</p>
 						<div className="portfolio-link-container">
 							<p className="repo-link">
 								<a

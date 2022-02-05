@@ -7,21 +7,16 @@ import Navbar from "../components/Navbar";
 // import ContactModal from "../components/NewContactModal";
 const ContactModal = dynamic(() => import("../components/NewContactModal"));
 const Drawer = dynamic(() => import("../components/Drawer"));
+const Toast = dynamic(() => import("../components/MessageSuccessToast"));
 import { Provider } from "react-redux";
 import store from "../state/store";
 import gsap from "gsap";
-const ScrollToPlugin = dynamic(() =>
-	import("gsap/dist/ScrollToPlugin").then((mod) => mod.ScrollToPlugin)
-);
 // const ScrollTrigger = dynamic(() =>
 // 	import("gsap/dist/ScrollTrigger").then((mod) => mod.ScrollTrigger)
 // );
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
 
 function MyApp({ Component, pageProps }) {
-	useEffect(() => {
-		gsap.registerPlugin(ScrollToPlugin);
-	}, [ScrollToPlugin]);
 	function handlePerformance(list) {
 		list.getEntries().forEach((entry) => {
 			ReactGA.timing({
@@ -92,6 +87,7 @@ function MyApp({ Component, pageProps }) {
 				<div id="drawer-outer-container-id">
 					<Drawer />
 					<Navbar currentPath="landing" />
+					<Toast />
 					<div id="drawer-page-wrapper">
 						<ContactModal />
 						<Component {...pageProps} />

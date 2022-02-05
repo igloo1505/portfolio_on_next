@@ -1,5 +1,7 @@
 import triviaScreenShot from "../public/triviaScreenShot.png";
 import jeopardyScreenShot from "../public/jeopardyScreenShot.png";
+import dynamic from "next/dynamic";
+// const PoetryBlogV1 = dynamic(() => import("../public/PoetryBlogV1.mp4"));
 
 export const heroText = () => {
 	return (
@@ -89,6 +91,7 @@ export const portfolioArray = [
 	{
 		index: 0,
 		transitionIndex: 4,
+		mediaType: "image",
 		orientation: "left",
 		imageName: "triviaScreenShot",
 		imagePath: "/public/triviaScreenShot.png",
@@ -104,6 +107,7 @@ export const portfolioArray = [
 	{
 		index: 1,
 		transitionIndex: 5,
+		mediaType: "image",
 		orientation: "right",
 		imageName: "jeopardyScreenShot",
 		imagePath: "/public/jeopardyScreenShot.png",
@@ -114,6 +118,22 @@ export const portfolioArray = [
 		subTitle: "React based trivia game",
 		description:
 			"A simple Jeopardy game built with React, Node and Express using the Context API. A version of this attached to a different database was originally built for a therapist working with disabled adults.",
+		isLast: false,
+	},
+	{
+		index: 2,
+		transitionIndex: 6,
+		mediaType: "video",
+		orientation: "left",
+		imageName: "poetryBlogV1",
+		videoSrc: "/poetryBlogV1.mp4",
+		// Video: PoetryBlogV1,
+		// url: "https://github.com/igloo1505/GenericJeopardy/tree/master",
+		repo: "https://github.com/igloo1505/poetry_blog",
+		appName: "Poetry Blog",
+		subTitle: "A quick weekend blog",
+		description:
+			"This was originally designed as a blog for a friend of mine in a different field. Because I didn't want to link to someone's personal blog, I modified this version to be a generic poetry blog. Built on Next, MongoDB, Material-UI, and GSAP.",
 		isLast: true,
 	},
 ];
