@@ -111,7 +111,7 @@ const NavbarNavigationSection = ({
 						<nav>
 							<ul className="inlineNavUl">
 								<li className="inlineNavLinks">
-									<a href="/landing">Home Page</a>
+									<Link href="/">Home Page</Link>
 								</li>
 								<li className="inlineNavLinks modal-trigger">
 									<a
