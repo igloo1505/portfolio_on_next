@@ -22,11 +22,11 @@ const Resume = ({
 		<div style={extraStyles}>
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`
-					<!-- Global site tag (gtag.js) - Google Analytics -->
-  					window.dataLayer = window.dataLayer || [];
-  					function gtag(){dataLayer.push(arguments);}
-  					gtag('js', new Date());
-			  		gtag('config', 'UA-181494074-1');
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+			  
+				gtag('config', 'G-R8G93SKSG6');
 				`}
 			</Script>
 			<ResumeComponent />

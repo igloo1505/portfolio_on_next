@@ -36,20 +36,11 @@ function MyApp({ Component, pageProps }) {
 	useEffect(() => {
 		ReactGA.initialize([
 			{
-				trackingId: "G-YJK7R2Y1TL",
-				gaOptions: {
-					siteSpeedSampleRate: 100,
-					name: "GAtracker",
-					cookieDomain: "none",
-					storage: "none",
-				},
-			},
-			{
-				trackingId: "UA-181494074-1",
+				trackingId: "G-R8G93SKSG6",
 				standardImplementation: true,
 				gaOptions: {
 					siteSpeedSampleRate: 100,
-					name: "OriginalTracker",
+					name: "IglooDevelopment",
 					cookieDomain: "none",
 					storage: "none",
 				},

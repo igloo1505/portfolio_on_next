@@ -82,16 +82,16 @@ const LandingPage = ({
 				<title>Milwaukee based Web & iOS Developer</title>
 			</Head>
 			<Script
-				src="https://www.googletagmanager.com/gtag/js?id=UA-181494074-1"
+				src="https://www.googletagmanager.com/gtag/js?id=G-R8G93SKSG6"
 				strategy="afterInteractive"
 			/>
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`
-					<!-- Global site tag (gtag.js) - Google Analytics -->
-  					window.dataLayer = window.dataLayer || [];
-  					function gtag(){dataLayer.push(arguments);}
-  					gtag('js', new Date());
-			  		gtag('config', 'UA-181494074-1');
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+			  
+				gtag('config', 'G-R8G93SKSG6');
 				`}
 			</Script>
 			<HeroSection />
