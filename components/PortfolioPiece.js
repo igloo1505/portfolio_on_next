@@ -3,6 +3,7 @@ import { HeroImagePallet } from "../util/UniversalData";
 import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 
 const PortfolioPiece = ({ p }) => {
 	if (p.orientation === "left") {
