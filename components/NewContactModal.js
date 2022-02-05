@@ -163,12 +163,15 @@ const NewContactModal = ({
 							handleChange={handleChange}
 							_name={"name"}
 							helperText={"Name"}
+							autoComplete={"name"}
 							placeHolder="Name"
 							step={1}
 						/>
 						<InputEm
 							handleChange={handleChange}
 							_name={"email"}
+							type={"email"}
+							autoComplete={"email"}
 							helperText={"Email"}
 							placeHolder="Email"
 							step={1}
@@ -189,6 +192,7 @@ const NewContactModal = ({
 							placeHolder="Phone"
 							step={1}
 							inputMode="tel"
+							autoComplete={"tel"}
 						/>
 					</div>
 					<div
