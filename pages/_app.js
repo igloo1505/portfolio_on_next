@@ -58,6 +58,7 @@ function MyApp({ Component, pageProps }) {
 		var observer = new PerformanceObserver(handlePerformance);
 		observer.observe({ entryTypes: ["navigation"] });
 	}, []);
+
 	useEffect(() => {
 		if (animateOnScroll) {
 			animateOnScroll();

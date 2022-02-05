@@ -13,6 +13,11 @@ import { Router, useRouter } from "next/router";
 const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
 
 const handleContactClick = () => {
+	ReactGA.event({
+		category: "Contact",
+		action: "Modal Opened",
+		label: "Contact Modal Opened",
+	});
 	store.dispatch({
 		type: Types.SET_CONTACT_MODAL_OPEN,
 	});
@@ -30,10 +35,9 @@ const Drawer = ({
 			type: Types.SET_DRAWER_CLOSED,
 		});
 		ReactGA.event({
-			category: "Work",
-			action: "WorkNavbarClick",
-			value: "Work",
-			label: "Work",
+			category: "Navigation",
+			action: "My Work Click",
+			label: "My Work Click",
 		});
 		let home = scrollPaths.includes(router.asPath);
 		console.log("router.asPath: ", router.asPath, home);
@@ -58,15 +62,14 @@ const Drawer = ({
 			router.push("/skills", undefined, { shallow: true });
 		}
 		ReactGA.event({
-			category: "Skills",
-			action: "SkillsNavbarClick",
-			value: "Skills",
-			label: "Skills",
+			category: "Navigation",
+			action: "Skills Click",
+			label: "Skills Click",
 		});
 	};
 
 	const handleOpen = () => {
-		console.log("Drawer open");
+		// console.log("Drawer open");
 	};
 
 	const isMenuOpen = (_state) => {

@@ -21,10 +21,9 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 
 	const handleSkillsClick = () => {
 		ReactGA.event({
-			category: "Skills",
-			action: "SkillsNavbarClick",
-			value: "Skills",
-			label: "Skills",
+			category: "Navigation",
+			action: "Skills Click",
+			label: "Skills Click",
 		});
 		let home = scrollPaths.includes(router.asPath);
 
@@ -38,10 +37,9 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 
 	const handleWorkClick = () => {
 		ReactGA.event({
-			category: "Work",
-			action: "WorkNavbarClick",
-			value: "Work",
-			label: "Work",
+			category: "Navigation",
+			action: "My Work Click",
+			label: "My Work Click",
 		});
 		let home = scrollPaths.includes(router.asPath);
 
@@ -51,10 +49,6 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 		if (home) {
 			router.push("/portfolio", undefined, { shallow: true });
 		}
-
-		// document.getElementById("scroll-to-section-portfolio").scrollIntoView({
-		// 	behavior: "smooth",
-		// });
 	};
 
 	return (

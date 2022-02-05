@@ -2,6 +2,7 @@ import React, { Fragment, forwardRef } from "react";
 import Burger from "@animated-burgers/burger-squeeze";
 import { socialLinks } from "../util/UniversalData";
 import { gitHubSvg, linkedInSvg } from "./svg";
+import ReactGA from "react-ga";
 import { GrNotes } from "react-icons/gr";
 import Link from "next/link";
 import Router from "next/router";
@@ -19,7 +20,27 @@ const NavbarNavigationSection = ({
 	},
 	dispatch,
 }) => {
+	const logGitView = () => {
+		ReactGA.event({
+			category: "Navigation",
+			action: "Github View",
+			label: "Github",
+		});
+	};
+	const logLinkedInView = () => {
+		ReactGA.event({
+			category: "Navigation",
+			action: "LinkedIn View",
+			label: "LinkedIn",
+		});
+	};
+
 	const handleContactClick = () => {
+		ReactGA.event({
+			category: "Contact",
+			action: "Modal Opened",
+			label: "Contact Modal Opened",
+		});
 		dispatch({
 			type: Types.SET_CONTACT_MODAL_OPEN,
 		});
@@ -149,6 +170,7 @@ const NavbarNavigationSection = ({
 								target="_blank"
 								rel="noreferrer"
 								href={socialLinks.github.link}
+								onClick={logGitView}
 							>
 								{gitHubSvg("#000")}
 							</a>
@@ -158,6 +180,7 @@ const NavbarNavigationSection = ({
 								target="_blank"
 								rel="noreferrer"
 								href={socialLinks.linkedIn.link}
+								onClick={logLinkedInView}
 							>
 								{linkedInSvg("#000", "auto", "auto")}
 							</a>

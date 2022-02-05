@@ -13,7 +13,7 @@ const AboutMeSection = ({ styles }) => {
 				}
 			</div>
 			<div className={styles.signInInfo}>
-				{'All of my portfolio projects can use a default admin login of{" "}'}
+				{"All of my portfolio projects can use a default admin login of "}
 				<span>hireme@gmail.com </span>and a password of <span>Password123</span>
 			</div>
 		</div>

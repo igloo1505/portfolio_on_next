@@ -7,6 +7,8 @@ import PortfolioSection from "../components/PortfolioSection";
 import { connect, useDispatch } from "react-redux";
 import * as Types from "../state/Types";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import Script from "next/script";
 
 const LandingPage = ({
 	state: {
@@ -76,6 +78,22 @@ const LandingPage = ({
 
 	return (
 		<div className="App" style={extraStyles}>
+			<Head>
+				<title>Milwaukee based Web & iOS Developer</title>
+			</Head>
+			<Script
+				src="https://www.googletagmanager.com/gtag/js?id=UA-181494074-1"
+				strategy="afterInteractive"
+			/>
+			<Script id="google-analytics" strategy="afterInteractive">
+				{`
+					<!-- Global site tag (gtag.js) - Google Analytics -->
+  					window.dataLayer = window.dataLayer || [];
+  					function gtag(){dataLayer.push(arguments);}
+  					gtag('js', new Date());
+			  		gtag('config', 'UA-181494074-1');
+				`}
+			</Script>
 			<HeroSection />
 			<FeaturedSection />
 			<SkillsSection />

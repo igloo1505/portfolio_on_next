@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/Resume.module.css";
 import ResumeComponent from "../components/resume/ResumeComponent";
 import { connect } from "react-redux";
+import Script from "next/script";
 
 const Resume = ({
 	state: {
@@ -19,6 +20,15 @@ const Resume = ({
 
 	return (
 		<div style={extraStyles}>
+			<Script id="google-analytics" strategy="afterInteractive">
+				{`
+					<!-- Global site tag (gtag.js) - Google Analytics -->
+  					window.dataLayer = window.dataLayer || [];
+  					function gtag(){dataLayer.push(arguments);}
+  					gtag('js', new Date());
+			  		gtag('config', 'UA-181494074-1');
+				`}
+			</Script>
 			<ResumeComponent />
 		</div>
 	);

@@ -4,8 +4,24 @@ import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
+import ReactGA from "react-ga";
 
 const PortfolioPiece = ({ p }) => {
+	const logLiveView = () => {
+		ReactGA.event({
+			category: "Portfolio Piece",
+			action: "Live View",
+			label: p.gaName,
+		});
+	};
+	const logRepoView = () => {
+		ReactGA.event({
+			category: "Portfolio Piece",
+			action: "Repo View",
+			label: p.gaName,
+		});
+	};
+
 	if (p.orientation === "left") {
 		return (
 			<div
@@ -36,6 +52,7 @@ const PortfolioPiece = ({ p }) => {
 										textDecoration: "none",
 										color: "rgb(0, 160, 242)",
 									}}
+									onClick={logRepoView}
 								>
 									Repo
 								</a>
@@ -48,6 +65,7 @@ const PortfolioPiece = ({ p }) => {
 											textDecoration: "none",
 											color: "rgb(0, 160, 242)",
 										}}
+										onClick={logLiveView}
 									>
 										Live Project
 									</a>
@@ -71,6 +89,7 @@ const PortfolioPiece = ({ p }) => {
 											color: "rgb(0, 160, 242)",
 											textAlign: "center",
 										}}
+										onClick={logLiveView}
 									>
 										Live Project Coming soon
 									</a>
@@ -79,7 +98,7 @@ const PortfolioPiece = ({ p }) => {
 						</div>
 					</div>
 				</div>
-				<a href={p.url}>
+				<a href={p.url} onClick={logLiveView}>
 					{p.mediaType === "image" && (
 						<Image
 							src={p.Image}
@@ -97,7 +116,7 @@ const PortfolioPiece = ({ p }) => {
 				className={`portfolio-container portfolio-container-${p.orientation} transitionLeft${p.transitionIndex}`}
 				style={p.isLast ? { paddingBottom: "10px" } : { paddingBottom: "40px" }}
 			>
-				<a href={p.url}>
+				<a href={p.url} onClick={logLiveView}>
 					<Image
 						className={`portfolio-${
 							p.orientation === "right" ? "left" : "right"
@@ -133,6 +152,7 @@ const PortfolioPiece = ({ p }) => {
 										textDecoration: "none",
 										color: "rgb(0, 160, 242)",
 									}}
+									onClick={logRepoView}
 								>
 									Repo
 								</a>
@@ -144,6 +164,7 @@ const PortfolioPiece = ({ p }) => {
 										textDecoration: "none",
 										color: "rgb(0, 160, 242)",
 									}}
+									onClick={logLiveView}
 								>
 									Live Project
 								</a>

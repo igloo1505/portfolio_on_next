@@ -90,6 +90,7 @@ export const portfolioArray = [
 		mediaType: "image",
 		orientation: "left",
 		imageName: "triviaScreenShot",
+		gaName: "Trivia Game",
 		imagePath: "/public/triviaScreenShot.png",
 		Image: triviaScreenShot,
 		url: "https://javascripttrivia.herokuapp.com/signIn",
@@ -105,6 +106,7 @@ export const portfolioArray = [
 		transitionIndex: 5,
 		mediaType: "image",
 		orientation: "right",
+		gaName: "Jeopardy Game",
 		imageName: "jeopardyScreenShot",
 		imagePath: "/public/jeopardyScreenShot.png",
 		Image: jeopardyScreenShot,
@@ -121,6 +123,7 @@ export const portfolioArray = [
 		transitionIndex: 6,
 		mediaType: "video",
 		orientation: "left",
+		gaName: "Poetry Blog",
 		imageName: "poetryBlogV1",
 		videoSrc: "/poetryBlogV1.mp4",
 		// Video: PoetryBlogV1,
@@ -136,15 +139,15 @@ export const portfolioArray = [
 
 export const socialLinks = {
 	github: {
-		link: "https://www.github.com\/igloo1505",
+		link: "https://www.github.com/igloo1505",
 		display: "list-item",
 	},
 	linkedIn: {
-		link: "https:\/\/www.linkedin.com\/in\/andrew-mueller-689626198\/",
+		link: "https://www.linkedin.com/in/andrew-mueller-689626198/",
 		display: "list-item",
 	},
 	blog: {
-		link: "https:\/\/one-hundred-days-blog.herokuapp.com\/",
+		link: "https://one-hundred-days-blog.herokuapp.com/",
 		display: "none",
 		// display: "list-item"
 	},
