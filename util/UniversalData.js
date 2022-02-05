@@ -72,7 +72,7 @@ export const skillsArray = [
 		classIndex: "three",
 		title: "Business Integration",
 		type: "BusinessTechnologies",
-		desc: "By integrating with powerful analytics tools, clients are able to track dozens of valuable data points in real time. This can provide insight into which marketing strategies are providing the highest ROE, the on-site behavior of each visitor, and be integrated with both Google's own dashboard, as well as a custom built Admin dashboard that only you will have access.",
+		desc: "By integrating with powerful analytics tools, clients are able to track dozens of valuable data points in real time. This can provide insight into which marketing strategies are providing the highest ROI, the on-site behavior of each visitor, and can be integrated with both Google's own dashboard, as well as a custom built Admin dashboard depending on your needs.",
 	},
 	{
 		index: 3,
