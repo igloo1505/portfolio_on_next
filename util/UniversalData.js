@@ -40,14 +40,12 @@ export const featuredTitleText = () => {
 				Radish.io Social Network for Cooks
 			</a>
 			<p
-				className="featured-desc"
+				className="featured-desc main-featured-desc"
 				style={{ color: AppColors.descriptionTextColor }}
 			>
-				This was just a project to add some new technologies to my resume while
-				having fun with the UI. I began this project months ago, and would
-				really only come back to it when I wanted to try something new. Built
-				using Next.js, Three.js, react-spring, GSAP, Material-UI, AWS, mogodb,
-				and more.
+				{
+					"This was just a project to add some new technologies to my resume while having fun with the UI. I began this project months ago, and would really only come back to it when I wanted to try something new. Built using Next.js, Three.js, react-spring, GSAP, Material-UI, AWS, mogodb, and more. This was built with 'stand-alone' PWA functionality in mind."
+				}
 			</p>
 			<p style={{ color: AppColors.navBarColor, paddingBottom: "10px" }}>
 				Very much a work in Progress
@@ -133,22 +131,22 @@ export const portfolioArray = [
 		appName: "Poetry Blog",
 		subTitle: "A quick weekend blog",
 		description:
-			"This was originally designed as a blog for a friend of mine in a different field. Because I didn't want to link to someone's personal blog, I modified this version to be a generic poetry blog. Built on Next, MongoDB, Material-UI, and GSAP.",
+			"This was originally designed as a blog for a friend of mine in a different field. Because I didn't want to link to someone's personal blog, I modified this version to be a generic poetry blog. Built on Next.js using MongoDB, Material-UI, and GSAP.",
 		isLast: true,
 	},
 ];
 
 export const socialLinks = {
 	github: {
-		link: "https://github.com/igloo1505",
+		link: "https:\/\/www.github.com\/igloo1505",
 		display: "list-item",
 	},
 	linkedIn: {
-		link: "https://www.linkedin.com/in/andrew-mueller-689626198/",
+		link: "https:\/\/www.linkedin.com\/in\/andrew-mueller-689626198\/",
 		display: "list-item",
 	},
 	blog: {
-		link: "https://one-hundred-days-blog.herokuapp.com/",
+		link: "https:\/\/one-hundred-days-blog.herokuapp.com\/",
 		display: "none",
 		// display: "list-item"
 	},

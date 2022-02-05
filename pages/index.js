@@ -15,6 +15,7 @@ const LandingPage = ({
 	useEffect(() => {
 		shouldHideBodyOverflow(false);
 	}, []);
+
 	const [extraStyles, setExtraStyles] = useState({});
 
 	const dispatch = useDispatch();
@@ -22,10 +23,11 @@ const LandingPage = ({
 		let _navHeight = document
 			.getElementById("navbar-container-id")
 			?.getBoundingClientRect()?.height;
-
-		setExtraStyles({
-			marginTop: `${_navHeight}px`,
-		});
+		if (_navHeight) {
+			setExtraStyles({
+				marginTop: `${_navHeight}px`,
+			});
+		}
 		dispatch({
 			type: Types.UPDATE_NAV_HEIGHT,
 			payload: {

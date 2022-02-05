@@ -32,12 +32,12 @@ button:active {
 }
 
 .square-anim {
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
 
 .logoFont {
 	font-family: FontRounded;
-	/* font-family: "Nanum Gothic Coding", monospace; */
 	color: #fff;
 	font-size: 20px;
 	letter-spacing: 0.3rem;
@@ -54,14 +54,14 @@ button:active {
 
 .drawer-container {
 	background-color: #fff;
-	/* background-color: transparent; */
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
 	z-index: -1;
 	top: 0;
-	/* padding: 2rem 1rem; */
+
 	padding: 0;
 }
 .mobile-nav-section {
@@ -241,9 +241,14 @@ img {
 	transform: translateX(-50%);
 }
 
+.main-featured-desc {
+	margin-right: 1rem;
+}
+
 .featured-desc-left {
 	margin-right: 1rem;
 }
+
 .featured-desc-right {
 	margin-left: 1rem;
 }
@@ -366,6 +371,7 @@ header nav .burgerButtonLiOpen {
 .hero {
 	color: #fff;
 	background: #008eeb;
+	display: -ms-grid;
 	display: grid;
 	text-align: center;
 	padding: 4rem;
@@ -489,7 +495,9 @@ section {
 
 .skills-container ul li .icon-container {
 	height: 100px;
+	display: -ms-grid;
 	display: grid;
+	/* display: -ms-grid */
 	place-content: center;
 }
 
@@ -627,8 +635,11 @@ section {
 	}
 	.featured,
 	.portfolio-container {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		grid-template-columns: 40% auto;
+		-ms-grid-columns: 40% auto;
 		justify-content: space-between;
 	}
 	.portfolio-container a {
@@ -649,7 +660,9 @@ section {
 	}
 	.left,
 	.portfolio-left {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		margin-top: -20px;
 		padding-bottom: 20px;
 	}
@@ -662,8 +675,11 @@ section {
 		margin-bottom: -7rem;
 	}
 	.skills-container ul {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		grid-template-columns: repeat(2, 1fr);
+		-ms-grid-columns: repeat(2, 1fr);
 		grid-gap: 1rem;
 	}
 	.portfolio {
@@ -709,8 +725,11 @@ section {
 		margin: 0rem;
 	}
 	.nav-container {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		grid-template-columns: 66% auto;
+		-ms-grid-columns: 66% auto;
 		background-color: unset;
 	}
 	.nav-container header {
@@ -747,8 +766,11 @@ section {
 		padding: 4rem;
 	}
 	.hero {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		grid-template-columns: 66% auto;
+		-ms-grid-columns: 66% auto;
 		background: unset;
 		padding: 0;
 	}
@@ -840,8 +862,11 @@ section {
 		padding: 9rem 20rem 6rem 20rem;
 	}
 	.skills-container ul {
+		display: -ms-grid;
 		display: grid;
+		/* display: -ms-grid */
 		grid-template-columns: repeat(4, 1fr);
+		-ms-grid-columns: repeat(4, 1fr);
 		grid-gap: 1rem;
 	}
 	header nav ul li a {
@@ -849,17 +874,14 @@ section {
 	}
 }
 
-/* Autofill stuff: */
-
-/*  */
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
 	-webkit-box-shadow: 0 0 0 30px white inset !important;
+	box-shadow: 0 0 0 30px white inset !important;
 	background-color: #628de9 !important;
 	-webkit-text-fill-color: #628de9 !important;
+	-webkit-background-clip: content-box;
 	background-clip: content-box;
-	/* -webkit-back */
 }

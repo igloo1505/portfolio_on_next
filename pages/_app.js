@@ -10,10 +10,6 @@ const Drawer = dynamic(() => import("../components/Drawer"));
 const Toast = dynamic(() => import("../components/MessageSuccessToast"));
 import { Provider } from "react-redux";
 import store from "../state/store";
-import gsap from "gsap";
-// const ScrollTrigger = dynamic(() =>
-// 	import("gsap/dist/ScrollTrigger").then((mod) => mod.ScrollTrigger)
-// );
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
 
 function MyApp({ Component, pageProps }) {
@@ -65,7 +61,6 @@ function MyApp({ Component, pageProps }) {
 	useEffect(() => {
 		if (animateOnScroll) {
 			animateOnScroll();
-			// console.log("animateOnScroll: ", animateOnScroll);
 		}
 	}, [animateOnScroll]);
 

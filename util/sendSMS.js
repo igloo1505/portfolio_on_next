@@ -5,7 +5,6 @@ const vonage = new Vonage({
 });
 const from = process.env.VONAGE_BRAND_NAME;
 const to = process.env.TO_NUMBER;
-// const text = "A text message sent using the Vonage SMS API";
 
 const sendMessage = (text) => {
 	vonage.message.sendSms(from, to, text, (err, responseData) => {

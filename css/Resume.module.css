@@ -97,10 +97,8 @@
 	text-align: left;
 	margin-top: 25px;
 	border-radius: 20px;
-	/* box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5); */
 	box-shadow: 12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0;
 	transition: all 500ms ease-in-out;
-	/* background: linear-gradient(145deg, #f0f0f0, #cacaca); */
 }
 
 .singleProject .projectTitle {
@@ -126,7 +124,6 @@
 }
 
 .singleProject:hover {
-	/* box-shadow: 0 15px 10px -10px rgba(150, 170, 180, 0.5); */
 	box-shadow: 10px 10px 8px rgba(150, 170, 180, 0.5), -10px -10px 8px #e0e0e0;
 }
 
@@ -136,6 +133,7 @@
 
 .skillWrapper {
 	display: grid;
+	-ms-grid-columns: repeat(3, 1fr);
 	grid-template-columns: repeat(3, 1fr);
 	padding-bottom: 30px;
 	margin-top: 1rem;

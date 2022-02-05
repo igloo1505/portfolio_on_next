@@ -39,17 +39,42 @@ const PortfolioPiece = ({ p }) => {
 									Repo
 								</a>
 							</p>
-							<p className="project-link">
-								<a
-									href={p.url}
+							{p.url ? (
+								<p className="project-link">
+									<a
+										href={p.url}
+										style={{
+											textDecoration: "none",
+											color: "rgb(0, 160, 242)",
+										}}
+									>
+										Live Project
+									</a>
+								</p>
+							) : (
+								<p
+									className="project-link"
 									style={{
-										textDecoration: "none",
-										color: "rgb(0, 160, 242)",
+										display: "flex",
+										flexDirection: "row",
+										flexWrap: "wrap",
+										justifyContent: "center",
+										alignItems: "center",
+										textAlign: "center",
 									}}
 								>
-									Live Project
-								</a>
-							</p>
+									<a
+										href={p.url}
+										style={{
+											textDecoration: "none",
+											color: "rgb(0, 160, 242)",
+											textAlign: "center",
+										}}
+									>
+										Live Project Coming soon
+									</a>
+								</p>
+							)}
 						</div>
 					</div>
 				</div>

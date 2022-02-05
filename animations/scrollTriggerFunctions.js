@@ -87,7 +87,6 @@ export const animateOnScroll = () => {
 			"12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0",
 		transition: "all 0.3s ease-in-out",
 		stagger: 0.3,
-		// box-shadow: 8px 8px 12px rgba(150, 170, 180, 0.5), -8px -8px 12px #e0e0e0;
 	});
 
 	gsap.from(".portfolio-left-4", {

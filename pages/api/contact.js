@@ -1,5 +1,5 @@
 import { connectDB } from "../../util/connectDB";
-const sendMessage = require("./sendSMS");
+const sendMessage = require("../../util/sendSMS");
 const nc = require("next-connect");
 const Contact = require("../../models/Contact");
 
@@ -7,8 +7,6 @@ const handler = nc();
 
 handler.post(async (req, res) => {
 	const { email, name, phone, company, message } = req.body;
-	console.log(`Message: ${message}`);
-	// TODO: MAKE SURE THIS GETS ADDED BACK IN!
 	sendMessage.sendMessage(message);
 	try {
 		const newContact = new Contact({

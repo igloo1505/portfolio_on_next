@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { connect } from "react-redux";
@@ -12,8 +12,10 @@ const MessageSuccessToast = ({
 	},
 }) => {
 	const dispatch = useDispatch();
+	const [shouldDisplay, setShouldDisplay] = useState(false);
 	useEffect(() => {
 		if (submittedBy) {
+			setShouldDisplay(true);
 			const onComplete = () =>
 				dispatch({
 					type: Types.SET_TOAST_SUBMITTED_BY,
@@ -30,13 +32,15 @@ const MessageSuccessToast = ({
 		<div
 			className={clsx(
 				classes.toastContainer,
-				submittedBy && classes.toastContainerOpen,
+				shouldDisplay && classes.toastContainerOpen,
 				"toastContainer"
 			)}
 		>
-			<div
-				className={classes.toastText}
-			>{`Thank you ${submittedBy}. I'll be in touch soon.`}</div>
+			{shouldDisplay && (
+				<div
+					className={classes.toastText}
+				>{`Thank you ${submittedBy}. I'll be in touch soon.`}</div>
+			)}
 		</div>
 	);
 };
