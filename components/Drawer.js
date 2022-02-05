@@ -7,38 +7,10 @@ import ReactGA from "react-ga";
 import store from "../state/store";
 import { FcSms, FcFactory, FcInspection } from "react-icons/fc";
 import gsap from "gsap";
+import { Router, useRouter } from "next/router";
 
 // pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
-
-const handleWorkClick = () => {
-	store.dispatch({
-		type: Types.SET_DRAWER_CLOSED,
-	});
-	ReactGA.event({
-		category: "Work",
-		action: "WorkNavbarClick",
-		value: "Work",
-		label: "Work",
-	});
-	document.getElementById("scroll-to-section-portfolio").scrollIntoView({
-		behavior: "smooth",
-	});
-};
-
-const handleSkillsClick = () => {
-	store.dispatch({
-		type: Types.SET_DRAWER_CLOSED,
-	});
-	ReactGA.event({
-		category: "Skills",
-		action: "SkillsNavbarClick",
-		value: "Skills",
-		label: "Skills",
-	});
-	document.getElementById("scroll-to-section-skills").scrollIntoView({
-		behavior: "smooth",
-	});
-};
+const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
 
 const handleContactClick = () => {
 	store.dispatch({
@@ -51,6 +23,48 @@ const Drawer = ({
 	},
 	dispatch,
 }) => {
+	const router = useRouter();
+
+	const handleWorkClick = () => {
+		store.dispatch({
+			type: Types.SET_DRAWER_CLOSED,
+		});
+		ReactGA.event({
+			category: "Work",
+			action: "WorkNavbarClick",
+			value: "Work",
+			label: "Work",
+		});
+		let home = scrollPaths.includes(router.asPath);
+		console.log("router.asPath: ", router.asPath, home);
+		if (!home) {
+			router.push("/portfolio");
+		}
+		if (home) {
+			router.push("/portfolio", undefined, { shallow: true });
+		}
+	};
+
+	const handleSkillsClick = () => {
+		store.dispatch({
+			type: Types.SET_DRAWER_CLOSED,
+		});
+		let home = scrollPaths.includes(router.asPath);
+		console.log("router.asPath: ", router.asPath, home);
+		if (!home) {
+			router.push("/skills");
+		}
+		if (home) {
+			router.push("/skills", undefined, { shallow: true });
+		}
+		ReactGA.event({
+			category: "Skills",
+			action: "SkillsNavbarClick",
+			value: "Skills",
+			label: "Skills",
+		});
+	};
+
 	const handleOpen = () => {
 		console.log("Drawer open");
 	};
@@ -79,7 +93,10 @@ const Drawer = ({
 			onStateChange={isMenuOpen}
 			customBurgerIcon={false}
 		>
-			<MobileNavSection />
+			<MobileNavSection
+				handleWorkClick={handleWorkClick}
+				handleSkillsClick={handleSkillsClick}
+			/>
 		</Menu>
 	);
 };
@@ -96,6 +113,7 @@ const MobileNavSection = connect(mapStateToProps)(
 		state: {
 			navbar: { height: navHeight },
 		},
+		props: { handleWorkClick, handleSkillsClick },
 		dispatch,
 	}) => {
 		const [extraStyles, setExtraStyles] = useState({});
@@ -122,25 +140,21 @@ const MobileNavSection = connect(mapStateToProps)(
 				<div className="drawer-item-divider" />
 				<div className="drawer-item-container">
 					<FcFactory className="drawer-color-icon" />
-					<a className="drawer-item" href="#!" onClick={handleWorkClick}>
+					<a className="drawer-item" onClick={handleWorkClick}>
 						My Work
 					</a>
 				</div>
 				<div className="drawer-item-divider" />
 				<div className="drawer-item-container">
 					<FcInspection className="drawer-color-icon" />
-					<a className="drawer-item" href="#!" onClick={handleSkillsClick}>
+					<a className="drawer-item" onClick={handleSkillsClick}>
 						My Skills
 					</a>
 				</div>
 				<div className="drawer-item-divider" />
 				<div className="drawer-item-container">
 					<FcSms className="drawer-color-icon" />
-					<a
-						href="#contactModal"
-						className="modal-trigger drawer-item"
-						onClick={handleContactClick}
-					>
+					<a className="modal-trigger drawer-item" onClick={handleContactClick}>
 						Contact Me
 					</a>
 				</div>

@@ -2,7 +2,8 @@
 	"name": "portfolio_on_next",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev --debug",
+		"inspect": "NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
 		"audit": "ANALYZE=true next build",
 		"start": "next start",
@@ -41,11 +42,15 @@
 		"react-textarea-autosize": "^8.3.3",
 		"reactour": "^1.18.7",
 		"sass": "^1.49.7",
+		"sharp": "^0.30.0",
 		"tti-polyfill": "^0.2.2",
 		"web-vitals": "^0.2.4"
 	},
 	"devDependencies": {
-		"eslint": "8.8.0",
-		"eslint-config-next": "12.0.10"
+		"eslint": "^8.8.0",
+		"eslint-config-next": "12.0.10",
+		"stylelint": "^14.3.0",
+		"stylelint-config-standard": "^24.0.0",
+		"stylelint-config-standard-scss": "^3.0.0"
 	}
 }

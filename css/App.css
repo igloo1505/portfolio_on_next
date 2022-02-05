@@ -92,6 +92,9 @@ button:active {
 	padding: 0.5rem;
 	gap: 0.5rem;
 }
+.drawer-item-container:hover {
+	cursor: "pointer";
+}
 
 .drawer-item-divider {
 	width: 100%;
@@ -305,6 +308,9 @@ header .headerOverlayGallery {
 
 header nav ul .inlineNavLinks {
 	display: none;
+}
+header nav ul .inlineNavLinks:hover {
+	cursor: pointer;
 }
 
 header nav ul li a {
@@ -864,7 +870,6 @@ section {
 	.skills-container ul {
 		display: -ms-grid;
 		display: grid;
-		/* display: -ms-grid */
 		grid-template-columns: repeat(4, 1fr);
 		-ms-grid-columns: repeat(4, 1fr);
 		grid-gap: 1rem;

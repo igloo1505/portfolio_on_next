@@ -9,7 +9,6 @@ import {
 	faGit,
 	faNpm,
 } from "@fortawesome/free-brands-svg-icons";
-import gsap from "gsap";
 
 const TechIcons = () => {
 	const iconArray = [
@@ -52,27 +51,6 @@ const TechIcons = () => {
 
 	// TODO Animate the transition between icons!!
 	let index = 1;
-	// useEffect(() => {
-	//     setInterval(() => {
-	//         setIconToReturn(iconArray[index])
-	//         setIconToReturnTwo(iconArray[index + 1])
-	//         setIconToReturnThree(iconArray[index + 2])
-	//         console.log(iconArray[index + 2])
-	//         gsap.from(".techIcons", {
-	//           opacity: 50,
-	//           x: "-80",
-	//           duration: 2,
-	//           ease: "slow"
-	//         }, "-=2")
-	//         if(index === (iconArray.length - 3)){
-	//             // eslint-disable-next-line react-hooks/exhaustive-deps
-	//             index = 0
-	//         }
-	//         if(index !== iconArray.length - 3){
-	//             index ++
-	//         }
-	//     }, 4000);
-	// }, [])
 	return <div className="icon-container">{iconArray[3]}</div>;
 };
 

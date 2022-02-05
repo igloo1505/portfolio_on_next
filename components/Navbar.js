@@ -3,32 +3,37 @@ import "@animated-burgers/burger-squeeze/dist/styles.css";
 import { gsap } from "gsap";
 import NavbarNavigationSection from "./NavbarNavigationSection";
 import ReactGA from "react-ga";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
 
 //   TODO Change second link to blog link in socialHeader list
+
+const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
+
 const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 	const handleBurgerClick = () => {
-		console.log("Handle burger click here");
 		dispatch({
 			type: Types.TOGGLE_DRAWER,
 		});
 	};
+	const router = useRouter();
 
 	const handleSkillsClick = () => {
-		if (Router.router.asPath === "/resume") {
-			Router.push("/");
-		}
 		ReactGA.event({
 			category: "Skills",
 			action: "SkillsNavbarClick",
 			value: "Skills",
 			label: "Skills",
 		});
-		document.getElementById("scroll-to-section-skills").scrollIntoView({
-			behavior: "smooth",
-		});
+		let home = scrollPaths.includes(router.asPath);
+
+		if (!home) {
+			router.push("/skills");
+		}
+		if (home) {
+			router.push("/skills", undefined, { shallow: true });
+		}
 	};
 
 	const handleWorkClick = () => {
@@ -38,12 +43,18 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 			value: "Work",
 			label: "Work",
 		});
-		if (Router.router.asPath === "/resume") {
-			Router.push("/");
+		let home = scrollPaths.includes(router.asPath);
+
+		if (!home) {
+			router.push("/portfolio");
 		}
-		document.getElementById("scroll-to-section-featured").scrollIntoView({
-			behavior: "smooth",
-		});
+		if (home) {
+			router.push("/portfolio", undefined, { shallow: true });
+		}
+
+		// document.getElementById("scroll-to-section-portfolio").scrollIntoView({
+		// 	behavior: "smooth",
+		// });
 	};
 
 	return (

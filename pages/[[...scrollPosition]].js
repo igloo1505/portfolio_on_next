@@ -6,12 +6,36 @@ import SkillsSection from "../components/SkillsSection";
 import PortfolioSection from "../components/PortfolioSection";
 import { connect, useDispatch } from "react-redux";
 import * as Types from "../state/Types";
+import { useRouter } from "next/router";
 
 const LandingPage = ({
 	state: {
 		navbar: { height: navbarHeight },
 	},
 }) => {
+	const router = useRouter();
+
+	useEffect(() => {
+		if (router.query.scrollPosition) {
+			console.log("scrollPosition: ", router.query.scrollPosition);
+			let _q = router.query.scrollPosition[0];
+			if (_q === "skills") {
+				return document
+					.getElementById("scroll-to-section-skills")
+					.scrollIntoView({
+						behavior: "smooth",
+					});
+			}
+			if (_q === "portfolio") {
+				return document
+					.getElementById("scroll-to-section-portfolio")
+					.scrollIntoView({
+						behavior: "smooth",
+					});
+			}
+		}
+	}, [router.query]);
+
 	useEffect(() => {
 		shouldHideBodyOverflow(false);
 	}, []);

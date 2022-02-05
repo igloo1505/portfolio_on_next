@@ -33,23 +33,16 @@
 	min-height: 400px;
 	background-color: #01a2ff;
 	border-radius: 20px;
-	// padding: 20px;
+
 	box-shadow: 8px 8px 16px#616161, -8px -8px 16px #757575;
 	visibility: hidden;
 	transform: translate(-50%, -100vh);
 	z-index: 9999;
 	max-height: 100vh;
-	// transition: all 0.5s cubic-bezier(1, 0, 0, 1);
 }
 
 .container * {
 	font-family: "Poppins", sans-serif;
-}
-
-.containerIsOpen {
-	// visibility: visible;
-	// transform: translate(-50%, -50%);
-	// opacity: 1;
 }
 
 .titleText {
@@ -70,9 +63,9 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	// margin-top: 2rem;
+
 	margin-top: 1rem;
-	// flex-direction: row;
+
 	flex-direction: column;
 	gap: 1rem;
 }
@@ -84,7 +77,7 @@
 	width: 100%;
 
 	margin-top: 1rem;
-	// flex-direction: row;
+
 	flex-direction: column;
 	gap: 1rem;
 }
@@ -101,7 +94,7 @@
 	justify-content: flex-start;
 	gap: 0.5rem;
 	flex-direction: column;
-	// width: calc(50% - 1rem);
+
 	width: 100%;
 }
 .input {
@@ -136,9 +129,6 @@
 		background-color: #f15ed0 !important;
 	}
 	&:-internal-autofill-selected {
-		// background-color: #f15ed0 !important;
-		// appearance: unset;
-		// background-image: linear-gradient(to bottom, #f15ed0, #f15ed0) !important;
 	}
 }
 .helperText {
@@ -161,29 +151,18 @@
 	box-shadow: 2px 2px 8px#616161, -2px -2px 8px #757575;
 	border-radius: 10px;
 	float: left;
-	// transition: all 0.3s ease-in-out;
-	// opacity: 0;
+
 	width: 100%;
 	&:hover {
 		box-shadow: 1px 1px 5px#616161, -1px -1px 5px #757575;
 	}
 }
 
-// .button-2 {
-// 	width: 100%;
-// 	opacity: 0;
-// 	transform: scaleX(0);
-// 	visibility: hidden;
-// }
-
 .backButton {
 	opacity: 0;
 	transform: scaleX(0);
 	transform-origin: left;
 	float: left;
-	// background-color: #0cf7ff;
-	// visibility: hidden;
-	// display: none;
 }
 .nextButton {
 	transform: translateX(calc(-50% - 0.5rem));
@@ -204,7 +183,6 @@
 	transform: scaleY(0);
 	transform-origin: top;
 	transition: height 0.3s ease-in-out;
-	// border-radius: 20px;
 }
 
 .contactFormTextArea {

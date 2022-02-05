@@ -36,17 +36,13 @@ const NavbarNavigationSection = ({
 						<nav>
 							<ul className="inlineNavUl">
 								<li className="inlineNavLinks" onClick={handleWorkClick}>
-									<a href="#!">My Work</a>
+									<a>My Work</a>
 								</li>
 								<li className="inlineNavLinks" onClick={handleSkillsClick}>
-									<a href="#!">My Skills</a>
+									<a>My Skills</a>
 								</li>
 								<li className="inlineNavLinks modal-trigger">
-									<a
-										href="#contactModal"
-										className="modal-trigger"
-										onClick={handleContactClick}
-									>
+									<a className="modal-trigger" onClick={handleContactClick}>
 										Contact Me
 									</a>
 								</li>

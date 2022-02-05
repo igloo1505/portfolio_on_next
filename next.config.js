@@ -1,17 +1,23 @@
 const withPWA = require("next-pwa");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: process.env.ANALYZE === "true",
-});
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+// 	enabled: process.env.ANALYZE === "true",
+// });
 
-module.exports = withPWA(
-	withBundleAnalyzer({
-		reactStrictMode: true,
-		pwa: {
-			dest: "public",
-			register: true,
-			disable: process.NODE_ENV === "development",
-			// Only useful in development mode, it's handled automatically on deploy
-			// mode: "production"
-		},
-	})
-);
+module.exports = withPWA({
+	reactStrictMode: true,
+	pwa: {
+		dest: "public",
+		register: true,
+		disable: process.NODE_ENV === "development",
+		// Only useful in development mode, it's handled automatically on deploy
+		// mode: "production",
+	},
+	eslint: {
+		// Warning: This allows production builds to successfully complete even if
+		// your project has ESLint errors.
+		// ignoreDuringBuilds: true,
+	},
+	experimental: {
+		outputStandalone: true,
+	},
+});
