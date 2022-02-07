@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const VideoDemo = () => {
+const VideoDemo = ({ _id }) => {
 	const [shouldPlay, setShouldPlay] = useState(false);
 	const videoRef = useRef(null);
 	const playVideo = () => {
@@ -40,7 +40,7 @@ const VideoDemo = () => {
 			}}
 		>
 			<video
-				id="recipeAppDemoVideo"
+				id={_id}
 				type="video/mp4"
 				ref={videoRef}
 				loop

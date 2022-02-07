@@ -36,6 +36,10 @@ button:active {
 	backface-visibility: hidden;
 }
 
+#HeroSideImage > * {
+	/* transform-origin: center; */
+}
+
 .logoFont {
 	font-family: FontRounded;
 	color: #fff;

@@ -15,20 +15,20 @@ import {
 	hoverAnimationMove,
 } from "../animations/hoverAnimation";
 
-const SkillCard = ({ skill }) => {
+const SkillCard = ({ skill, _id }) => {
 	const handleMouseEnter = (e) => {
 		if (typeof window !== "undefined") {
-			hoverAnimationEnter(e);
+			// hoverAnimationEnter(e);
 		}
 	};
 	const handleMouseMove = (e) => {
 		if (typeof window !== "undefined") {
-			hoverAnimationMove(e);
+			// hoverAnimationMove(e);
 		}
 	};
 	const handleMouseLeave = (e) => {
 		if (typeof window !== "undefined") {
-			hoverAnimationExit(e);
+			// hoverAnimationExit(e);
 		}
 	};
 	return (
@@ -38,6 +38,7 @@ const SkillCard = ({ skill }) => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onMouseMove={handleMouseMove}
+			id={_id}
 		>
 			<div className={`icon-container ${skill.classIndex}`}>
 				{skill.type === "MobileDevelopment" && swiftSvg()}

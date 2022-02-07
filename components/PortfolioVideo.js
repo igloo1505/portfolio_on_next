@@ -35,7 +35,7 @@ const PortfolioVideo = ({ piece }) => {
 
 	return (
 		<div
-			className="portfolio-video-demo-container"
+			className="portfolio-video-demo-container "
 			style={{
 				// margin: "0 1rem",
 				borderRadius: "4px",
@@ -45,6 +45,7 @@ const PortfolioVideo = ({ piece }) => {
 		>
 			<video
 				id="recipeAppDemoVideo"
+				className="portfolio-right-6 transitionRight6"
 				type="video/mp4"
 				ref={videoRef}
 				loop
