@@ -36,9 +36,9 @@ export const hoverAnimationExit = (e) => {
 	let _x = window.getComputedStyle(
 		document.getElementById(e.target.id)
 	).transform;
-	let _float = _x.split("(")[1].split(",")[0];
+	let _float = _x?.split("(")[1]?.split(",")?.[0];
 
-	if (parseFloat(_float) < 0.75) return;
+	if (!_float || parseFloat(_float) < 0.75) return;
 	console.log("parseFloat(_float): ", parseFloat(_float));
 	let _t = document.getElementById(e.target.id).style.transform;
 	console.log("_t: ", _t);
@@ -68,8 +68,8 @@ export const hoverAnimationMove = (e) => {
 	let _x = window.getComputedStyle(
 		document.getElementById(e.target.id)
 	).transform;
-	let _float = _x.split("(")[1].split(",")[0];
-
+	let _float = _x.split("(")[1]?.split(",")?.[0];
+	if (!_float) return;
 	if (parseFloat(_float) < 0.75) return;
 	console.log("parseFloat(_float): ", parseFloat(_float));
 	let _t = document.getElementById(e.target.id).style.transform;
