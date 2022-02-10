@@ -141,7 +141,7 @@ const animateEntrance = (onComplete) => {
 const animateClose = (onComplete) => {
 	// contact-modal-container
 	// contact-modal-backdrop
-	console.log("Animating close");
+
 	let tl = gsap.timeline({
 		onComplete: onComplete,
 	});

@@ -2,7 +2,7 @@ import React from "react";
 import "@animated-burgers/burger-squeeze/dist/styles.css";
 import { gsap } from "gsap";
 import NavbarNavigationSection from "./NavbarNavigationSection";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Router, { useRouter } from "next/router";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";

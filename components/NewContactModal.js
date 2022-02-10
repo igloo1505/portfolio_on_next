@@ -6,6 +6,7 @@ import * as Types from "../state/Types";
 import { formTransitionMobile } from "../animations/formTransitionMobile";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
+import ReactGA from "react-ga4";
 
 const NewContactModal = ({
 	state: {
@@ -32,6 +33,11 @@ const NewContactModal = ({
 	};
 
 	const handleSubmit = async (e) => {
+		ReactGA.event({
+			category: "Contact",
+			action: "Contact Sent",
+			label: "Contact request sent",
+		});
 		if (validate(formData)) {
 			e.preventDefault();
 			try {
@@ -40,16 +46,14 @@ const NewContactModal = ({
 						"Content-Type": "application/json",
 					},
 				});
-				console.log("response: ", res);
+
 				if (res.status === 200) {
 					dispatch({
 						type: Types.POST_CONTACT_SUCCESS,
 						payload: res.data.name,
 					});
 				}
-			} catch (error) {
-				console.error("error: ", error);
-			}
+			} catch (error) {}
 		}
 	};
 
@@ -110,7 +114,7 @@ const NewContactModal = ({
 		formTransitionMobile({
 			next: true,
 			onComplete: () => {
-				// console.log("stepTwoFocusRef: ", stepTwoFocusRef);
+				//
 				// if (stepTwoFocusRef) {
 				// 	stepTwoFocusRef.focus();
 				// }
@@ -119,7 +123,6 @@ const NewContactModal = ({
 	};
 
 	const observeHeightChange = (data) => {
-		console.log("data: ", data);
 		let emHeight = document
 			.getElementById("textAreaContainer")
 			.getBoundingClientRect().height;

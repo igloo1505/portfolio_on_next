@@ -19,7 +19,6 @@ const LandingPage = ({
 
 	useEffect(() => {
 		if (router.query.scrollPosition) {
-			console.log("scrollPosition: ", router.query.scrollPosition);
 			let _q = router.query.scrollPosition[0];
 			if (_q === "skills") {
 				return document

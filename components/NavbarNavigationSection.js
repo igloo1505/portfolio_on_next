@@ -2,7 +2,7 @@ import React, { Fragment, forwardRef } from "react";
 import Burger from "@animated-burgers/burger-squeeze";
 import { socialLinks } from "../util/UniversalData";
 import { gitHubSvg, linkedInSvg } from "./svg";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { GrNotes } from "react-icons/gr";
 import Link from "next/link";
 import Router from "next/router";

@@ -4,7 +4,7 @@ import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const PortfolioPiece = ({ p }) => {
 	const logLiveView = () => {

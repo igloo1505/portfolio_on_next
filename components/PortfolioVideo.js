@@ -22,13 +22,12 @@ const PortfolioVideo = ({ piece }) => {
 		};
 		window.addEventListener("scroll", (e) => {
 			let video = document.getElementById("recipeAppDemoVideo");
-			console.log("e: ", e);
+
 			if (!video) return;
 			let _v = video.getBoundingClientRect();
-			console.log("video: ", (_w.height - _v.y) / _v.height);
+
 			if ((_w.height - _v.y) / _v.height > offset) {
 				playVideo();
-				console.log("Should play");
 			}
 		});
 	}, []);

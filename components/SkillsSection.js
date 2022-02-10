@@ -38,7 +38,7 @@ const animateCardScroll = () => {
 		let N = 0.8;
 		let enteredZero =
 			(window.innerHeight - (rect.top + rect.height / 2)) / window.innerHeight;
-		console.log("rect.top: centered", rect.top);
+
 		// let enteredZero =
 		// 	(window.innerHeight - rect.top) / window.innerHeight + rect.height / 2;
 		let centered =
@@ -59,13 +59,5 @@ const animateCardScroll = () => {
 		// 	"enteredZero",
 		// 	enteredZero
 		// );
-
-		console.log("scrollCard centered: ", centered);
-		console.log(
-			"scrollCard centered rate: ",
-			Math.cos(Math.abs(1 - enteredZero)),
-			enteredZero
-		);
-		console.log("scrollCard enteredZero: ", enteredZero);
 	}
 };

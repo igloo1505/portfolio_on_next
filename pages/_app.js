@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/App.css";
 import dynamic from "next/dynamic";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import ttiPolyfill from "tti-polyfill";
 import Navbar from "../components/Navbar";
 // import ContactModal from "../components/NewContactModal";
+import Script from "next/script";
 const ContactModal = dynamic(() => import("../components/NewContactModal"));
 const Drawer = dynamic(() => import("../components/Drawer"));
 const Toast = dynamic(() => import("../components/MessageSuccessToast"));
@@ -13,41 +14,22 @@ import store from "../state/store";
 import { animateOnScroll } from "../animations/scrollTriggerFunctions";
 
 function MyApp({ Component, pageProps }) {
-	function handlePerformance(list) {
-		list.getEntries().forEach((entry) => {
-			ReactGA.timing({
-				category: "Load Performance",
-				variable: "Server Latency",
-				value: entry.responseStart - entry.requestStart,
-			});
-			ReactGA.timing({
-				category: "Load Performance",
-				variable: "Download Time",
-				value: entry.responseEnd - entry.responseStart,
-			});
-			ReactGA.timing({
-				category: "Load Performance",
-				variable: "Total App Load Time",
-				value: entry.responseEnd - entry.requestStart,
-			});
-		});
-	}
-
 	useEffect(() => {
 		ReactGA.initialize([
 			{
+				debug: true,
 				trackingId: "G-R8G93SKSG6",
-				standardImplementation: true,
+				// standardImplementation: true,
 				gaOptions: {
-					siteSpeedSampleRate: 100,
+					// siteSpeedSampleRate: 100,
+					debug: true,
 					name: "IglooDevelopment",
-					cookieDomain: "none",
-					storage: "none",
+					// cookieDomain: "none",
+					// storage: "none",
+					// tracker: "iglooDevTracker",
 				},
 			},
 		]);
-		var observer = new PerformanceObserver(handlePerformance);
-		observer.observe({ entryTypes: ["navigation"] });
 	}, []);
 
 	useEffect(() => {
@@ -56,21 +38,18 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [animateOnScroll]);
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			// animateOnScroll();
-			ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
-				ReactGA.timing({
-					category: "Load Performance",
-					variable: "Time to Interactive",
-					value: tti,
-				});
-			});
-		}
-	}, []);
 	return (
 		<>
 			<Provider store={store}>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+			  
+				gtag('config', 'G-R8G93SKSG6');
+				`}
+				</Script>
 				<div id="drawer-outer-container-id">
 					<Drawer />
 					<Navbar currentPath="landing" />

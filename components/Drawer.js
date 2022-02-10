@@ -3,7 +3,7 @@ import { slide as Menu } from "react-burger-menu";
 // import { scaleRotate as Menu } from "react-burger-menu";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import store from "../state/store";
 import { FcSms, FcFactory, FcInspection } from "react-icons/fc";
 import gsap from "gsap";
