@@ -63,11 +63,11 @@ export default SkillCard;
 
 const animateCardScroll = ({ cardId, index }) => {
 	let spread = {
-		0: 5,
-		1: 4,
-		2: 3,
-		3: 2,
-		4: 1,
+		0: 50,
+		1: 40,
+		2: 30,
+		3: 20,
+		4: 10,
 	};
 	const card = document.getElementById(cardId);
 	if (!card) return;
@@ -102,7 +102,7 @@ const animateCardScroll = ({ cardId, index }) => {
 		2;
 	console.log("CenteredLow", centeredLow);
 	if (centered > 1) {
-		card.style.transform = `translateY(-${centered * 50 * spread[index]}px)`;
+		card.style.transform = `translateY(-${centered * spread[index]}px)`;
 	}
 	if (centered <= 1) {
 		card.style.transform = `translateY(0px)`;
