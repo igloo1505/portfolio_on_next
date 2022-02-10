@@ -215,33 +215,33 @@ const animatePiece = ({ scrollData, index, idLeft, idRight, orientation }) => {
 	let _diff = end - start;
 	let x = (window.scrollY - start) / _diff;
 	let _val = (1 - x) * 70;
+	if (index === 0) {
+		console.log("x: ", x);
+	}
 	if (x === 0) {
 		left.style.transform = `translateX(-70vw)`;
 		right.style.transform = `translateX(70vw)`;
+		left.style.opacity = 0;
+		right.style.opacity = 0;
 	}
 	if (x >= 1) {
 		left.style.transform = `translateX(0)`;
 		right.style.transform = `translateX(0)`;
+		left.style.opacity = 1;
+		right.style.opacity = 1;
 	}
 	if (x >= 0 && x < 1) {
 		console.log("orientation: ", orientation);
+		left.style.opacity = `${x}`;
+		right.style.opacity = `${x}`;
 		if (orientation === "left") {
 			left.style.transform = `translateX(-${_val}vw)`;
 			right.style.transform = `translateX(${_val}vw)`;
-			// console.log("Diff", (1 - _val) * 70);
 		}
 		if (orientation === "right") {
 			left.style.transform = `translateX(${_val}vw)`;
 			right.style.transform = `translateX(-${_val}vw)`;
-			// console.log("Diff", (1 - _val) * 70);
 		}
 	}
-
-	// console.log("_val: ", start, end);
 	console.log("start: ", start, end, window.scrollY);
-
-	let centeredLow = (window.innerHeight - _oBottom + _h / 2) / 1000;
-
-	// console.log("piece: ", piece);
-	// console.log("scrollData: ", scrollData);
 };
