@@ -16,11 +16,10 @@ handler.post(async (req, res) => {
 			phone,
 			company,
 		});
-		console.log({ newContact });
+
 		const addContact = await newContact.save();
 		res.json(addContact);
 	} catch (error) {
-		console.error(error.message);
 		res.status(500).send(`Oh $**%. Post failed. ${error.message}`);
 	}
 });

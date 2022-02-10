@@ -99,7 +99,7 @@ const NewContactModal = ({
 	useEffect(() => {
 		if (submittedBy) {
 			handleBackdropClick();
-			console.log("Has submitted by", submittedBy);
+
 			setFormData({
 				email: "",
 				name: "",

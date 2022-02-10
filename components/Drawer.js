@@ -40,7 +40,7 @@ const Drawer = ({
 			label: "My Work Click",
 		});
 		let home = scrollPaths.includes(router.asPath);
-		console.log("router.asPath: ", router.asPath, home);
+
 		if (!home) {
 			router.push("/portfolio");
 		}
@@ -54,7 +54,7 @@ const Drawer = ({
 			type: Types.SET_DRAWER_CLOSED,
 		});
 		let home = scrollPaths.includes(router.asPath);
-		console.log("router.asPath: ", router.asPath, home);
+
 		if (!home) {
 			router.push("/skills");
 		}
@@ -69,7 +69,7 @@ const Drawer = ({
 	};
 
 	const handleOpen = () => {
-		// console.log("Drawer open");
+		//
 	};
 
 	const isMenuOpen = (_state) => {

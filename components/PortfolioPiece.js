@@ -25,11 +25,8 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 	});
 
 	const handleHover = (type, status) => {
-		console.log("type, status: ", type, status);
-		console.log("hoverState: ", hoverState);
 		if (typeof window === "undefined") return;
 		if (isMobile) {
-			console.log("isMobile: ", isMobile);
 			setHoverState({
 				...hoverState,
 				link: true,
@@ -44,7 +41,6 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 
 	useEffect(() => {
 		if (isMobile) {
-			console.log("isMobile: ", isMobile);
 			setHoverState({
 				...hoverState,
 				link: true,
@@ -69,7 +65,7 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 				repo: "",
 			};
 			let _rect = document.getElementById(`project-link-${index}`);
-			console.log("_rect: ", _rect);
+
 			if (!_rect) return;
 			let dims = _rect.getBoundingClientRect();
 			newPoints.link = `${dims.width},1 ${dims.width},${dims.height} 1,${dims.height} 1,1 ${dims.width},1`;
