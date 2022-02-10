@@ -456,6 +456,10 @@ section {
 	color: #fff;
 }
 
+.featured-button-innerContainer {
+	width: 100%;
+}
+
 .featured-button-underline {
 	height: 1px;
 	width: 100%;
@@ -693,6 +697,7 @@ section {
 	.featured-link-container a {
 		width: 100%;
 	}
+
 	.featured-repo-button {
 		width: 100%;
 		display: flex;
@@ -822,6 +827,9 @@ section {
 	}
 	.featured-link-container {
 		align-items: flex-start;
+	}
+	.featured-button-innerContainer {
+		width: fit-content;
 	}
 	.featured-link-container {
 		align-items: center;
