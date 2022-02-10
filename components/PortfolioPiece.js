@@ -116,9 +116,9 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 					{p.mediaType === "image" && (
 						<Image
 							src={p.Image}
-							id={`portfolio-media-${p.orientation}-${index}`}
 							className={`portfolio-right transitionRight${p.transitionIndex}`}
 							alt="Portfolio"
+							id={`portfolio-media-${p.orientation}-${index}`}
 						/>
 					)}
 					{p.mediaType === "video" && (
@@ -202,27 +202,46 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 
 export default PortfolioPiece;
 
-const animatePiece = ({ scrollData, index, idLeft, idRight }) => {
+const animatePiece = ({ scrollData, index, idLeft, idRight, orientation }) => {
 	let piece = document.getElementById(`portfolio-piece-${index}`);
+	let left = document.getElementById(idLeft);
+	let right = document.getElementById(idRight);
 	let rect = piece.getBoundingClientRect();
 	let _oBottom = rect.bottom;
 	let _h = rect.height;
-	let scale = window.innerHeight * 0.15 + _h;
+	let scale = window.innerHeight * 0.1 + _h / 2;
 	let start = Math.abs(window.innerHeight - piece.offsetTop);
 	let end = start + scale;
 	let _diff = end - start;
-	let _val = (window.scrollY - start) / _diff;
-	if (index === 0) {
-		console.log("_diff: ", _diff);
-		console.log("_val: ", _val);
-		// console.log("_val: ", start, end);
-		console.log("start: ", start, end, window.scrollY);
-
-		let centeredLow = (window.innerHeight - _oBottom + _h / 2) / 1000;
+	let x = (window.scrollY - start) / _diff;
+	let _val = (1 - x) * 70;
+	if (x === 0) {
+		left.style.transform = `translateX(-70vw)`;
+		right.style.transform = `translateX(70vw)`;
+	}
+	if (x >= 1) {
+		left.style.transform = `translateX(0)`;
+		right.style.transform = `translateX(0)`;
+	}
+	if (x >= 0 && x < 1) {
+		console.log("orientation: ", orientation);
+		if (orientation === "left") {
+			left.style.transform = `translateX(-${_val}vw)`;
+			right.style.transform = `translateX(${_val}vw)`;
+			// console.log("Diff", (1 - _val) * 70);
+		}
+		if (orientation === "right") {
+			left.style.transform = `translateX(${_val}vw)`;
+			right.style.transform = `translateX(-${_val}vw)`;
+			// console.log("Diff", (1 - _val) * 70);
+		}
 	}
 
-	let left = document.getElementById(idLeft);
-	let right = document.getElementById(idRight);
+	// console.log("_val: ", start, end);
+	console.log("start: ", start, end, window.scrollY);
+
+	let centeredLow = (window.innerHeight - _oBottom + _h / 2) / 1000;
+
 	// console.log("piece: ", piece);
 	// console.log("scrollData: ", scrollData);
 };

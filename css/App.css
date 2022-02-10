@@ -625,6 +625,7 @@ section {
 		grid-template-columns: 40% auto;
 		-ms-grid-columns: 40% auto;
 		justify-content: space-between;
+		/* justify-content: space-around; */
 	}
 	.portfolio-container a {
 		display: contents;
