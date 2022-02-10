@@ -74,33 +74,15 @@ const animateCardScroll = ({ cardId, index }) => {
 	let rect = card.getBoundingClientRect();
 	let _oTop = rect.top;
 	let _h = rect.height;
-	// console.log("_oTop: ", _oTop);
-	let centeredLowx =
-		(window.innerHeight - card.getBoundingClientRect().top / 2) /
-		// (window.innerHeight - card.getBoundingClientRect().top / 2) /
-		Math.abs(card.offsetTop - window.innerHeight) /
-		2;
-	console.log("card.offsetTop: ", card.offsetTop, _oTop);
-	// console.log("card.offsetTop: ", card.getBoundingRect());
-	// let centeredLow = {
-	// 	_oTop,
-	// 	height: window.innerHeight * 2,
-	// 	_h,
-	// 	value: (window.innerHeight - _oTop + _h) / 1000,
-	// };
-	let centeredLow = (window.innerHeight - _oTop + _h) / 1000;
-	// (window.innerHeight - card.getBoundingClientRect().top / 2) /
-	// Math.abs(_oTop - _h - window.innerHeight) /
-	// 2;
-	// window.innerHeight / Math.abs(_oTop - _h - window.innerHeight) / 2;
 
+	let centeredLow = (window.innerHeight - _oTop + _h) / 1000;
 	card.style.opacity = `${centeredLow}`;
 
 	let centered =
 		(window.innerHeight - card.getBoundingClientRect().top) /
 		Math.abs(card.offsetTop - window.innerHeight) /
 		2;
-	console.log("CenteredLow", centeredLow);
+
 	if (centered > 1) {
 		card.style.transform = `translateY(-${centered * spread[index]}px)`;
 	}

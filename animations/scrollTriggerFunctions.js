@@ -69,89 +69,90 @@ export const animateOnScroll = () => {
 		duration: 1.2,
 		stagger: 0.3,
 	});
-	let cardTL = gsap.timeline();
 
-	cardTL.from(".transition3", {
-		scrollTrigger: {
-			trigger: ".transition3",
-			start: "top 85%",
-		},
-		y: 50,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
+	// let cardTL = gsap.timeline();
 
-	cardTL.to(".cardOuter", {
-		boxShadow:
-			"12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0",
-		transition: "all 0.3s ease-in-out",
-		stagger: 0.3,
-	});
+	// cardTL.from(".transition3", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transition3",
+	// 		start: "top 85%",
+	// 	},
+	// 	y: 50,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
 
-	gsap.from(".portfolio-left-4", {
-		scrollTrigger: {
-			trigger: ".transitionLeft4",
-			start: "top 90%",
-		},
-		x: -100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
-	gsap.from(".transitionRight4", {
-		scrollTrigger: {
-			trigger: ".transitionRight4",
-			start: "top 90%",
-		},
-		x: 100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
+	// cardTL.to(".cardOuter", {
+	// 	boxShadow:
+	// 		"12px 12px 20px rgba(150, 170, 180, 0.5), -12px -12px 20px #e0e0e0",
+	// 	transition: "all 0.3s ease-in-out",
+	// 	stagger: 0.3,
+	// });
 
-	gsap.from(".portfolio-left-5", {
-		scrollTrigger: {
-			trigger: ".transitionLeft5",
-			start: "top 90%",
-		},
-		x: -100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
-	gsap.from(".transitionRight5", {
-		scrollTrigger: {
-			trigger: ".transitionRight5",
-			start: "top 90%",
-		},
-		x: 100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
+	// gsap.from(".portfolio-left-4", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionLeft4",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: -100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
+	// gsap.from(".transitionRight4", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionRight4",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: 100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
 
-	gsap.from(".portfolio-left-6", {
-		scrollTrigger: {
-			trigger: ".transitionLeft6",
-			start: "top 90%",
-		},
-		x: -100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
+	// gsap.from(".portfolio-left-5", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionLeft5",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: -100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
+	// gsap.from(".transitionRight5", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionRight5",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: 100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
 
-	gsap.from(".transitionRight6", {
-		scrollTrigger: {
-			trigger: ".transitionRight6",
-			start: "top 90%",
-		},
-		x: 100,
-		opacity: 0,
-		duration: 1.2,
-		stagger: 0.3,
-	});
+	// gsap.from(".portfolio-left-6", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionLeft6",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: -100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
+
+	// gsap.from(".transitionRight6", {
+	// 	scrollTrigger: {
+	// 		trigger: ".transitionRight6",
+	// 		start: "top 90%",
+	// 	},
+	// 	x: 100,
+	// 	opacity: 0,
+	// 	duration: 1.2,
+	// 	stagger: 0.3,
+	// });
 
 	ScrollTrigger.create({
 		start: 0,

@@ -536,9 +536,20 @@ section {
 .portfolio {
 	background: #f7f7f7;
 }
-
-/* .portfolio-container a {
-	display: contents;
+/* .portfolio-right {
+	transform: translateX(70vw);
+}
+.portfolio-desc-right {
+	transform: translateX(70vw);
+}
+.portfolio-media-left {
+	transform: translateX(-70vw);
+}
+.portfolio-media-right {
+	transform: translateX(70vw);
+}
+.portfolio-desc-left {
+	transform: translateX(-70vw);
 } */
 
 .portfolio-container {

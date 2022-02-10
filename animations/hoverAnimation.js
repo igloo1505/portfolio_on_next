@@ -39,9 +39,9 @@ export const hoverAnimationExit = (e) => {
 	let _float = _x?.split("(")[1]?.split(",")?.[0];
 
 	if (!_float || parseFloat(_float) < 0.75) return;
-	console.log("parseFloat(_float): ", parseFloat(_float));
+
 	let _t = document.getElementById(e.target.id).style.transform;
-	console.log("_t: ", _t);
+
 	if (e.target.classList.contains("dropShadowBlue")) {
 		gsap.to(`#${e.target.id}`, {
 			filter: `drop-shadow(${bShadowBlue.fx}px ${bShadowBlue.fy}px ${bShadowBlue.fos}px ${grey[600]}) drop-shadow(${bShadowBlue.bx}px ${bShadowBlue.by}px ${bShadowBlue.bos}px ${grey[500]})`,
@@ -71,9 +71,8 @@ export const hoverAnimationMove = (e) => {
 	let _float = _x.split("(")[1]?.split(",")?.[0];
 	if (!_float) return;
 	if (parseFloat(_float) < 0.75) return;
-	console.log("parseFloat(_float): ", parseFloat(_float));
+
 	let _t = document.getElementById(e.target.id).style.transform;
-	console.log("_t: ", _t);
 
 	let rotateRate = 0.022;
 	let rec = document.getElementById(e.target.id).getBoundingClientRect();

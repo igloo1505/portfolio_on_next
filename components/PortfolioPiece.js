@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeroImagePallet } from "../util/UniversalData";
 import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
@@ -6,7 +6,7 @@ import clsx from "clsx";
 import dynamic from "next/dynamic";
 import ReactGA from "react-ga4";
 
-const PortfolioPiece = ({ p }) => {
+const PortfolioPiece = ({ p, scroll, index }) => {
 	const logLiveView = () => {
 		ReactGA.event({
 			category: "Portfolio Piece",
@@ -22,12 +22,26 @@ const PortfolioPiece = ({ p }) => {
 		});
 	};
 
+	useEffect(() => {
+		animatePiece({
+			scrollData: scroll,
+			index: index,
+			orientation: p.orientation,
+			idLeft: `portfolio-${p.orientation}-${index}`,
+			idRight: `portfolio-media-${p.orientation}-${index}`,
+		});
+	}, [scroll]);
+
 	if (p.orientation === "left") {
 		return (
 			<div
 				className={`portfolio-container portfolio-container-${p.orientation} transitionLeft${p.transitionIndex}`}
+				id={`portfolio-piece-${index}`}
 			>
-				<div className={`portfolio-${p.orientation}-${p.transitionIndex}`}>
+				<div
+					className={`portfolio-${p.orientation}-${p.transitionIndex} portfolio-desc-left`}
+					id={`portfolio-${p.orientation}-${index}`}
+				>
 					<div className="inner">
 						<p
 							className="subtitle"
@@ -102,11 +116,17 @@ const PortfolioPiece = ({ p }) => {
 					{p.mediaType === "image" && (
 						<Image
 							src={p.Image}
+							id={`portfolio-media-${p.orientation}-${index}`}
 							className={`portfolio-right transitionRight${p.transitionIndex}`}
 							alt="Portfolio"
 						/>
 					)}
-					{p.mediaType === "video" && <PortfolioVideo piece={p} />}
+					{p.mediaType === "video" && (
+						<PortfolioVideo
+							piece={p}
+							_id={`portfolio-media-${p.orientation}-${index}`}
+						/>
+					)}
 				</a>
 			</div>
 		);
@@ -115,18 +135,21 @@ const PortfolioPiece = ({ p }) => {
 			<div
 				className={`portfolio-container portfolio-container-${p.orientation} transitionLeft${p.transitionIndex}`}
 				style={p.isLast ? { paddingBottom: "10px" } : { paddingBottom: "40px" }}
+				id={`portfolio-piece-${index}`}
 			>
 				<a href={p.url} onClick={logLiveView}>
 					<Image
 						className={`portfolio-${
 							p.orientation === "right" ? "left" : "right"
-						}-${p.transitionIndex}`}
+						}-${p.transitionIndex} portfolio-media-left`}
 						src={p.Image}
 						alt="Portfolio"
+						id={`portfolio-media-${p.orientation}-${index}`}
 					/>
 				</a>
 				<div
-					className={`portfolio-${p.orientation}-${p.transitionIndex} transitionRight${p.transitionIndex}`}
+					className={`portfolio-${p.orientation}-${p.transitionIndex} transitionRight${p.transitionIndex} portfolio-desc-right`}
+					id={`portfolio-${p.orientation}-${index}`}
 				>
 					<div className="inner">
 						<p
@@ -178,3 +201,28 @@ const PortfolioPiece = ({ p }) => {
 };
 
 export default PortfolioPiece;
+
+const animatePiece = ({ scrollData, index, idLeft, idRight }) => {
+	let piece = document.getElementById(`portfolio-piece-${index}`);
+	let rect = piece.getBoundingClientRect();
+	let _oBottom = rect.bottom;
+	let _h = rect.height;
+	let scale = window.innerHeight * 0.15 + _h;
+	let start = Math.abs(window.innerHeight - piece.offsetTop);
+	let end = start + scale;
+	let _diff = end - start;
+	let _val = (window.scrollY - start) / _diff;
+	if (index === 0) {
+		console.log("_diff: ", _diff);
+		console.log("_val: ", _val);
+		// console.log("_val: ", start, end);
+		console.log("start: ", start, end, window.scrollY);
+
+		let centeredLow = (window.innerHeight - _oBottom + _h / 2) / 1000;
+	}
+
+	let left = document.getElementById(idLeft);
+	let right = document.getElementById(idRight);
+	// console.log("piece: ", piece);
+	// console.log("scrollData: ", scrollData);
+};
