@@ -9,16 +9,14 @@ import {
 	jwtSvg,
 	googleAnalyticsSvg,
 } from "./svg";
-import {
-	hoverAnimationEnter,
-	hoverAnimationExit,
-	hoverAnimationMove,
-} from "../animations/hoverAnimation";
 
 const SkillCard = ({ skill, _id, index }) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			window.addEventListener("scroll", () =>
+				animateCardScroll({ cardId: _id, index: index })
+			);
+			window.addEventListener("resize", () =>
 				animateCardScroll({ cardId: _id, index: index })
 			);
 		}
@@ -63,18 +61,18 @@ export default SkillCard;
 
 const animateCardScroll = ({ cardId, index }) => {
 	let spread = {
-		0: 50,
-		1: 40,
-		2: 30,
-		3: 20,
-		4: 10,
+		0: 100,
+		1: 80,
+		2: 60,
+		3: 40,
+		4: 20,
 	};
 	const card = document.getElementById(cardId);
+	let isMobile = window.innerWidth <= 1150;
 	if (!card) return;
 	let rect = card.getBoundingClientRect();
 	let _oTop = rect.top;
 	let _h = rect.height;
-
 	let centeredLow = (window.innerHeight - _oTop + _h) / 1000;
 	card.style.opacity = `${centeredLow}`;
 
@@ -82,11 +80,24 @@ const animateCardScroll = ({ cardId, index }) => {
 		(window.innerHeight - card.getBoundingClientRect().top) /
 		Math.abs(card.offsetTop - window.innerHeight) /
 		2;
+	if (centeredLow > 0 && centeredLow <= 1 && window.innerWidth <= 800) {
+		return (card.style.transform =
+			parseInt(index / 2) === index / 2
+				? `translateX(-${(1 - centeredLow) * 70}vw)`
+				: `translateX(${(1 - centeredLow) * 70}vw)`);
+	}
 
-	if (centered > 1) {
+	if (centeredLow > 1 && isMobile) {
+		card.style.transform = `translateX(0px)`;
+	}
+	if (centeredLow <= 1 && isMobile) {
+		return (card.style.transform =
+			parseInt(index / 2) === index / 2 ? `translateX(0)` : `translateX(0)`);
+	}
+	if (centered > 1 && !isMobile) {
 		card.style.transform = `translateY(-${centered * spread[index]}px)`;
 	}
-	if (centered <= 1) {
+	if (centered <= 1 && !isMobile) {
 		card.style.transform = `translateY(0px)`;
 		Object.keys(spread).map((i) => {
 			let _c = document.getElementById(`skill-scroll-card-${i}`);

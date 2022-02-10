@@ -32,10 +32,7 @@ const VideoDemo = ({ _id }) => {
 		<div
 			className="video-demo-container"
 			style={{
-				// margin: "0 1rem",
 				borderRadius: "4px",
-				// width: "150%",
-				// border: "2px solid black",
 			}}
 		>
 			<video

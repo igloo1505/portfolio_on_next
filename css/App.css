@@ -242,7 +242,7 @@ img {
 }
 
 .featuredDescriptionText {
-	margin: 1rem 0rem;
+	margin: 3rem 0rem;
 }
 
 .burgerButtonOpen .burger-lines::before {
@@ -401,6 +401,13 @@ section {
 	border-radius: 1rem;
 }
 
+.featured-link-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .featured::before {
 	content: "";
 	position: absolute;
@@ -413,6 +420,44 @@ section {
 	margin-top: 10px;
 	margin-left: 10px;
 	z-index: -1;
+}
+
+.featured-repo-button {
+	color: #0080f0;
+	margin-bottom: 10px;
+	border: 1px solid #0080f0;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+.featured-repo-button a {
+	color: #0080f0;
+	transition: all 0.3s ease-in-out;
+}
+.featured-repo-button:hover {
+	color: #fff;
+	margin-bottom: 10px;
+	border: 1px solid #f05133;
+	background-color: #f05133;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.featured-repo-button:hover a {
+	color: #fff;
+}
+
+.featured-button-underline {
+	height: 1px;
+	width: 100%;
+	background-color: #fff;
+	transition: all 0.3s ease-in-out 0.2s;
+	transform-origin: center;
+	transform: scaleX(0);
+}
+.featured-repo-button:hover .featured-button-underline {
+	transform: scaleX(1);
 }
 
 .subtitle {
@@ -552,10 +597,6 @@ section {
 	transform: translateX(-70vw);
 } */
 
-.portfolio-container {
-	padding-bottom: 40px;
-}
-
 .portfolio-container a img {
 	border-radius: 1rem;
 	margin-bottom: 2rem;
@@ -576,13 +617,22 @@ section {
 .portfolio-container {
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 40px;
+	gap: 0.75rem;
 }
 
 .portfolio-container-right {
 	flex-direction: column-reverse;
 }
 
+#recipeAppDemoVideo {
+	transform: scale(1);
+}
+
 @media only screen and (min-width: 800px) {
+	.featured-link-container {
+		align-items: flex-start;
+	}
 	.skills-container ul li {
 		background-color: #fff;
 		padding: 2rem 2rem 0rem 2rem;
@@ -706,9 +756,10 @@ section {
 		/* line-height: normal; */
 		/* line-height: 3.4rem; */
 	}
-	.featuredDescriptionText {
+	/* .featuredDescriptionText {
 		margin: 0rem;
-	}
+	} */
+
 	.nav-container {
 		display: -ms-grid;
 		display: grid;
@@ -778,6 +829,7 @@ section {
 		margin-top: 15%;
 		width: 100%;
 		transform: translateX(-50%);
+		overflow: visible;
 	}
 	.portfolio img {
 		float: right;
@@ -803,6 +855,9 @@ section {
 		font-style: normal;
 		letter-spacing: unset;
 		margin-left: -50px;
+	}
+	#recipeAppDemoVideo {
+		transform: scale(0);
 	}
 	.logoFont .innerLogoText {
 		border-bottom: 1px solid white;

@@ -34,9 +34,7 @@ export const featuredTitleText = () => {
 			<p className="subtitle" style={{ color: AppColors.subtitleColor }}>
 				Featured App
 			</p>
-			<a href="#!" className="featured-title">
-				Radish.io Social Network for Cooks
-			</a>
+			<span className="featured-title">Radish.io Social Network for Cooks</span>
 			<p
 				className="featured-desc main-featured-desc"
 				style={{ color: AppColors.descriptionTextColor }}
@@ -45,9 +43,22 @@ export const featuredTitleText = () => {
 					"This was just a project to add some new technologies to my resume while having fun with the UI. I began this project months ago, and would really only come back to it when I wanted to try something new. Built using Next.js, Three.js, react-spring, GSAP, Material-UI, AWS, mogodb, and more. This was built with 'stand-alone' PWA functionality in mind."
 				}
 			</p>
-			<p style={{ color: AppColors.navBarColor, paddingBottom: "10px" }}>
-				Very much a work in Progress
-			</p>
+			<div className="featured-link-container">
+				<p
+					style={{ color: AppColors.navBarColor, padding: 0, marginBottom: 0 }}
+				>
+					Very much a work in Progress
+				</p>
+				<a href="https://github.com/igloo1505/restaurant_template">
+					<p
+						className="featured-repo-button"
+						href="https://github.com/igloo1505/restaurant_template"
+					>
+						Repo
+						<div className="featured-button-underline" />
+					</p>
+				</a>
+			</div>
 		</>
 	);
 };

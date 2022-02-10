@@ -44,7 +44,7 @@ const PortfolioVideo = ({ piece, _id }) => {
 			id={_id}
 		>
 			<video
-				id="recipeAppDemoVideo"
+				id="portfolioAppDemoVideo"
 				className="portfolio-right-6 transitionRight6"
 				type="video/mp4"
 				ref={videoRef}

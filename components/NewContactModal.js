@@ -100,6 +100,15 @@ const NewContactModal = ({
 	useEffect(() => {
 		if (submittedBy) {
 			handleBackdropClick();
+			console.log("Has submitted by", submittedBy);
+			setFormData({
+				email: "",
+				name: "",
+				phone: "",
+				company: "",
+				message: "",
+			});
+			setFormStep(1);
 		}
 	}, [submittedBy]);
 
@@ -260,16 +269,18 @@ const NewContactModal = ({
 						<InputEm
 							handleChange={handleChange}
 							_name={"name"}
+							value={formData.name}
 							helperText={"Name"}
 							autoComplete={"name"}
 							placeHolder="Name"
-							valid={formData.name}
+							valid={formDataValidation.name}
 							step={1}
 						/>
 						<InputEm
 							handleChange={handleChange}
 							_name={"email"}
-							valid={formData.email}
+							value={formData.email}
+							valid={formDataValidation.email}
 							type={"email"}
 							autoComplete={"email"}
 							helperText={"Email"}
@@ -281,17 +292,19 @@ const NewContactModal = ({
 						<InputEm
 							handleChange={handleChange}
 							_name={"company"}
+							value={formData.company}
 							helperText={"Your Company (if applicable)"}
 							placeHolder="Company"
-							valid={formData.company}
+							valid={formDataValidation.company}
 							step={1}
 						/>
 						<InputEm
 							handleChange={handleChange}
 							_name={"phone"}
 							helperText={"Phone Number (optional)"}
-							valid={formData.phone}
+							valid={formDataValidation.phone}
 							placeHolder="Phone"
+							value={formData.phone}
 							step={1}
 							inputMode="tel"
 							autoComplete={"tel"}
@@ -307,7 +320,8 @@ const NewContactModal = ({
 							// maxRows={20}
 							id="textAreaResize"
 							onHeightChange={observeHeightChange}
-							valid={formData.message}
+							valid={formDataValidation.message}
+							value={formData.message}
 							className={clsx(
 								classes.contactFormTextArea,
 								"contactFormTextArea"
@@ -374,6 +388,7 @@ const InputEm = ({
 	helperText,
 	placeHolder,
 	step,
+	value,
 	...props
 }) => {
 	return (
@@ -389,6 +404,7 @@ const InputEm = ({
 				className={classes.input}
 				type="text"
 				placeholder={placeHolder}
+				value={value}
 				onChange={handleChange}
 				name={_name}
 				{...props}

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { HeroImagePallet } from "../util/UniversalData";
 import {
 	hoverAnimationEnter,
@@ -25,6 +25,16 @@ const HeroSideImage = () => {
 			hoverAnimationExit(e);
 		}
 	};
+
+	useEffect(() => {
+		window.addEventListener("resize", () => {
+			if (typeof window !== "undefined") {
+				let _x = document.getElementsByClassName("hero-design");
+				if (!_x[0]) return;
+				_x[0].style.transform = "translateX(-50%)";
+			}
+		});
+	}, []);
 
 	return (
 		<div>

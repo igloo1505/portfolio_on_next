@@ -25,8 +25,10 @@ const VideoDemo = dynamic(() => import("./VideoDemo"), {
 
 const FeaturedSection = () => {
 	useEffect(() => {
+		parallaxScrollAnim();
 		if (typeof window !== "undefined") {
 			window.addEventListener("scroll", parallaxScrollAnim);
+			window.addEventListener("resize", parallaxScrollAnim);
 		}
 	}, []);
 
@@ -53,7 +55,22 @@ const parallaxScrollAnim = () => {
 	let tLeft = document.getElementById("featuredDescriptionText");
 	let tRight = document.getElementById("recipeAppDemoVideo");
 	if (!tLeft || !tRight) return;
-	let pScroll = window.pageYOffset;
-	tLeft.style.transform = `translateY(${pScroll * _rate.left}px)`;
-	tRight.style.transform = `translateY(${pScroll * _rate.right}px)`;
+	let rect = tLeft.getBoundingClientRect();
+	let _oTop = rect.top;
+	let _h = rect.height;
+	let centeredLow = (window.innerHeight - _oTop + _h) / 1000;
+
+	if (centeredLow >= 0 && centeredLow < 1.5) {
+		tLeft.style.opacity = `${centeredLow - 0.3}`;
+	}
+	if (centeredLow >= 0 && centeredLow < 1) {
+		tRight.style.transform = `scale(${centeredLow})`;
+	}
+	if (centeredLow >= 1) {
+		tRight.style.transform = `scale(1)`;
+	}
+	let centered =
+		(window.innerHeight - tLeft.getBoundingClientRect().top) /
+		Math.abs(tLeft.offsetTop - window.innerHeight) /
+		2;
 };

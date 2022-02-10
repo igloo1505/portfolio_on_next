@@ -216,7 +216,6 @@ const animatePiece = ({ scrollData, index, idLeft, idRight, orientation }) => {
 	let x = (window.scrollY - start) / _diff;
 	let _val = (1 - x) * 70;
 	if (index === 0) {
-		console.log("x: ", x);
 	}
 	if (x === 0) {
 		left.style.transform = `translateX(-70vw)`;
@@ -231,7 +230,6 @@ const animatePiece = ({ scrollData, index, idLeft, idRight, orientation }) => {
 		right.style.opacity = 1;
 	}
 	if (x >= 0 && x < 1) {
-		console.log("orientation: ", orientation);
 		left.style.opacity = `${x}`;
 		right.style.opacity = `${x}`;
 		if (orientation === "left") {
@@ -243,5 +241,4 @@ const animatePiece = ({ scrollData, index, idLeft, idRight, orientation }) => {
 			right.style.transform = `translateX(-${_val}vw)`;
 		}
 	}
-	console.log("start: ", start, end, window.scrollY);
 };

@@ -6,8 +6,8 @@ const animateNext = ({ onComplete }) => {
 	tl.to(".inputContainer-1", {
 		y: -100,
 		opacity: 0,
-		duration: 0.5,
-		stagger: 0.2,
+		duration: 0.3,
+		stagger: 0.1,
 		ease: "power3.out",
 	});
 	tl.to(
@@ -87,7 +87,7 @@ const animateBack = () => {
 			y: 0,
 			opacity: 1,
 			duration: 0.5,
-			stagger: 0.2,
+			stagger: 0.1,
 			ease: "power3.out",
 		}
 	);
