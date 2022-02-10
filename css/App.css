@@ -434,6 +434,10 @@ section {
 	color: #0080f0;
 	transition: all 0.3s ease-in-out;
 }
+.featured-repo-button span {
+	color: #0080f0;
+	transition: all 0.3s ease-in-out;
+}
 .featured-repo-button:hover {
 	color: #fff;
 	margin-bottom: 10px;
@@ -441,6 +445,10 @@ section {
 	background-color: #f05133;
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+.featured-repo-button:hover span {
+	color: #fff;
 	cursor: pointer;
 }
 
@@ -596,6 +604,55 @@ section {
 .portfolio-desc-left {
 	transform: translateX(-70vw);
 } */
+.project-link {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	/* position: absolute; */
+	/* top: 50%;
+	left: 75%;
+	transform: translate(-50%, -50%); */
+	transition: background-color 0.3s ease-in-out;
+	cursor: pointer;
+}
+.project-link a {
+	margin: 0.5rem;
+	display: inline-block !important;
+}
+.repo-link a {
+	margin: 0.5rem;
+	display: inline-block !important;
+}
+
+.svgBorder {
+	position: absolute;
+	fill: none;
+	stroke: rgba(0, 170, 180, 1);
+	stroke-dasharray: 150 480;
+	stroke-dashoffset: 150;
+	transition: 1s ease-in-out;
+	/* stroke-dashoffset: -480; */
+}
+
+.svgBorder.hovered {
+	stroke-dashoffset: -480;
+}
+
+.project-link.hovered {
+	background-color: #0080f0;
+	transition: background-color 0.3s ease-in-out 0.5s;
+}
+
+.link-aTag {
+	text-decoration: none;
+	transition: color 0.3s ease-in-out;
+	color: rgb(0, 160, 242);
+}
+.link-aTag.hovered {
+	transition: color 0.3s ease-in-out 0.4s;
+	color: #fff;
+}
 
 .portfolio-container a img {
 	border-radius: 1rem;
@@ -631,7 +688,22 @@ section {
 
 @media only screen and (min-width: 800px) {
 	.featured-link-container {
-		align-items: flex-start;
+		align-items: center;
+	}
+	.featured-link-container a {
+		width: 100%;
+	}
+	.featured-repo-button {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		background-color: #0080f0;
+	}
+	.featured-repo-button span {
+		color: #fff;
 	}
 	.skills-container ul li {
 		background-color: #fff;
@@ -747,6 +819,27 @@ section {
 @media only screen and (min-width: 1050px) {
 	.hero {
 		height: 90vh;
+	}
+	.featured-link-container {
+		align-items: flex-start;
+	}
+	.featured-link-container {
+		align-items: center;
+	}
+	.featured-link-container a {
+		width: 100%;
+	}
+	.featured-repo-button {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		background-color: unset;
+	}
+	.featured-repo-button span {
+		color: #0080f0;
 	}
 	/* .burgerButtonLi {
 		display: none;
@@ -882,6 +975,24 @@ section {
 }
 
 @media only screen and (min-width: 1550px) {
+	.featured-link-container {
+		align-items: flex-start;
+	}
+	.featured-link-container a {
+		width: unset;
+	}
+	.featured-repo-button {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		background-color: unset;
+	}
+	.featured-repo-button span {
+		color: #0080f0;
+	}
 	header {
 		padding: 2rem 2rem 2rem 20rem;
 	}
@@ -924,3 +1035,58 @@ input:-webkit-autofill:active {
 	-webkit-background-clip: content-box;
 	background-clip: content-box;
 }
+
+/* 
+.container {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  width: 180px;
+  height: 60px;
+  position: absolute;
+}
+
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91C9FF;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: #4F95DA;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+} */

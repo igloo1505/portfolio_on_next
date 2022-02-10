@@ -54,7 +54,7 @@ export const featuredTitleText = () => {
 						className="featured-repo-button"
 						href="https://github.com/igloo1505/restaurant_template"
 					>
-						Repo
+						<span>Repo</span>
 						<div className="featured-button-underline" />
 					</p>
 				</a>

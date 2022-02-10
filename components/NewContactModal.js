@@ -36,7 +36,6 @@ const NewContactModal = ({
 	const [rightButtonText, setRightButtonText] = useState("Next");
 	const textAreaRef = useRef(null);
 	const validate = (_data) => {
-		// if(formData.email.length <= 6 ||  formData.message.length <= 20 || )
 		return true;
 	};
 

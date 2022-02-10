@@ -1,12 +1,86 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { HeroImagePallet } from "../util/UniversalData";
 import PortfolioVideo from "./PortfolioVideo";
 import Image from "next/image";
 import clsx from "clsx";
-import dynamic from "next/dynamic";
 import ReactGA from "react-ga4";
+import { isMobile } from "react-device-detect";
+
+const _buttonBreakpoint = 1150;
 
 const PortfolioPiece = ({ p, scroll, index }) => {
+	const [hoverState, setHoverState] = useState({
+		link: false,
+		repo: false,
+	});
+
+	const [points, setPoints] = useState({
+		link: "",
+		repo: "",
+		linkDims: {
+			width: "100px",
+			heigth: "50px",
+		},
+		repoDims: {},
+	});
+
+	const handleHover = (type, status) => {
+		console.log("type, status: ", type, status);
+		console.log("hoverState: ", hoverState);
+		if (typeof window === "undefined") return;
+		if (isMobile) {
+			console.log("isMobile: ", isMobile);
+			setHoverState({
+				...hoverState,
+				link: true,
+			});
+		}
+		if (!isMobile)
+			setHoverState({
+				...hoverState,
+				[type]: status,
+			});
+	};
+
+	useEffect(() => {
+		if (isMobile) {
+			console.log("isMobile: ", isMobile);
+			setHoverState({
+				...hoverState,
+				link: true,
+			});
+		}
+		if (typeof window !== "undefined") {
+			window.addEventListener("resize", () => {
+				if (window.innerWidth < _buttonBreakpoint || isMobile) {
+					setHoverState({
+						...hoverState,
+						link: true,
+					});
+				}
+			});
+		}
+	}, []);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			let newPoints = {
+				link: "",
+				repo: "",
+			};
+			let _rect = document.getElementById(`project-link-${index}`);
+			console.log("_rect: ", _rect);
+			if (!_rect) return;
+			let dims = _rect.getBoundingClientRect();
+			newPoints.link = `${dims.width},1 ${dims.width},${dims.height} 1,${dims.height} 1,1 ${dims.width},1`;
+			newPoints.linkDims = {
+				width: dims.width,
+				height: dims.height,
+			};
+			setPoints(newPoints);
+		}
+	}, []);
+
 	const logLiveView = () => {
 		ReactGA.event({
 			category: "Portfolio Piece",
@@ -59,7 +133,12 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 							{p.description}
 						</p>
 						<div className="portfolio-link-container">
-							<p className="repo-link">
+							<p
+								className={clsx("repo-link", hoverState.repo && "hovered")}
+								id={`repo-link-${index}`}
+								onMouseEnter={() => handleHover("repo", true)}
+								onMouseLeave={() => handleHover("repo", false)}
+							>
 								<a
 									href={p.repo}
 									style={{
@@ -72,13 +151,32 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 								</a>
 							</p>
 							{p.url ? (
-								<p className="project-link">
+								<p
+									className={clsx("project-link", hoverState.link && "hovered")}
+									id={`project-link-${index}`}
+									onMouseEnter={() => handleHover("link", true)}
+									onMouseLeave={() => handleHover("link", false)}
+								>
+									<svg
+										width={points.linkDims.width}
+										height={points.linkDims.height}
+										viewBox={`0 0 ${points.linkDims.width} ${points.linkDims.height}`}
+										className={clsx("svgBorder", hoverState.link && "hovered")}
+									>
+										<polyline
+											points={points.link}
+											className="bg-line"
+											id={`bg-line-${index}`}
+										/>
+										<polyline
+											points={points.link}
+											className="hl-line"
+											id={`hl-line-${index}`}
+										/>
+									</svg>
 									<a
 										href={p.url}
-										style={{
-											textDecoration: "none",
-											color: "rgb(0, 160, 242)",
-										}}
+										className={clsx("link-aTag", hoverState.link && "hovered")}
 										onClick={logLiveView}
 									>
 										Live Project
@@ -168,7 +266,12 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 							{p.description}
 						</p>
 						<div className="portfolio-link-container">
-							<p className="repo-link">
+							<p
+								className={clsx("repo-link", hoverState.repo && "hovered")}
+								id={`repo-link-${index}`}
+								onMouseEnter={() => handleHover("repo", true)}
+								onMouseLeave={() => handleHover("repo", false)}
+							>
 								<a
 									href={p.repo}
 									style={{
@@ -180,13 +283,32 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 									Repo
 								</a>
 							</p>
-							<p className="project-link">
+							<p
+								className={clsx("project-link", hoverState.link && "hovered")}
+								id={`project-link-${index}`}
+								onMouseEnter={() => handleHover("link", true)}
+								onMouseLeave={() => handleHover("link", false)}
+							>
+								<svg
+									width={points.linkDims.width}
+									height={points.linkDims.height}
+									viewBox={`0 0 ${points.linkDims.width} ${points.linkDims.height}`}
+									className={clsx("svgBorder", hoverState.link && "hovered")}
+								>
+									<polyline
+										points={points.link}
+										className="bg-line"
+										id={`bg-line-${index}`}
+									/>
+									<polyline
+										points={points.link}
+										className="hl-line"
+										id={`hl-line-${index}`}
+									/>
+								</svg>
 								<a
 									href={p.url}
-									style={{
-										textDecoration: "none",
-										color: "rgb(0, 160, 242)",
-									}}
+									className={clsx("link-aTag", hoverState.link && "hovered")}
 									onClick={logLiveView}
 								>
 									Live Project
