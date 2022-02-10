@@ -22,13 +22,21 @@ const NewContactModal = ({
 		company: "",
 		message: "",
 	});
+	const [formDataValidation, setFormDataValidation] = useState({
+		email: null,
+		name: null,
+		phone: null,
+		company: null,
+		message: null,
+	});
+
 	const [stepTwoFocusRef, setStepTwoFocusRef] = useState(null);
 	const [formStep, setFormStep] = useState(1);
 	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
 	const textAreaRef = useRef(null);
 	const validate = (_data) => {
-		// Handle this in the AM
+		// if(formData.email.length <= 6 ||  formData.message.length <= 20 || )
 		return true;
 	};
 
@@ -96,6 +104,93 @@ const NewContactModal = ({
 	}, [submittedBy]);
 
 	const handleChange = (e) => {
+		if (e.target.name === "email") {
+			if (
+				e.target.value.length >= 6 &&
+				e.target.value.indexOf("@") !== -1 &&
+				e.target.value.indexOf(".") !== -1
+			) {
+				setFormDataValidation({
+					...formDataValidation,
+					email: true,
+				});
+			}
+			if (
+				e.target.value.length < 6 ||
+				e.target.value.indexOf("@") === -1 ||
+				e.target.value.indexOf(".") === -1
+			) {
+				setFormDataValidation({
+					...formDataValidation,
+					email: false,
+				});
+			}
+		}
+		if (e.target.name === "name") {
+			if (e.target.value.length >= 4) {
+				setFormDataValidation({
+					...formDataValidation,
+					name: true,
+				});
+			}
+			if (e.target.value.length < 4) {
+				setFormDataValidation({
+					...formDataValidation,
+					name: false,
+				});
+			}
+		}
+		if (e.target.name === "phone") {
+			let _phone = "";
+			Array.from(formData.phone).map((p) => {
+				if (parseInt(p)) {
+					_phone += p;
+				}
+			});
+			if (_phone.length === 10) {
+				_phone = `1${_phone}`;
+			}
+			if (_phone.length !== 11) {
+				setFormDataValidation({
+					...formDataValidation,
+					phone: false,
+				});
+			}
+			if (_phone.length === 11) {
+				setFormDataValidation({
+					...formDataValidation,
+					phone: true,
+				});
+			}
+		}
+		if (e.target.name === "company") {
+			if (e.target.length < 4) {
+				setFormDataValidation({
+					...formDataValidation,
+					company: true,
+				});
+			}
+			if (e.target.length >= 4) {
+				setFormDataValidation({
+					...formDataValidation,
+					company: true,
+				});
+			}
+		}
+		if (e.target.name === "message") {
+			if (e.target.length < 50) {
+				setFormDataValidation({
+					...formDataValidation,
+					company: true,
+				});
+			}
+			if (e.target.length >= 50) {
+				setFormDataValidation({
+					...formDataValidation,
+					company: true,
+				});
+			}
+		}
 		setFormData({
 			...formData,
 			[e.target.name]: e.target.value,
@@ -168,11 +263,13 @@ const NewContactModal = ({
 							helperText={"Name"}
 							autoComplete={"name"}
 							placeHolder="Name"
+							valid={formData.name}
 							step={1}
 						/>
 						<InputEm
 							handleChange={handleChange}
 							_name={"email"}
+							valid={formData.email}
 							type={"email"}
 							autoComplete={"email"}
 							helperText={"Email"}
@@ -186,12 +283,14 @@ const NewContactModal = ({
 							_name={"company"}
 							helperText={"Your Company (if applicable)"}
 							placeHolder="Company"
+							valid={formData.company}
 							step={1}
 						/>
 						<InputEm
 							handleChange={handleChange}
 							_name={"phone"}
 							helperText={"Phone Number (optional)"}
+							valid={formData.phone}
 							placeHolder="Phone"
 							step={1}
 							inputMode="tel"
@@ -208,6 +307,7 @@ const NewContactModal = ({
 							// maxRows={20}
 							id="textAreaResize"
 							onHeightChange={observeHeightChange}
+							valid={formData.message}
 							className={clsx(
 								classes.contactFormTextArea,
 								"contactFormTextArea"
