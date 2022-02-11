@@ -93,13 +93,17 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 	};
 
 	useEffect(() => {
-		animatePiece({
-			scrollData: scroll,
-			index: index,
-			orientation: p.orientation,
-			idLeft: `portfolio-${p.orientation}-${index}`,
-			idRight: `portfolio-media-${p.orientation}-${index}`,
-		});
+		if (typeof window !== "undefined") {
+			window.requestAnimationFrame(() => {
+				animatePiece({
+					scrollData: scroll,
+					index: index,
+					orientation: p.orientation,
+					idLeft: `portfolio-${p.orientation}-${index}`,
+					idRight: `portfolio-media-${p.orientation}-${index}`,
+				});
+			});
+		}
 	}, [scroll]);
 
 	if (p.orientation === "left") {

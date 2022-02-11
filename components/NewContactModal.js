@@ -76,7 +76,7 @@ const NewContactModal = ({
 		if (formStep === 2) {
 			setTimeout(() => {
 				setRightButtonText("Send");
-			}, 1600);
+			}, 900);
 		}
 		if (formStep === 1) {
 			setTimeout(() => {

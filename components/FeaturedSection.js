@@ -59,7 +59,6 @@ const parallaxScrollAnim = () => {
 	let _oTop = rect.top;
 	let _h = rect.height;
 	let centeredLow = (window.innerHeight - _oTop + _h) / 1000;
-
 	if (centeredLow >= 0 && centeredLow < 1.5) {
 		tLeft.style.opacity = `${centeredLow - 0.3}`;
 	}
@@ -69,8 +68,4 @@ const parallaxScrollAnim = () => {
 	if (centeredLow >= 1) {
 		tRight.style.transform = `scale(1)`;
 	}
-	let centered =
-		(window.innerHeight - tLeft.getBoundingClientRect().top) /
-		Math.abs(tLeft.offsetTop - window.innerHeight) /
-		2;
 };

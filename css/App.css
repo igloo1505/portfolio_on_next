@@ -292,7 +292,7 @@ header .headerOverlayGallery {
 header nav ul .inlineNavLinks {
 	display: none;
 }
-header nav ul .inlineNavLinks:hover {
+header nav ul .inlineNavLinks a:hover {
 	cursor: pointer;
 }
 
@@ -406,6 +406,7 @@ section {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 0.5rem;
 }
 
 .featured::before {
@@ -457,7 +458,8 @@ section {
 }
 
 .featured-button-innerContainer {
-	width: 100%;
+	/* width: 100%; */
+	width: "fit-content";
 }
 
 .featured-button-underline {
@@ -831,35 +833,25 @@ section {
 	.featured-button-innerContainer {
 		width: fit-content;
 	}
+	.featured-button-innerContainer span {
+		color: #fff;
+	}
 	.featured-link-container {
 		align-items: center;
 	}
-	.featured-link-container a {
-		width: 100%;
-	}
 	.featured-repo-button {
-		width: 100%;
+		width: 80%;
+		margin-left: 10%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
 		flex-direction: column;
-		background-color: unset;
 	}
-	.featured-repo-button span {
-		color: #0080f0;
-	}
-	/* .burgerButtonLi {
-		display: none;
-	} */
+
 	.hero .heroText h1 {
 		width: 70%;
-		/* line-height: normal; */
-		/* line-height: 3.4rem; */
 	}
-	/* .featuredDescriptionText {
-		margin: 0rem;
-	} */
 
 	.nav-container {
 		display: -ms-grid;
@@ -959,6 +951,9 @@ section {
 	}
 	#recipeAppDemoVideo {
 		transform: scale(0);
+	}
+	.featured-link-container {
+		gap: 1rem;
 	}
 	.logoFont .innerLogoText {
 		border-bottom: 1px solid white;

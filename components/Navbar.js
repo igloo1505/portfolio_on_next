@@ -26,7 +26,6 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 			label: "Skills Click",
 		});
 		let home = scrollPaths.includes(router.asPath);
-
 		if (!home) {
 			router.push("/skills");
 		}

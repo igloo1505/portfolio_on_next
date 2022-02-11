@@ -153,8 +153,10 @@
 	float: left;
 
 	width: 100%;
+	transition: box-shadow 0.3s ease-in-out;
 	&:hover {
 		box-shadow: 1px 1px 5px#616161, -1px -1px 5px #757575;
+		cursor: pointer;
 	}
 }
 

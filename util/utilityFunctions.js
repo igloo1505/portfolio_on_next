@@ -22,7 +22,7 @@ export const getViewportDimensions = () => {
 
 export const moveToSectionBelow = () => {
 	let vp = getViewportDimensions();
-	console.log("Vp", vp.height);
+
 	gsap.to(".gallerySection", {
 		duration: 0.5,
 		transform: `translateY(-${vp.height}px)`,
@@ -41,7 +41,7 @@ export const getNavbarHeight = () => {
 	let com = document.getElementsByClassName("nav-container");
 	let rect = com[0].getBoundingClientRect();
 	//   let rec = com.getClientRect();
-	//   console.log(rec);
+	//
 	return {
 		// background: "#0080F0",
 		height: `calc(100vh - ${rect.height}px)`,

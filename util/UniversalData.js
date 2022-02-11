@@ -1,5 +1,8 @@
+import React, { useEffect } from "react";
 import triviaScreenShot from "../public/triviaScreenShot.png";
 import jeopardyScreenShot from "../public/jeopardyScreenShot.png";
+import clsx from "clsx";
+import { isMobile } from "react-device-detect";
 
 export const heroText = () => {
 	return (
@@ -29,6 +32,31 @@ export const promptText = () => {
 	return <p className="staggeredEntrance">Learn More Below</p>;
 };
 export const featuredTitleText = () => {
+	const checkHeight = () => {
+		if (typeof window !== "undefined") {
+			// window.innerHeight
+			let button = document.getElementById("button-mobile-transition");
+			if (!button) return;
+			let rect = button.getBoundingClientRect();
+			let _oTop = rect.top;
+			let _h = rect.height;
+			let centeredLow = (window.innerHeight * 0.6 - _oTop + _h) / 1000;
+
+			if (centeredLow >= 0) {
+				button.classList.add("filled");
+			}
+			if (centeredLow < 0) {
+				button.classList.remove("filled");
+			}
+		}
+	};
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			window.addEventListener("scroll", checkHeight);
+			window.addEventListener("resize", checkHeight);
+		}
+	}, []);
+
 	return (
 		<>
 			<p className="subtitle" style={{ color: AppColors.subtitleColor }}>
@@ -50,15 +78,16 @@ export const featuredTitleText = () => {
 					Very much a work in Progress
 				</p>
 				<a href="https://github.com/igloo1505/restaurant_template">
-					<p
-						className="featured-repo-button"
+					<div
+						className={clsx("featured-repo-button")}
+						id="button-mobile-transition"
 						href="https://github.com/igloo1505/restaurant_template"
 					>
 						<div className="featured-button-innerContainer">
 							<span>Repo</span>
-							<div className="featured-button-underline" />
+							<div className="featured-button-underline"></div>
 						</div>
-					</p>
+					</div>
 				</a>
 			</div>
 		</>
