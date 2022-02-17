@@ -7,6 +7,7 @@ import { formTransitionMobile } from "../animations/formTransitionMobile";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
 import ReactGA from "react-ga4";
+import { useRouter } from "next/router";
 
 const NewContactModal = ({
 	state: {
@@ -34,6 +35,19 @@ const NewContactModal = ({
 	const [formStep, setFormStep] = useState(1);
 	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
+	const [currentRoute, setCurrentRoute] = useState("index");
+	const router = useRouter();
+
+	useEffect(() => {
+		console.log("router.asPath: ", router.asPath);
+		if (router.asPath === "/") {
+			setCurrentRoute("index");
+		}
+		if (router.asPath === "/messages") {
+			setCurrentRoute("messages");
+		}
+	}, [router.asPath]);
+
 	const textAreaRef = useRef(null);
 	const validate = (_data) => {
 		return true;
@@ -245,6 +259,7 @@ const NewContactModal = ({
 			className={clsx(
 				classes.backdrop,
 				isOpen && classes.backdropIsOpen,
+				classes[`backdrop-${currentRoute}`],
 				"contact-modal-backdrop"
 			)}
 			onClick={handleBackdropClick}

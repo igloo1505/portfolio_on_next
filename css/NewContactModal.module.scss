@@ -14,6 +14,11 @@
 	visibility: hidden;
 	transition: all 0.3s ease-in-out;
 }
+
+.backdrop-messages {
+	display: none;
+}
+
 .backdropIsOpen {
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 998;

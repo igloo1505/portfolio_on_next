@@ -51,16 +51,14 @@ const Navbar = ({ props: { currentPath }, dispatch, state }) => {
 	};
 
 	return (
-		<>
-			<div className="nav-container" id="navbar-container-id">
-				<NavbarNavigationSection
-					currentPath={currentPath}
-					handleWorkClick={handleWorkClick}
-					handleSkillsClick={handleSkillsClick}
-					handleBurgerClick={handleBurgerClick}
-				/>
-			</div>
-		</>
+		<div className="nav-container" id="navbar-container-id">
+			<NavbarNavigationSection
+				currentPath={currentPath}
+				handleWorkClick={handleWorkClick}
+				handleSkillsClick={handleSkillsClick}
+				handleBurgerClick={handleBurgerClick}
+			/>
+		</div>
 	);
 };
 

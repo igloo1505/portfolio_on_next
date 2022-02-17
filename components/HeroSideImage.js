@@ -29,15 +29,15 @@ const HeroSideImage = () => {
 	useEffect(() => {
 		window.addEventListener("resize", () => {
 			if (typeof window !== "undefined") {
-				let _x = document.getElementsByClassName("hero-design");
-				if (!_x[0]) return;
-				_x[0].style.transform = "translateX(-50%)";
+				let _x = document.getElementById("hero-design-container");
+				if (!_x) return;
+				_x.style.transform = "translateX(-50%)";
 			}
 		});
 	}, []);
 
 	return (
-		<div>
+		<div id="hero-design-container" style={{}}>
 			<svg
 				className="hero-design"
 				xmlns="http://www.w3.org/2000/svg"
