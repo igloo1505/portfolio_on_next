@@ -9,9 +9,9 @@ module.exports = withPWA({
 	pwa: {
 		dest: "public",
 		register: true,
-		// disable: process.NODE_ENV === "development",
+		disable: process.NODE_ENV === "development",
 		// Only useful in development mode, it's handled automatically on deploy
-		mode: "production",
+		// mode: "production",
 	},
 	eslint: {
 		// Warning: This allows production builds to successfully complete even if

@@ -34,11 +34,8 @@ const ContactSection = ({ styles }) => {
 						</a>
 					</li>
 					<li>
-						<a
-							href="mailto:Andrew@igloodevelopment.dev"
-							onClick={logEmailClick}
-						>
-							Andrew@igloodevelopment.dev
+						<a href="mailto:Aiglinski@icloud.com" onClick={logEmailClick}>
+							Aiglinski@icloud.com
 						</a>
 					</li>
 					<li>

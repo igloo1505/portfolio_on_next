@@ -43,7 +43,16 @@ const FeaturedSection = () => {
 						{featuredTitleText()}
 					</div>
 				</div>
-				<VideoDemo _id={"recipeAppDemoVideo"} />
+				<VideoDemo
+					_id={"recipeAppDemoVideo"}
+					DefaultComponent={() => (
+						<Image
+							className="right transition2"
+							src={FeaturedImage}
+							alt="App Screenshot"
+						/>
+					)}
+				/>
 			</section>
 		</div>
 	);

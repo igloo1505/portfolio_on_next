@@ -223,6 +223,14 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 						<PortfolioVideo
 							piece={p}
 							_id={`portfolio-media-${p.orientation}-${index}`}
+							DefaultComponent={() => (
+								<Image
+									src={p.Image}
+									className={`portfolio-right transitionRight${p.transitionIndex}`}
+									alt="Portfolio"
+									id={`portfolio-media-${p.orientation}-${index}`}
+								/>
+							)}
 						/>
 					)}
 				</a>

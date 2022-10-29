@@ -47,6 +47,7 @@ button:active {
 	letter-spacing: 0.3rem;
 	font-style: normal;
 	z-index: 500;
+	cursor: pointer;
 }
 
 .bm-morph-shape {
@@ -877,6 +878,7 @@ section {
 	.socialHeader ul {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-start;
 		width: 9rem;
 		float: right;
 		margin-right: 15px;

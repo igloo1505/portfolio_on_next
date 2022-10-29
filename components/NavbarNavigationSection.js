@@ -4,6 +4,7 @@ import { socialLinks } from "../util/UniversalData";
 import { gitHubSvg, linkedInSvg } from "./svg";
 import ReactGA from "react-ga4";
 import { GrNotes } from "react-icons/gr";
+import { IoIosPaper } from "react-icons/io";
 import Link from "next/link";
 import Router from "next/router";
 import { connect } from "react-redux";
@@ -46,12 +47,16 @@ const NavbarNavigationSection = ({
 		});
 	};
 
+	const handleHomeClick = () => {
+		Router.push("/");
+	};
+
 	if (currentPath === "landing") {
 		return (
 			<Fragment>
 				<header id="navbarHeader">
 					<div className="headerOverlayLanding">
-						<i className="logoFont">
+						<i className="logoFont" onClick={handleHomeClick}>
 							Igl<span className="innerLogoText">ooDevelo</span>pment
 						</i>
 						<nav>
@@ -215,12 +220,13 @@ const PassRefComponent = forwardRef(() => {
 		Router.push("/resume");
 	};
 	return (
-		<GrNotes
+		<IoIosPaper
 			style={{
 				width: "auto",
 				height: "32px",
-				marginTop: "3px",
+				marginTop: "0px",
 				display: "block",
+				color: "#fc7753",
 			}}
 			className="resume-icon"
 			onClick={handleResumeClick}

@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const VideoDemo = ({ _id }) => {
+const VideoDemo = ({ _id, DefaultComponent }) => {
 	const [shouldPlay, setShouldPlay] = useState(false);
 	const videoRef = useRef(null);
 	const playVideo = () => {
+		if (videoRef.current) {
+			videoRef.current.muted = true;
+		}
 		videoRef.current?.play();
 	};
 	const pauseVideo = () => {
@@ -47,6 +50,7 @@ const VideoDemo = ({ _id }) => {
 				}}
 			>
 				<source src={"/recipeAppDemo.mp4"} />
+				<DefaultComponent />
 			</video>
 		</div>
 	);

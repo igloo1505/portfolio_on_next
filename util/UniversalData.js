@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import triviaScreenShot from "../public/triviaScreenShot.png";
 import jeopardyScreenShot from "../public/jeopardyScreenShot.png";
+import poetryScreenshot from "../public/poetryScreenshot.png";
 import clsx from "clsx";
 import { isMobile } from "react-device-detect";
 
@@ -168,6 +169,8 @@ export const portfolioArray = [
 		gaName: "Poetry Blog",
 		imageName: "poetryBlogV1",
 		videoSrc: "/poetryBlogV1.mp4",
+		imagePath: "/public/poetryScreenshot.png",
+		Image: poetryScreenshot,
 		// Video: PoetryBlogV1,
 		// url: "https://github.com/igloo1505/GenericJeopardy/tree/master",
 		repo: "https://github.com/igloo1505/poetry_blog",

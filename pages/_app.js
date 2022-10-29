@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/App.css";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import dynamic from "next/dynamic";
 import ReactGA from "react-ga4";
 import ttiPolyfill from "tti-polyfill";
