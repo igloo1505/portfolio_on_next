@@ -53,7 +53,6 @@ function MyApp({ Component, pageProps }) {
 				gtag('config', 'G-R8G93SKSG6');
 				`}
 				</Script>
-				<Analytics />
 				<div id="drawer-outer-container-id">
 					<Drawer />
 					<Navbar currentPath="landing" />
