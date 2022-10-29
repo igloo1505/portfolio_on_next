@@ -4,6 +4,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import dynamic from "next/dynamic";
 import ReactGA from "react-ga4";
+import { Analytics } from "@vercel/analytics/react";
 import ttiPolyfill from "tti-polyfill";
 import Navbar from "../components/Navbar";
 // import ContactModal from "../components/NewContactModal";
@@ -52,6 +53,7 @@ function MyApp({ Component, pageProps }) {
 				gtag('config', 'G-R8G93SKSG6');
 				`}
 				</Script>
+				<Analytics />
 				<div id="drawer-outer-container-id">
 					<Drawer />
 					<Navbar currentPath="landing" />
