@@ -2,9 +2,14 @@
 	box-sizing: border-box;
 	max-width: 1080px;
 	margin: auto;
-	padding: 30px;
+	padding: 30px 30px 1rem 30px;
 	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 }
 
 .resumeOuterWrapper * {
@@ -192,4 +197,28 @@
 		box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 		padding: 1rem;
 	}
+}
+
+.resumeImage {
+	object-fit: cover;
+	max-width: 100% !important;
+	max-height: unset !important;
+}
+
+.downloadButton {
+	background-color: #ff5316;
+	padding: 0.5rem 0.75rem;
+	color: #fff;
+	border-radius: 10px;
+	margin: 2rem;
+	border: 1px solid transparent;
+	transition: all 0.3s ease-in-out;
+}
+.downloadButton:hover {
+	padding: 0.5rem 0.75rem;
+	background-color: #f0efe8;
+	color: #ff5316;
+	border: 1px solid #ff5316;
+	border-radius: 0px;
+	margin: 2rem;
 }

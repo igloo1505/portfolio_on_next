@@ -13,7 +13,7 @@ const Resume = ({
 	useEffect(() => {
 		if (navbarHeight) {
 			setExtraStyles({
-				padding: `${navbarHeight}px 0 2rem 0`,
+				padding: `${navbarHeight}px 0 1rem 0`,
 			});
 		}
 	}, []);
