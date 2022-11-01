@@ -12,6 +12,20 @@ import { socialLinks } from "../util/UniversalData";
 // pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
 const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
 
+const setOverlayHeight = () => {
+	if (!store.getState().drawer.isOpen) return;
+	let em = document.getElementsByClassName("bm-overlay").item(0);
+	let navH = store.getState().navbar.height;
+	let st = window.scrollY;
+	console.log("navH - st: ", navH - st);
+	if (navH - st >= 0) {
+		em.style.top = `${navH - st}px`;
+	}
+	if (navH - st < 0) {
+		em.style.top = "0px";
+	}
+};
+
 const handleContactClick = () => {
 	ReactGA.event({
 		category: "Contact",
@@ -28,6 +42,13 @@ const Drawer = ({
 	},
 	dispatch,
 }) => {
+	useEffect(() => {
+		if (typeof window === "undefined") {
+			return;
+		}
+		document.addEventListener("scroll", setOverlayHeight);
+		setOverlayHeight();
+	}, [isOpen]);
 	const router = useRouter();
 	const handleResumeClick = () => {
 		store.dispatch({

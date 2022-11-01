@@ -247,6 +247,11 @@ img {
 	margin: 3rem 0rem;
 }
 
+.burger {
+	position: relative !important;
+	right: 0;
+}
+
 .burgerButtonOpen .burger-lines::before {
 	background-color: #000 !important;
 }
@@ -325,6 +330,10 @@ header nav .burgerButton {
 .burgerButtonOpen {
 	color: #000;
 	z-index: 99999;
+	height: 36px;
+	width: 36px;
+	position: fixed !important;
+	right: 1.5rem;
 }
 
 .burgerButtonOpen .burger-lines {
@@ -337,6 +346,7 @@ header nav .burgerButtonLi {
 	margin-right: 5px;
 	margin-left: auto;
 	z-index: 99;
+	height: 36px;
 }
 header nav .burgerButtonLiOpen {
 	z-index: 9999;
@@ -354,9 +364,7 @@ header nav .burgerButtonLiOpen {
 }
 .drawer-social-section li {
 	display: list-item;
-	height: 100%;
-	max-height: 100%;
-	width: auto;
+	width: 2rem;
 }
 
 .socialHeader,
@@ -1115,3 +1123,8 @@ svg {
   font-size: 18px;
   font-weight: 100;
 } */
+
+.bm-overlay {
+	height: 100vh !important;
+	top: 0;
+}
