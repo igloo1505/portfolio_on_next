@@ -18,6 +18,9 @@ const initialState = {
 	toast: {
 		submittedBy: null,
 	},
+	messages: {
+		contacts: [],
+	},
 };
 
 const withDevtools = () => {

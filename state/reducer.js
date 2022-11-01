@@ -18,6 +18,9 @@ const initialState = {
 	toast: {
 		submittedBy: null,
 	},
+	messages: {
+		contacts: [],
+	},
 };
 
 const onlyReducer = createReducer(initialState, (builder) => {
@@ -92,6 +95,15 @@ const onlyReducer = createReducer(initialState, (builder) => {
 			...state,
 			toast: {
 				submittedBy: action.payload,
+			},
+		};
+	});
+	builder.addCase(Types.SET_CONTACTS, (state, action) => {
+		return {
+			...state,
+			messages: {
+				...state.messages,
+				contacts: action.payload,
 			},
 		};
 	});

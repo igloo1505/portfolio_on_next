@@ -2,23 +2,29 @@ import { connectDB } from "../../util/connectDB";
 import Cookies from "cookies";
 import bcrypt from "bcryptjs";
 import User from "../../models/User";
+import Contact from "../../models/Contact";
 const nc = require("next-connect");
 
 const handler = nc();
 
 handler.post(async (req, res) => {
-	const { password, userID } = req.body;
+	const { name, password } = req.body;
 	try {
-		let salt = bcrypt.genSalt(10);
-		let hashed = bcrypt.hash(password, salt);
-		console.log("hashed: ", password, hashed);
-		const user = new User({
-			userID,
-			hashed,
-		});
-		const newUser = user;
-		// const newUser = await user.save()
-		return res.json(newUser);
+		let user = await User.findOne({ email: name });
+		if (!user) {
+			return res.json({ success: false, msg: "User not found." });
+		}
+		let passed = await bcrypt.compare(password, user.password);
+
+		if (passed) {
+			let contacts = await Contact.find().limit(50).sort({ date: -1 });
+			return res
+				.status(200)
+				.json({ success: true, authID: user._id, contacts: contacts });
+		}
+		if (!passed) {
+			return res.status(401).json({ success: false });
+		}
 	} catch (error) {
 		res.status(500).send(`Ah shucky ducky... auth failed. ${error.message}`);
 	}

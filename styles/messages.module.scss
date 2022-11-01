@@ -1,12 +1,32 @@
-.unAuthedContainer {
-	width: 100vw;
-	padding: 2rem;
-	display: flex;
+.messageOuterContainer {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	box-sizing: border-box;
-	overflow: hidden;
+}
+.showButtonContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 3rem;
+	padding: 0 1.5rem;
+}
+.showReadButton {
+	background-color: #ff5316;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.noShowReadButton {
+	background-color: #fff;
+	border: 2px solid #ff5316;
+	color: #ff5316;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	cursor: pointer;
 }
 
 .messages-container {
@@ -38,7 +58,7 @@
 	width: 100%;
 	padding: 1rem;
 	color: #fff;
-	background-color: #0080f0;
+	background-color: #ff5316;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	display: flex;
@@ -47,8 +67,10 @@
 }
 .message-card-inner {
 	width: 100%;
+	color: #fff;
 	padding: 1rem;
 	flex-grow: 1;
+	background-color: #ff5316;
 }
 
 .message-card-buttonContainer {
@@ -57,7 +79,9 @@
 	flex-direction: row;
 	justify-content: flex-end;
 	gap: 0.5rem;
-	padding: 0.5rem 1rem;
+	padding: 1rem;
+	background-color: #ff5316;
+	border-radius: 0px 0px 10px 10px;
 }
 
 .message-button {
@@ -81,5 +105,61 @@
 	.message-card {
 		width: calc(50% - 2rem);
 		min-height: 200px;
+	}
+}
+
+.unAuthedContainer {
+	width: 100vw;
+	height: 100vh;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.loginCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+	min-width: 400px;
+	min-height: 150px;
+	padding: 2rem;
+	border-radius: 20px;
+	background-color: #ff5316;
+	color: #fff;
+	.cardInput {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	input {
+		width: 100%;
+		line-height: 1.5rem;
+		background-color: #ff5316;
+		height: 2rem;
+		color: #fff;
+		border: 1px solid #fff;
+		padding: 0.5rem;
+		font-size: 1.2rem;
+		&:focus-visible {
+			border: 1px solid #fff;
+			outline: none !important;
+		}
+		&::placeholder {
+			color: #fff;
+		}
+	}
+	.loginButton {
+		background-color: #fff;
+		color: #ff5316;
+		border-radius: 10px;
+		padding: 0.5rem 0.75rem;
+		cursor: pointer;
 	}
 }

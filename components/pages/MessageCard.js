@@ -3,38 +3,45 @@ import classes from "../../styles/messages.module.scss";
 import clsx from "clsx";
 import gsap from "gsap";
 import day from "dayjs";
+import axios from "axios";
 
 const MessageCard = ({
 	message: { email, name, phone, company, message, read, date, _id },
-	handleDelete,
-	toggleRead,
 	index,
+	setContacts,
+	contacts,
 }) => {
 	const [deleteTimerStart, setDeleteTimerStart] = useState(null);
 
-	const handleDeleteClick = () => {
-		if (!deleteTimerStart) {
-			setDeleteTimerStart(Date.now());
-			setTimeout(() => {
-				setDeleteTimerStart(null);
-			}, 3000);
-		}
-		if (deleteTimerStart && Date.now() - deleteTimerStart <= 3000) {
-			handleDelete({ id: _id });
-		}
+	const handleDeleteClick = async () => {
+		let res = await axios.post(
+			"/api/deleteContact",
+			{ id: _id },
+			{
+				"Content-type": "application/json",
+			}
+		);
+		setContacts(contacts.filter((c) => c._id !== res.data?._id));
 	};
 
-	useEffect(() => {
-		if (deleteTimerStart) {
-			allowDeleteAnim({ index, id: _id });
-		}
-	}, [deleteTimerStart]);
-	let _date = day(date, "MM-DD-YY");
+	const toggleRead = async () => {
+		let res = await axios.post(
+			"/api/toggleRead",
+			{ id: _id },
+			{
+				"Content-type": "application/json",
+			}
+		);
+		setContacts(contacts.map((c) => (c._id === res.data?._id ? res.data : c)));
+	};
+
+	let _date = day(date).format("ddd, MM/D/YY [at] h:mma");
+
 	return (
 		<div className={classes["message-card"]}>
 			<div className={classes["message-card-top"]}>
 				<span>{name}</span>
-				<span>{day(date).format("MMM-D-YY")}</span>
+				<span>{_date}</span>
 			</div>
 			<div className={classes["message-card-inner"]}>{message}</div>
 			<div className={classes["message-card-buttonContainer"]}>
@@ -49,7 +56,7 @@ const MessageCard = ({
 					className={classes["message-button"]}
 					onClick={() => toggleRead({ id: _id })}
 				>
-					Read
+					{read ? "Mark Unread" : "Mark Read"}
 				</button>
 			</div>
 		</div>
