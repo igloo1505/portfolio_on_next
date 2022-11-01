@@ -31,6 +31,7 @@
 		"colors": "^1.4.0",
 		"cookies": "^0.8.0",
 		"dayjs": "^1.10.7",
+		"formik": "^2.2.9",
 		"gsap": "^3.9.1",
 		"mobile-device-detect": "^0.4.3",
 		"mongodb": "^4.3.1",
@@ -38,7 +39,6 @@
 		"next": "^12.2.3",
 		"next-connect": "^0.11.1",
 		"next-pwa": "^5.4.4",
-		"next-videos": "^1.5.0",
 		"pdfjs-dist": "^2.15.349",
 		"react": "^17.0.2",
 		"react-burger-menu": "^3.0.6",
@@ -53,7 +53,8 @@
 		"sass": "^1.49.7",
 		"sharp": "^0.30.0",
 		"tti-polyfill": "^0.2.2",
-		"web-vitals": "^0.2.4"
+		"web-vitals": "^0.2.4",
+		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"eslint": "^8.8.0",

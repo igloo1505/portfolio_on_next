@@ -133,7 +133,7 @@ const animateEntrance = (onComplete) => {
 		y: "-50%",
 		visibility: "visible",
 		opacity: 1,
-		duration: 1,
+		duration: 1.5,
 		ease: "elastic.out(1, 0.4)",
 	});
 };

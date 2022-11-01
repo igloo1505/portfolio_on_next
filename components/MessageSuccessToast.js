@@ -23,8 +23,7 @@ const MessageSuccessToast = ({
 				});
 			setTimeout(() => {
 				animateClose({ onComplete });
-				// animateClose({ onComplete });
-			}, 3000);
+			}, 4500);
 		}
 	}, [submittedBy, dispatch]);
 
@@ -54,18 +53,12 @@ export default connect(mapStateToProps)(MessageSuccessToast);
 
 const animateClose = ({ onComplete }) => {
 	let tl = gsap.timeline({ onComplete: onComplete });
+	let w = window.innerWidth;
 	tl.to(".toastContainer", {
 		duration: 1,
-		scaleY: 0,
-		ease: "power3.inOut",
+		x: -w,
+		scale: 0.5,
+		opacity: 0,
+		ease: "power4.inOut",
 	});
-	tl.to(
-		".toastContainer",
-		{
-			x: -300,
-			duration: 0.5,
-			ease: "power2.inOut",
-		},
-		"+=0.5"
-	);
 };

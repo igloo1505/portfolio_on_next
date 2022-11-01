@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { slide as Menu } from "react-burger-menu";
-// import { scaleRotate as Menu } from "react-burger-menu";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
 import ReactGA from "react-ga4";
 import store from "../state/store";
-import { FcSms, FcFactory, FcInspection } from "react-icons/fc";
+import { FcSms, FcFactory, FcInspection, FcBriefcase } from "react-icons/fc";
 import gsap from "gsap";
 import { Router, useRouter } from "next/router";
-
+import { gitHubSvg, linkedInSvg } from "./svg";
+import { socialLinks } from "../util/UniversalData";
 // pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
 const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
 
@@ -29,6 +29,17 @@ const Drawer = ({
 	dispatch,
 }) => {
 	const router = useRouter();
+	const handleResumeClick = () => {
+		store.dispatch({
+			type: Types.SET_DRAWER_CLOSED,
+		});
+		ReactGA.event({
+			category: "Navigation",
+			action: "Resume Clicked",
+			label: "Resume Clicked-Drawer",
+		});
+		router.push("/resume");
+	};
 
 	const handleWorkClick = () => {
 		store.dispatch({
@@ -98,6 +109,7 @@ const Drawer = ({
 		>
 			<MobileNavSection
 				handleWorkClick={handleWorkClick}
+				handleResumeClick={handleResumeClick}
 				handleSkillsClick={handleSkillsClick}
 			/>
 		</Menu>
@@ -116,7 +128,7 @@ const MobileNavSection = connect(mapStateToProps)(
 		state: {
 			navbar: { height: navHeight },
 		},
-		props: { handleWorkClick, handleSkillsClick },
+		props: { handleWorkClick, handleSkillsClick, handleResumeClick },
 		dispatch,
 	}) => {
 		const [extraStyles, setExtraStyles] = useState({});
@@ -156,12 +168,34 @@ const MobileNavSection = connect(mapStateToProps)(
 				</div>
 				<div className="drawer-item-divider" />
 				<div className="drawer-item-container">
+					<FcBriefcase className="drawer-color-icon" />
+					<a className="modal-trigger drawer-item" onClick={handleResumeClick}>
+						Resume
+					</a>
+				</div>
+				<div className="drawer-item-divider" />
+				<div className="drawer-item-container">
 					<FcSms className="drawer-color-icon" />
 					<a className="modal-trigger drawer-item" onClick={handleContactClick}>
 						Contact Me
 					</a>
 				</div>
-				<div className="drawer-item-divider" />
+				<ul className="drawer-social-section">
+					<li>
+						<a target="_blank" rel="noreferrer" href={socialLinks.github.link}>
+							{gitHubSvg("#000")}
+						</a>
+					</li>
+					<li>
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href={socialLinks.linkedIn.link}
+						>
+							{linkedInSvg("#000", "auto", "auto")}
+						</a>
+					</li>
+				</ul>
 			</div>
 		);
 	}

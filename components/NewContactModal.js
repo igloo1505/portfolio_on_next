@@ -8,6 +8,22 @@ import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
 import ReactGA from "react-ga4";
 import { useRouter } from "next/router";
+import { Formik, Form, Field, useFormik } from "formik";
+import * as Yup from "yup";
+
+const ContactSchema = Yup.object().shape({
+	name: Yup.string()
+		.min(3, "Too Short!")
+		.max(20, "Too Long!")
+		.required("Required"),
+	phone: Yup.string().min(7, "Not long enough...").max(11, "Too long!"),
+	company: Yup.string().min(2, "Too Short!").max(30, "Too Long!"),
+	message: Yup.string()
+		.min(10, "Too Short!")
+		.max(500, "Too Long!")
+		.required("Required"),
+	email: Yup.string().email("Invalid email").required("Required"),
+});
 
 const NewContactModal = ({
 	state: {
@@ -16,22 +32,36 @@ const NewContactModal = ({
 	},
 	dispatch,
 }) => {
-	const [formData, setFormData] = useState({
-		email: "",
-		name: "",
-		phone: "",
-		company: "",
-		message: "",
-	});
-	const [formDataValidation, setFormDataValidation] = useState({
-		email: null,
-		name: null,
-		phone: null,
-		company: null,
-		message: null,
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			name: "",
+			phone: "",
+			company: "",
+			message: "",
+		},
+		validationSchema: ContactSchema,
+		onSubmit: async (values) => {
+			try {
+				let res = await axios.post("/api/contact", values, {
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (res.status === 200) {
+					handleBack();
+					formik.resetForm();
+					dispatch({
+						type: Types.POST_CONTACT_SUCCESS,
+						payload: res.data.name,
+					});
+				}
+			} catch (error) {
+				console.log("error: ", error);
+			}
+		},
 	});
 
-	const [stepTwoFocusRef, setStepTwoFocusRef] = useState(null);
 	const [formStep, setFormStep] = useState(1);
 	const [stepTwoHeight, setStepTwoHeight] = useState({});
 	const [rightButtonText, setRightButtonText] = useState("Next");
@@ -49,33 +79,37 @@ const NewContactModal = ({
 	}, [router.asPath]);
 
 	const textAreaRef = useRef(null);
-	const validate = (_data) => {
-		return true;
-	};
 
+	// TODO: add formik here and forgo this ridiculous validation
 	const handleSubmit = async (e) => {
 		ReactGA.event({
 			category: "Contact",
 			action: "Contact Sent",
 			label: "Contact request sent",
 		});
-		if (validate(formData)) {
-			e.preventDefault();
-			try {
-				let res = await axios.post("/api/contact", formData, {
-					headers: {
-						"Content-Type": "application/json",
-					},
-				});
+		// if (validate(formData)) {
+		// 	e.preventDefault();
+		// 	console.log("Made it here...");
+		// 	try {
+		// 		let res = await axios.post("/api/contact", formData, {
+		// 			headers: {
+		// 				"Content-Type": "application/json",
+		// 			},
+		// 		});
 
-				if (res.status === 200) {
-					dispatch({
-						type: Types.POST_CONTACT_SUCCESS,
-						payload: res.data.name,
-					});
-				}
-			} catch (error) {}
-		}
+		// 		console.log("res: ", res);
+		// 		console.log("res.data: ", res.data);
+
+		// 		if (res.status === 200) {
+		// 			dispatch({
+		// 				type: Types.POST_CONTACT_SUCCESS,
+		// 				payload: res.data.name,
+		// 			});
+		// 		}
+		// 	} catch (error) {
+		// 		console.log("error: ", error);
+		// 	}
+		// }
 	};
 
 	useEffect(() => {
@@ -113,111 +147,10 @@ const NewContactModal = ({
 	useEffect(() => {
 		if (submittedBy) {
 			handleBackdropClick();
-
-			setFormData({
-				email: "",
-				name: "",
-				phone: "",
-				company: "",
-				message: "",
-			});
+			formik.resetForm();
 			setFormStep(1);
 		}
 	}, [submittedBy]);
-
-	const handleChange = (e) => {
-		if (e.target.name === "email") {
-			if (
-				e.target.value.length >= 6 &&
-				e.target.value.indexOf("@") !== -1 &&
-				e.target.value.indexOf(".") !== -1
-			) {
-				setFormDataValidation({
-					...formDataValidation,
-					email: true,
-				});
-			}
-			if (
-				e.target.value.length < 6 ||
-				e.target.value.indexOf("@") === -1 ||
-				e.target.value.indexOf(".") === -1
-			) {
-				setFormDataValidation({
-					...formDataValidation,
-					email: false,
-				});
-			}
-		}
-		if (e.target.name === "name") {
-			if (e.target.value.length >= 4) {
-				setFormDataValidation({
-					...formDataValidation,
-					name: true,
-				});
-			}
-			if (e.target.value.length < 4) {
-				setFormDataValidation({
-					...formDataValidation,
-					name: false,
-				});
-			}
-		}
-		if (e.target.name === "phone") {
-			let _phone = "";
-			Array.from(formData.phone).map((p) => {
-				if (parseInt(p)) {
-					_phone += p;
-				}
-			});
-			if (_phone.length === 10) {
-				_phone = `1${_phone}`;
-			}
-			if (_phone.length !== 11) {
-				setFormDataValidation({
-					...formDataValidation,
-					phone: false,
-				});
-			}
-			if (_phone.length === 11) {
-				setFormDataValidation({
-					...formDataValidation,
-					phone: true,
-				});
-			}
-		}
-		if (e.target.name === "company") {
-			if (e.target.length < 4) {
-				setFormDataValidation({
-					...formDataValidation,
-					company: true,
-				});
-			}
-			if (e.target.length >= 4) {
-				setFormDataValidation({
-					...formDataValidation,
-					company: true,
-				});
-			}
-		}
-		if (e.target.name === "message") {
-			if (e.target.length < 50) {
-				setFormDataValidation({
-					...formDataValidation,
-					company: true,
-				});
-			}
-			if (e.target.length >= 50) {
-				setFormDataValidation({
-					...formDataValidation,
-					company: true,
-				});
-			}
-		}
-		setFormData({
-			...formData,
-			[e.target.name]: e.target.value,
-		});
-	};
 
 	const handleBack = (e) => {
 		setFormStep(1);
@@ -230,12 +163,7 @@ const NewContactModal = ({
 		setFormStep(formStep + 1);
 		formTransitionMobile({
 			next: true,
-			onComplete: () => {
-				//
-				// if (stepTwoFocusRef) {
-				// 	stepTwoFocusRef.focus();
-				// }
-			},
+			onComplete: () => {},
 		});
 	};
 
@@ -281,47 +209,52 @@ const NewContactModal = ({
 				>
 					<div className={classes.formTopRow}>
 						<InputEm
-							handleChange={handleChange}
+							handleChange={formik.handleChange}
 							_name={"name"}
-							value={formData.name}
+							value={formik.values.name}
 							helperText={"Name"}
 							autoComplete={"name"}
 							placeHolder="Name"
-							valid={formDataValidation.name}
 							step={1}
+							_type="text"
+							errors={formik.errors.name}
 						/>
 						<InputEm
-							handleChange={handleChange}
+							handleChange={formik.handleChange}
 							_name={"email"}
-							value={formData.email}
-							valid={formDataValidation.email}
-							type={"email"}
+							value={formik.values.email}
+							_type="email"
 							autoComplete={"email"}
 							helperText={"Email"}
 							placeHolder="Email"
 							step={1}
+							errors={formik.errors.email}
 						/>
 					</div>
 					<div className={classes.formRow}>
 						<InputEm
-							handleChange={handleChange}
+							handleChange={(e) => {
+								console.log("formik", formik);
+								formik.handleChange(e);
+							}}
 							_name={"company"}
-							value={formData.company}
+							value={formik.values.company}
 							helperText={"Your Company (if applicable)"}
 							placeHolder="Company"
-							valid={formDataValidation.company}
+							_type="text"
 							step={1}
 						/>
 						<InputEm
-							handleChange={handleChange}
+							handleChange={formik.handleChange}
 							_name={"phone"}
 							helperText={"Phone Number (optional)"}
-							valid={formDataValidation.phone}
 							placeHolder="Phone"
-							value={formData.phone}
+							value={formik.values.phone}
 							step={1}
+							_type="tel"
 							inputMode="tel"
 							autoComplete={"tel"}
+							errors={formik.errors.tel}
 						/>
 					</div>
 					<div
@@ -334,16 +267,15 @@ const NewContactModal = ({
 							// maxRows={20}
 							id="textAreaResize"
 							onHeightChange={observeHeightChange}
-							valid={formDataValidation.message}
-							value={formData.message}
+							value={formik.values.message}
 							className={clsx(
 								classes.contactFormTextArea,
 								"contactFormTextArea"
 							)}
-							// TODO: make sure this focuses on the textarea automatically on next click
-							// ref={(tag) => setStepTwoFocusRef(tag)}
 							name="message"
-							onChange={handleChange}
+							_type="text"
+							onChange={formik.handleChange}
+							errors={formik.errors.message}
 							// autoFocus
 						/>
 					</div>
@@ -377,7 +309,7 @@ const NewContactModal = ({
 							"nextButton"
 						)}
 						id="contact-next-button"
-						onClick={formStep === 1 ? handleNext : handleSubmit}
+						onClick={formStep === 1 ? handleNext : formik.handleSubmit}
 					>
 						<div className={classes.buttonText} id="right-button-text">
 							{rightButtonText}
@@ -403,8 +335,22 @@ const InputEm = ({
 	placeHolder,
 	step,
 	value,
-	...props
+	_type,
+	autoComplete,
+	inputMode,
+	errors,
 }) => {
+	let pattern = _type === "tel" ? "[0-9]{3}-[0-9]{2}-[0-9]{3}" : null;
+	const [hasErrors, setHasErrors] = useState(false);
+	useEffect(() => {
+		console.log("errors: ", errors);
+		let _errors = errors;
+		if (_type === "email" && value.length <= 8) {
+			_errors = false;
+		}
+		setHasErrors(_errors);
+	}, [errors, value.length]);
+
 	return (
 		<div
 			className={clsx(
@@ -416,14 +362,34 @@ const InputEm = ({
 		>
 			<input
 				className={classes.input}
-				type="text"
+				type={_type}
 				placeholder={placeHolder}
 				value={value}
-				onChange={handleChange}
+				onChange={(e) => {
+					if (_type === "tel") {
+						let d = e.target.value.match(/\d+/g)?.join("");
+						e.target.value = typeof d === "undefined" ? "" : d;
+						e.target.value =
+							e.target.value.length > 11
+								? e.target.value.slice(0, 11)
+								: e.target.value;
+					}
+					handleChange(e);
+				}}
 				name={_name}
-				{...props}
+				handleChange
+				autoComplete={autoComplete}
+				inputMode={inputMode}
+				pattern={pattern}
 			/>
-			<div className={classes.helperText}>{helperText}</div>
+			<div
+				className={clsx(
+					classes.helperText,
+					hasErrors && classes.helperTextErrors
+				)}
+			>
+				{hasErrors ? hasErrors : helperText}
+			</div>
 		</div>
 	);
 };
