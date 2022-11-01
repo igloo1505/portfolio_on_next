@@ -10,7 +10,7 @@ export default function Document() {
 				<meta name="apple-mobile-web-app-title" content="iglooDevelopment" />
 				<meta
 					name="description"
-					content="Milwaukee based web and iOS developer."
+					content="Milwaukee based web and iOS developer building awesome, modern websites and mobile apps since 2015. A ton of React, Python for data, and a wee bit of Swift when I'm feeling squirrely."
 				/>
 				<meta name="format-detection" content="telephone=no" />
 				<meta name="mobile-web-app-capable" content="yes" />

@@ -1,0 +1,4 @@
+Sitemap: http://www.igloodevelopment.dev/sitemap.xml
+Sitemap: https://www.igloodevelopment.dev/sitemap.xml
+Sitemap: http://igloodevelopment.dev/sitemap.xml
+Sitemap: https://igloodevelopment.dev/sitemap.xml
