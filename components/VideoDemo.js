@@ -40,7 +40,6 @@ const VideoDemo = ({ _id, DefaultComponent }) => {
 		>
 			<video
 				id={_id}
-				type="video/mp4"
 				ref={videoRef}
 				loop
 				muted
@@ -49,7 +48,8 @@ const VideoDemo = ({ _id, DefaultComponent }) => {
 					width: "100%",
 				}}
 			>
-				<source src={"/recipeAppDemo.mp4"} />
+				<source src={"/recipeAppDemo.mp4"} type="video/webm" />
+				<source src={"/recipeAppDemoCompressed.mp4"} type="video/mp4" />
 				<DefaultComponent />
 			</video>
 		</div>

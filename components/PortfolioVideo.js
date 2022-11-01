@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 // import dynamic from "next/dynamic";
 // const BlogVideo = dynamic(() => import("../public/PoetryBlogV1.mp4"));
 
-// Handle this import differently if using this multiple times. Just doing it this way because it's only being used once and I spent 3 hours looking for a missplaced "/".
 const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 	const [shouldPlay, setShouldPlay] = useState(false);
 	const videoRef = useRef(null);
@@ -49,7 +48,6 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 			<video
 				id="portfolioAppDemoVideo"
 				className="portfolio-right-6 transitionRight6"
-				type="video/mp4"
 				ref={videoRef}
 				loop
 				muted
@@ -58,7 +56,8 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 					width: "100%",
 				}}
 			>
-				<source src={"/PoetryBlogV1.mp4"} />
+				<source src={"/poetryBlogDemo.webm"} type="video/webm" />
+				<source src={"/poetryBlogDemo.mp4"} type="video/mp4" />
 				<DefaultComponent />
 			</video>
 		</div>
