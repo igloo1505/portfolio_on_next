@@ -1,4 +1,4 @@
-import React, { Fragment, forwardRef } from "react";
+import React, { useState, Fragment, forwardRef } from "react";
 import Burger from "@animated-burgers/burger-squeeze";
 import { socialLinks } from "../util/UniversalData";
 import { gitHubSvg, linkedInSvg } from "./svg";
@@ -21,6 +21,8 @@ const NavbarNavigationSection = ({
 	},
 	dispatch,
 }) => {
+	const [resumeHovered, setResumeHovered] = useState(false);
+
 	const logGitView = () => {
 		ReactGA.event({
 			category: "Navigation",
@@ -112,7 +114,13 @@ const NavbarNavigationSection = ({
 								{linkedInSvg("#000", "auto", "auto")}
 							</a>
 						</li>
-						<li style={{ display: socialLinks.linkedIn.display }}>
+						<li
+							style={{ display: socialLinks.linkedIn.display }}
+							onMouseEnter={() => {
+								if (Router.pathname !== "/resume") setResumeHovered(true);
+							}}
+							onMouseLeave={() => setResumeHovered(false)}
+						>
 							<Link
 								rel="noreferrer"
 								href="/resume"
@@ -121,6 +129,14 @@ const NavbarNavigationSection = ({
 							>
 								<PassRefComponent />
 							</Link>
+							<div
+								className={clsx(
+									"resumeTooltipHidden",
+									resumeHovered && "resumeToolTipShow"
+								)}
+							>
+								Resume
+							</div>
 						</li>
 					</ul>
 				</div>

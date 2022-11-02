@@ -1128,3 +1128,17 @@ svg {
 	height: 100vh !important;
 	top: 0;
 }
+
+.resumeTooltipHidden {
+	visibility: hidden;
+	opacity: 0;
+	padding: 0.25rem 0.35rem;
+	color: #fff;
+	transition: opacity 0.3s ease-in-out;
+	border-radius: 2px;
+}
+.resumeToolTipShow {
+	opacity: 1;
+	visibility: visible;
+	background-color: #ff5316;
+}
