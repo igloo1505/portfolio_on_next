@@ -15,6 +15,7 @@ const scrollPaths = ["/featured", "/skills", "/portfolio", "/"];
 const setOverlayHeight = () => {
 	if (!store.getState().drawer.isOpen) return;
 	let em = document.getElementsByClassName("bm-overlay").item(0);
+	em.style.willChange = "scroll-position";
 	let navH = store.getState().navbar.height;
 	let st = window.scrollY;
 	console.log("navH - st: ", navH - st);
