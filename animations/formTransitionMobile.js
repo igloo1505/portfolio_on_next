@@ -134,7 +134,7 @@ const animateEntrance = (onComplete) => {
 		visibility: "visible",
 		opacity: 1,
 		duration: 1.5,
-		ease: "elastic.out(1, 0.4)",
+		ease: "elastic.out(1, 0.6)",
 	});
 };
 
