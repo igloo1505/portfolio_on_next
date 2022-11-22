@@ -7,7 +7,11 @@ import ReactGA from "react-ga4";
 import { Analytics } from "@vercel/analytics/react";
 import ttiPolyfill from "tti-polyfill";
 import Navbar from "../components/Navbar";
-// import ContactModal from "../components/NewContactModal";
+import {
+	DefaultSeo,
+	CorporateContactJsonLd,
+	LocalBusinessJsonLd,
+} from "next-seo";
 import Script from "next/script";
 const ContactModal = dynamic(() => import("../components/NewContactModal"));
 const Drawer = dynamic(() => import("../components/Drawer"));
@@ -43,6 +47,41 @@ function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
+			<DefaultSeo
+				defaultTitle="Milwaukee Web & Software"
+				description="A Milwaukee based web and software developer building awesome online experiences. Working with the most modern technologies on the internet, not only are finished products unique and aesthetic, but they are as performant as current technology allows."
+				additionalMetaTags={[
+					{
+						property: "keywords",
+						content:
+							"Milwaukee Software Engineer, Software Engineer, Web Engineer, Software Developer, Web Developer, React, Next.js, Node.js, Swift, Swift-UI, MongoDB, Mongo.db, Express, GraphQL, AWS, Amazon Web Services, Firebase",
+					},
+					{
+						property: "author",
+						content: "Andrew Mueller",
+					},
+				]}
+				robotsProps={{
+					nosnippet: false,
+					notranslate: true,
+					noarchive: false,
+					maxSnippet: 200,
+					maxImagePreview: "standard",
+					maxVideoPreview: -1,
+				}}
+			/>
+			<CorporateContactJsonLd
+				url="https://www.diesellaw.com"
+				logo="https://portfolio-nufujf39w-igloodevelopment.vercel.app/icons/512.png"
+				contactPoint={[
+					{
+						contactType: "Owner",
+						email: "aiglinski414@gmail.com",
+						areaServed: "US",
+						availableLanguage: ["English"],
+					},
+				]}
+			/>
 			<Provider store={store}>
 				<Script id="google-analytics" strategy="afterInteractive">
 					{`
