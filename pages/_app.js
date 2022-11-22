@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
 				}}
 			/>
 			<CorporateContactJsonLd
-				url="https://www.diesellaw.com"
+				url="https://portfolio-nufujf39w-igloodevelopment.vercel.app"
 				logo="https://portfolio-nufujf39w-igloodevelopment.vercel.app/icons/512.png"
 				contactPoint={[
 					{
