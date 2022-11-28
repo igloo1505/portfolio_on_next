@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import triviaScreenShot from "../public/triviaScreenShot.png";
 import jeopardyScreenShot from "../public/jeopardyScreenShot.png";
 import poetryScreenshot from "../public/poetryScreenshot.png";
+import integrandDemo from "../public/integradDemo.png";
 import clsx from "clsx";
 import { isMobile } from "react-device-detect";
 
@@ -136,7 +137,7 @@ export const portfolioArray = [
 		gaName: "Trivia Game",
 		imagePath: "/public/triviaScreenShot.png",
 		Image: triviaScreenShot,
-		url: "https://javascripttrivia.herokuapp.com/signIn",
+		// url: "https://javascripttrivia.herokuapp.com/signIn",
 		repo: "https://github.com/igloo1505/Trivia",
 		appName: "Trivia for Developers",
 		subTitle: "Javascript Trivia",
@@ -153,7 +154,7 @@ export const portfolioArray = [
 		imageName: "jeopardyScreenShot",
 		imagePath: "/public/jeopardyScreenShot.png",
 		Image: jeopardyScreenShot,
-		url: "https://igloo-jeopardy.herokuapp.com/login",
+		// url: "https://igloo-jeopardy.herokuapp.com/login",
 		repo: "https://github.com/igloo1505/GenericJeopardy/tree/master",
 		appName: "Mock Jeopardy",
 		subTitle: "React based trivia game",
@@ -168,7 +169,10 @@ export const portfolioArray = [
 		orientation: "left",
 		gaName: "Poetry Blog",
 		imageName: "poetryBlogV1",
-		videoSrc: "/poetryBlogV1.mp4",
+		videoSrc: [
+			{ path: "/poetryBlogDemo.webm", type: "video/webm" },
+			{ path: "/poetryBlogV1.mp4", type: "video/mp4" },
+		],
 		imagePath: "/public/poetryScreenshot.png",
 		Image: poetryScreenshot,
 		// Video: PoetryBlogV1,
@@ -178,6 +182,36 @@ export const portfolioArray = [
 		subTitle: "A quick weekend blog",
 		description:
 			"This was originally designed as a blog for a friend of mine in a different field. Because I didn't want to link to someone's personal blog, I modified this version to be a generic poetry blog. Built on Next.js using MongoDB, Material-UI, and GSAP.",
+		isLast: false,
+	},
+	{
+		index: 3,
+		transitionIndex: 7,
+		mediaType: "video",
+		orientation: "right",
+		gaName: "Integrand Audio",
+		imageName: "integrandDemo",
+		videoSrc: [
+			{
+				path: "/integrand.mp4",
+				type: "video/mp4",
+			},
+			{
+				path: "/integrand.webm",
+				type: "video/webm",
+			},
+			{
+				path: "/integrand.mov",
+				type: "video/mov",
+			},
+		],
+		imagePath: "/public/integrandDemo.png",
+		Image: integrandDemo,
+		repo: "https://github.com/igloo1505/social-music-player-pwa",
+		appName: "Music App Demo",
+		subTitle: "Exploring 3d modeling",
+		description:
+			"I'm not sure how far I'm going to take this app, but I was originally asked to build a music sharing platform for a production studio. Unfortunately, I was busy with another client at the time and I wasn't able to take on that project but the idea sounded like a perfect opportunity to explore 3D modeling further.",
 		isLast: true,
 	},
 ];

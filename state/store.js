@@ -21,6 +21,9 @@ const initialState = {
 	messages: {
 		contacts: [],
 	},
+	mediaModal: {
+		isOpen: false,
+	},
 };
 
 const withDevtools = () => {

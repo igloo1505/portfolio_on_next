@@ -40,14 +40,18 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 			style={{
 				// margin: "0 1rem",
 				borderRadius: "4px",
-				// width: "150%",
-				// border: "2px solid black",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "center",
 			}}
 			id={_id}
 		>
 			<video
 				id="portfolioAppDemoVideo"
-				className="portfolio-right-6 transitionRight6"
+				className={`portfolio-${
+					piece.orientation === "right" ? "left" : "right"
+				}-6 transition${piece.orientation === "right" ? "Left" : "Right"}6`}
 				ref={videoRef}
 				loop
 				muted
@@ -56,8 +60,15 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 					width: "100%",
 				}}
 			>
-				<source src={"/poetryBlogDemo.webm"} type="video/webm" />
-				<source src={"/poetryBlogDemo.mp4"} type="video/mp4" />
+				{piece.videoSrc.map((s, i) => {
+					return (
+						<source
+							src={s.path}
+							type={s.type}
+							key={`video-source-${s.gaName}-${i}`}
+						/>
+					);
+				})}
 				<DefaultComponent />
 			</video>
 		</div>

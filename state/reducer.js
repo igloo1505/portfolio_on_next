@@ -107,6 +107,24 @@ const onlyReducer = createReducer(initialState, (builder) => {
 			},
 		};
 	});
+	builder.addCase(Types.SHOW_MEDIA_MODAL, (state, action) => {
+		return {
+			...state,
+			mediaModal: {
+				...state.mediaModal,
+				isOpen: true,
+				...action.payload,
+			},
+		};
+	});
+	builder.addCase(Types.DISPOSE_MEDIA_MODAL, (state, action) => {
+		return {
+			...state,
+			mediaModal: {
+				isOpen: false,
+			},
+		};
+	});
 });
 
 export default onlyReducer;

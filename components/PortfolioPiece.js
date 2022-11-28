@@ -5,10 +5,13 @@ import Image from "next/image";
 import clsx from "clsx";
 import ReactGA from "react-ga4";
 import { isMobile } from "react-device-detect";
+import { useDispatch } from "react-redux";
+import * as Types from "../state/Types";
 
 const _buttonBreakpoint = 1150;
 
 const PortfolioPiece = ({ p, scroll, index }) => {
+	const dispatch = useDispatch();
 	const [hoverState, setHoverState] = useState({
 		link: false,
 		repo: false,
@@ -89,6 +92,13 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 			category: "Portfolio Piece",
 			action: "Repo View",
 			label: p.gaName,
+		});
+	};
+
+	const launchModal = (p) => {
+		dispatch({
+			type: Types.SHOW_MEDIA_MODAL,
+			payload: p,
 		});
 	};
 
@@ -203,14 +213,20 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 										}}
 										onClick={logLiveView}
 									>
-										Live Project Coming soon
+										Not Currently Hosted
 									</a>
 								</p>
 							)}
 						</div>
 					</div>
 				</div>
-				<a href={p.url} onClick={logLiveView}>
+				<a
+					onClick={() => {
+						launchModal(p);
+						logLiveView();
+					}}
+					style={{ cursor: "pointer" }}
+				>
 					{p.mediaType === "image" && (
 						<Image
 							src={p.Image}
@@ -243,19 +259,46 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 				style={p.isLast ? { paddingBottom: "10px" } : { paddingBottom: "40px" }}
 				id={`portfolio-piece-${index}`}
 			>
-				<a href={p.url} onClick={logLiveView}>
-					<Image
-						className={`portfolio-${
-							p.orientation === "right" ? "left" : "right"
-						}-${p.transitionIndex} portfolio-media-left`}
-						src={p.Image}
-						alt="Portfolio"
-						id={`portfolio-media-${p.orientation}-${index}`}
-					/>
+				<a
+					onClick={() => {
+						launchModal(p);
+						logLiveView();
+					}}
+					style={{ cursor: "pointer" }}
+				>
+					{p.mediaType === "image" && (
+						<Image
+							className={`portfolio-${
+								p.orientation === "right" ? "left" : "right"
+							}-${p.transitionIndex} portfolio-media-left`}
+							src={p.Image}
+							alt="Portfolio"
+							id={`portfolio-media-${p.orientation}-${index}`}
+						/>
+					)}
+					{p.mediaType === "video" && (
+						<PortfolioVideo
+							piece={p}
+							_id={`portfolio-media-${p.orientation}-${index}`}
+							DefaultComponent={() => (
+								<Image
+									src={p.Image}
+									className={`portfolio-left transitionRight${p.transitionIndex}`}
+									alt="Portfolio"
+									id={`portfolio-media-${p.orientation}-${index}`}
+								/>
+							)}
+						/>
+					)}
 				</a>
 				<div
 					className={`portfolio-${p.orientation}-${p.transitionIndex} transitionRight${p.transitionIndex} portfolio-desc-right`}
 					id={`portfolio-${p.orientation}-${index}`}
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
 				>
 					<div className="inner">
 						<p
@@ -291,37 +334,63 @@ const PortfolioPiece = ({ p, scroll, index }) => {
 									Repo
 								</a>
 							</p>
-							<p
-								className={clsx("project-link", hoverState.link && "hovered")}
-								id={`project-link-${index}`}
-								onMouseEnter={() => handleHover("link", true)}
-								onMouseLeave={() => handleHover("link", false)}
-							>
-								<svg
-									width={points.linkDims.width}
-									height={points.linkDims.height}
-									viewBox={`0 0 ${points.linkDims.width} ${points.linkDims.height}`}
-									className={clsx("svgBorder", hoverState.link && "hovered")}
+							{p.url ? (
+								<p
+									className={clsx("project-link", hoverState.link && "hovered")}
+									id={`project-link-${index}`}
+									onMouseEnter={() => handleHover("link", true)}
+									onMouseLeave={() => handleHover("link", false)}
 								>
-									<polyline
-										points={points.link}
-										className="bg-line"
-										id={`bg-line-${index}`}
-									/>
-									<polyline
-										points={points.link}
-										className="hl-line"
-										id={`hl-line-${index}`}
-									/>
-								</svg>
-								<a
-									href={p.url}
-									className={clsx("link-aTag", hoverState.link && "hovered")}
-									onClick={logLiveView}
+									<svg
+										width={points.linkDims.width}
+										height={points.linkDims.height}
+										viewBox={`0 0 ${points.linkDims.width} ${points.linkDims.height}`}
+										className={clsx("svgBorder", hoverState.link && "hovered")}
+									>
+										<polyline
+											points={points.link}
+											className="bg-line"
+											id={`bg-line-${index}`}
+										/>
+										<polyline
+											points={points.link}
+											className="hl-line"
+											id={`hl-line-${index}`}
+										/>
+									</svg>
+									<a
+										href={p.url}
+										className={clsx("link-aTag", hoverState.link && "hovered")}
+										onClick={logLiveView}
+									>
+										Live Project
+									</a>
+								</p>
+							) : (
+								<p
+									className="project-link"
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										flexWrap: "wrap",
+										justifyContent: "center",
+										alignItems: "center",
+										textAlign: "center",
+									}}
 								>
-									Live Project
-								</a>
-							</p>
+									<a
+										href={p.url}
+										style={{
+											textDecoration: "none",
+											color: "rgb(0, 160, 242)",
+											textAlign: "center",
+										}}
+										onClick={logLiveView}
+									>
+										Not Currently Hosted
+									</a>
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
