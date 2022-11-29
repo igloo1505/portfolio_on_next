@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
+import clsx from "clsx";
 // import dynamic from "next/dynamic";
 // const BlogVideo = dynamic(() => import("../public/PoetryBlogV1.mp4"));
 
 const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
-	const [shouldPlay, setShouldPlay] = useState(false);
 	const videoRef = useRef(null);
+	const [canPlayVideo, setCanPlayVideo] = useState(false);
 
 	const playVideo = () => {
 		if (videoRef.current) {
@@ -12,31 +13,18 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 		}
 		videoRef.current?.play();
 	};
-	const pauseVideo = () => {
-		videoRef.current?.pause();
-	};
 
 	useEffect(() => {
 		let offset = 0.3;
-		let _w = {
-			width: window.innerWidth,
-			height: window.innerHeight,
-		};
-		window.addEventListener("scroll", (e) => {
-			let video = document.getElementById("recipeAppDemoVideo");
-
-			if (!video) return;
-			let _v = video.getBoundingClientRect();
-
-			if ((_w.height - _v.y) / _v.height > offset) {
-				playVideo();
-			}
-		});
+		playVideo();
 	}, []);
 
 	return (
 		<div
-			className="portfolio-video-demo-container portfolio-media-right"
+			className={clsx(
+				"portfolio-video-demo-container portfolio-media-right",
+				canPlayVideo && "portfolio-video-demo-container-canPlay"
+			)}
 			style={{
 				// margin: "0 1rem",
 				borderRadius: "4px",
@@ -44,21 +32,30 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
+				position: "relative",
 			}}
 			id={_id}
 		>
+			<DefaultComponent />
 			<video
-				id="portfolioAppDemoVideo"
-				className={`portfolio-${
-					piece.orientation === "right" ? "left" : "right"
-				}-6 transition${piece.orientation === "right" ? "Left" : "Right"}6`}
+				id={`${_id}-video`}
+				className={clsx(
+					`portfolio-${
+						piece.orientation === "right" ? "left" : "right"
+					}-6 transition${
+						piece.orientation === "right" ? "Left" : "Right"
+					}6 portfolio-video`,
+					canPlayVideo && "portfolio-video-canPlay"
+				)}
 				ref={videoRef}
 				loop
 				muted
 				playsInline
+				autoPlay
 				style={{
 					width: "100%",
 				}}
+				onCanPlayThrough={() => setCanPlayVideo(true)}
 			>
 				{piece.videoSrc.map((s, i) => {
 					return (

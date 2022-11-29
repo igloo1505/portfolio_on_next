@@ -170,8 +170,8 @@ export const portfolioArray = [
 		gaName: "Poetry Blog",
 		imageName: "poetryBlogV1",
 		videoSrc: [
-			{ path: "/poetryBlogDemo.webm", type: "video/webm" },
 			{ path: "/poetryBlogDemo.mp4", type: "video/mp4" },
+			// { path: "/poetryBlogDemo.webm", type: "video/webm" },
 		],
 		imagePath: "/public/poetryScreenshot.png",
 		Image: poetryScreenshot,

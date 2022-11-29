@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import Image from "next/image";
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useEffect, useRef, Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import * as Types from "../state/Types";
+import { useLockBodyScroll } from "../util/lockBodyScroll";
 // const connector((state, props))
 
 const connector = connect((state, props) => ({
@@ -14,7 +15,22 @@ const connector = connect((state, props) => ({
 const MediaModal = connector(({ modalProps }) => {
 	const mediaRef = useRef(null);
 	const dispatch = useDispatch();
+	let originalOverflow;
+	const resetDocument = () => {
+		document.body.style.overflow = originalOverflow;
+	};
+	useEffect(() => {
+		if (modalProps.isOpen) {
+			console.log("here");
+			originalOverflow = window.getComputedStyle(document.body).overflow;
+			document.body.style.overflow = "hidden";
+		}
+		if (!modalProps.isOpen && originalOverflow) {
+			resetDocument();
+		}
+	}, [modalProps.isOpen]);
 	const handleBackdropClick = (params) => {
+		resetDocument();
 		dispatch({
 			type: Types.DISPOSE_MEDIA_MODAL,
 		});
