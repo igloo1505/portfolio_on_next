@@ -171,7 +171,7 @@ export const portfolioArray = [
 		imageName: "poetryBlogV1",
 		videoSrc: [
 			{ path: "/poetryBlogDemo.webm", type: "video/webm" },
-			{ path: "/poetryBlogV1.mp4", type: "video/mp4" },
+			{ path: "/poetryBlogDemo.mp4", type: "video/mp4" },
 		],
 		imagePath: "/public/poetryScreenshot.png",
 		Image: poetryScreenshot,
