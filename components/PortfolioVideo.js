@@ -26,7 +26,6 @@ const PortfolioVideo = ({ piece, _id, DefaultComponent }) => {
 				canPlayVideo && "portfolio-video-demo-container-canPlay"
 			)}
 			style={{
-				// margin: "0 1rem",
 				borderRadius: "4px",
 				display: "flex",
 				flexDirection: "column",

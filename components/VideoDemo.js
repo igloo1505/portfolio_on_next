@@ -1,7 +1,8 @@
+import clsx from "clsx";
 import React, { useEffect, useState, useRef } from "react";
 
 const VideoDemo = ({ _id, DefaultComponent }) => {
-	const [shouldPlay, setShouldPlay] = useState(false);
+	const [canPlayThrough, setCanPlayThrough] = useState(false);
 	const videoRef = useRef(null);
 	const playVideo = () => {
 		if (videoRef.current) {
@@ -33,20 +34,30 @@ const VideoDemo = ({ _id, DefaultComponent }) => {
 
 	return (
 		<div
-			className="video-demo-container"
+			className={clsx(
+				"video-demo-container",
+				canPlayThrough && "canPlayThrough"
+			)}
 			style={{
 				borderRadius: "4px",
+				position: "relative",
 			}}
 		>
+			<DefaultComponent />
 			<video
 				id={_id}
 				ref={videoRef}
 				loop
 				muted
 				playsInline
+				autoPlay
 				style={{
 					width: "100%",
+					position: "absolute",
+					top: 0,
+					left: 0,
 				}}
+				onCanPlayThrough={() => setCanPlayThrough(true)}
 			>
 				<source src={"/recipeAppDemo.mp4"} type="video/webm" />
 				<source src={"/recipeAppDemoCompressed.mp4"} type="video/mp4" />
